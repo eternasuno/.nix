@@ -9,13 +9,11 @@ in {
     ../../module/common/cli/bash.nix
     ../../module/common/cli/bat.nix
     ../../module/common/cli/devenv.nix
-    ../../module/common/cli/gemini-cli.nix
     ../../module/common/cli/git.nix
-    ../../module/common/cli/github-copilot-cli.nix
-    ../../module/common/cli/lazygit.nix
     ../../module/common/cli/neovim
     ../../module/common/cli/nh.nix
     ../../module/common/cli/nushell.nix
+    ../../module/common/cli/opencode.nix
     ../../module/common/cli/starship.nix
     ../../module/common/cli/yazi
     ../../module/common/cli/zoxide.nix

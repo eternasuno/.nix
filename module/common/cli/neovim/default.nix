@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   vars,
   inputs,
@@ -7,8 +8,9 @@
   inherit (vars) username;
 in {
   imports = [
+    ./autocomplete.nix
+    ./avante.nix
     ./git.nix
-    ./llm.nix
     ./lsp.nix
     ./navigation.nix
     ./ui.nix

@@ -18,7 +18,6 @@ in
       keymap = keymap;
       theme = theme;
       plugins = {
-        lazygit = pkgs.yaziPlugins.lazygit;
         full-border = pkgs.yaziPlugins.full-border;
         git = pkgs.yaziPlugins.git;
         smart-enter = pkgs.yaziPlugins.smart-enter;

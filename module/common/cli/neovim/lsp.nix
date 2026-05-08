@@ -18,14 +18,5 @@ in {
     };
 
     lsp.formatOnSave = true;
-
-    autocomplete.nvim-cmp = {
-      enable = true;
-      mappings = {
-        next = "<C-n>";
-        previous = "<C-p>";
-        confirm = "<CR>";
-      };
-    };
   };
 }

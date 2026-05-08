@@ -17,6 +17,7 @@ in {
     dashboard.alpha.enable = true;
 
     visuals = {
+      indent-blankline.enable = true;
       nvim-web-devicons.enable = true;
     };
 
@@ -32,5 +33,18 @@ in {
 
     autopairs.nvim-autopairs.enable = true;
     utility.multicursors.enable = true;
+
+    terminal.toggleterm = {
+      enable = true;
+      setupOpts = {
+        direction = "float";
+        open_mapping = "[[<c-t>]]";
+      };
+    };
+
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+    };
   };
 }

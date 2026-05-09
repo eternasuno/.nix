@@ -2,6 +2,15 @@
   inherit (vars) username;
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
+    highlight = {
+      IblIndent = {
+        fg = "#4b5363";
+      };
+      IblScope = {
+        fg = "#7aa2f7";
+      };
+    };
+
     theme = {
       enable = true;
       name = "onedark";
@@ -17,7 +26,16 @@ in {
     dashboard.alpha.enable = true;
 
     visuals = {
-      indent-blankline.enable = true;
+      indent-blankline = {
+        enable = true;
+        setupOpts = {
+          indent.highlight = "IblIndent";
+          scope = {
+            enabled = true;
+            highlight = "IblScope";
+          };
+        };
+      };
       nvim-web-devicons.enable = true;
     };
 

@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   vars,
   inputs,
@@ -9,7 +8,6 @@
 in {
   imports = [
     ./autocomplete.nix
-    ./avante.nix
     ./git.nix
     ./lsp.nix
     ./navigation.nix

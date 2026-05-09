@@ -1,11 +1,13 @@
-{ pkgs, vars, ... }:
-let
+{
+  pkgs,
+  vars,
+  ...
+}: let
   settings = import ./yazi.nix;
   keymap = import ./keymap.nix;
   theme = import ./theme.nix;
   inherit (vars) username;
-in
-{
+in {
   home-manager.users.${username} = {
     programs.yazi = {
       enable = true;
@@ -18,6 +20,7 @@ in
       keymap = keymap;
       theme = theme;
       plugins = {
+        lazygit = pkgs.yaziPlugins.lazygit;
         full-border = pkgs.yaziPlugins.full-border;
         git = pkgs.yaziPlugins.git;
         smart-enter = pkgs.yaziPlugins.smart-enter;

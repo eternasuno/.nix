@@ -9,6 +9,7 @@ in {
     ../../module/common/cli/bat.nix
     ../../module/common/cli/devenv.nix
     ../../module/common/cli/git.nix
+    ../../module/common/cli/lazygit.nix
     ../../module/common/cli/neovim
     ../../module/common/cli/nh.nix
     ../../module/common/cli/nushell.nix

@@ -19,6 +19,9 @@ in {
     system = "x86_64-linux";
     specialArgs = {inherit inputs vars;};
     modules = [
+      {
+        nixpkgs.overlays = [inputs.purescript-overlay.overlays.default];
+      }
       ./configuration.nix
       ./hardware-configuration.nix
       home-manager.nixosModules.home-manager

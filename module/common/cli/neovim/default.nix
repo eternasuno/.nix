@@ -29,6 +29,7 @@ in {
     programs.nvf = {
       enable = true;
       settings = {
+        imports = [./purescript.nix];
         vim = {
           viAlias = true;
           vimAlias = true;

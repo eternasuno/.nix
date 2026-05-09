@@ -2,21 +2,33 @@
   inherit (vars) username;
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
-    lsp.enable = true;
     languages = {
       enableTreesitter = true;
       enableFormat = true;
 
-      nix.enable = true;
-      #rust.enable = true;
-      typescript.enable = true;
       css.enable = true;
       html.enable = true;
-      yaml.enable = true;
       markdown.enable = true;
+      nix.enable = true;
+      purescript = {
+        enable = true;
+        lsp.settings = {
+          addSpagoSources = true;
+          addNpmPath = true;
+          buildCommand = "spago build  --json-errors";
+        };
+      };
+      typescript = {
+        enable = true;
+        format.type = ["biome"];
+      };
       typst.enable = true;
+      yaml.enable = true;
     };
 
-    lsp.formatOnSave = true;
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+    };
   };
 }

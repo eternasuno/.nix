@@ -12,11 +12,13 @@ in {
       enable = true;
       profiles = ["default"];
       config = {
-        tabs = {
-          vertical.enable = false;
-        };
         displayTitles = false;
         displayUrlbarIcons = true;
+        extraConfig = ''
+          #taskbar-tabs-button {
+            display: none;
+          }
+        '';
       };
     };
 

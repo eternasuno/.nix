@@ -1,29 +1,40 @@
-{ vars, ... }:
-let
+{vars, ...}: let
   inherit (vars) username;
-in
-{
-  home-manager.users.${username} = { config, ... }: {
+in {
+  home-manager.users.${username} = {config, ...}: {
     programs.niri.settings.binds = with config.lib.niri.actions; {
       "Mod+Q".action = close-window;
       "Mod+F".action = maximize-column;
       "Mod+Shift+F".action = fullscreen-window;
+      "Mod+V".action = toggle-window-floating;
+      "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+
+      "Mod+T".action = spawn config.home.sessionVariables.TERMINAL;
+      "Mod+B".action = spawn config.home.sessionVariables.BROWSER;
+      "Mod+Space" = {
+        action = spawn ["dms" "ipc" "call" "spotlight" "toggle"];
+        hotkey-overlay.title = "Toggle Application Launcher";
+      };
 
       "Mod+Left".action = focus-column-left;
       "Mod+Right".action = focus-column-right;
-      "Mod+Up".action = focus-workspace-up;
-      "Mod+Down".action = focus-workspace-down;
       "Mod+H".action = focus-column-left;
       "Mod+L".action = focus-column-right;
+      "Mod+U".action = focus-window-down;
+      "Mod+I".action = focus-window-up;
+      "Mod+Up".action = focus-workspace-up;
+      "Mod+Down".action = focus-workspace-down;
       "Mod+K".action = focus-workspace-up;
       "Mod+J".action = focus-workspace-down;
 
       "Mod+Ctrl+Left".action = move-column-left;
       "Mod+Ctrl+Right".action = move-column-right;
-      "Mod+Ctrl+Up".action = move-column-to-workspace-up;
-      "Mod+Ctrl+Down".action = move-column-to-workspace-down;
       "Mod+Ctrl+H".action = move-column-left;
       "Mod+Ctrl+L".action = move-column-right;
+      "Mod+Ctrl+U".action = move-window-down;
+      "Mod+Ctrl+I".action = move-window-up;
+      "Mod+Ctrl+Up".action = move-column-to-workspace-up;
+      "Mod+Ctrl+Down".action = move-column-to-workspace-down;
       "Mod+Ctrl+K".action = move-column-to-workspace-up;
       "Mod+Ctrl+J".action = move-column-to-workspace-down;
 
@@ -39,35 +50,38 @@ in
 
       "Mod+R".action = switch-preset-column-width;
       "Mod+Shift+R".action = switch-preset-window-height;
-      "Mod+Minus".action = set-column-width "-10%";
-      "Mod+Equal".action = set-column-width "+10%";
-
-      "Mod+T".action = spawn config.home.sessionVariables.TERMINAL;
-      "Mod+B".action = spawn config.home.sessionVariables.BROWSER;
+      "Mod+Shift+Left".action = set-window-width "-10%";
+      "Mod+Shift+Right".action = set-window-width "+10%";
+      "Mod+Shift+H".action = set-window-width "-10%";
+      "Mod+Shift+L".action = set-window-width "+10%";
+      "Mod+Shift+Up".action = set-window-height "-10%";
+      "Mod+Shift+Down".action = set-window-height "+10%";
+      "Mod+Shift+J".action = set-window-height "+10%";
+      "Mod+Shift+K".action = set-window-height "-10%";
 
       "Print".action = spawn ["dms" "ipc" "call" "niri" "screenshot"];
       "Ctrl+Print".action = spawn ["dms" "ipc" "call" "niri" "screenshotScreen"];
       "Alt+Print".action = spawn ["dms" "ipc" "call" "niri" "screenshotWindow"];
 
-      "Mod+Space" = {
-        action = spawn ["dms" "ipc" "call" "spotlight" "toggle"];
-        hotkey-overlay.title = "Toggle Application Launcher";
-      };
       "Mod+N" = {
         action = spawn ["dms" "ipc" "call" "notifications" "toggle"];
         hotkey-overlay.title = "Toggle Notification Center";
-      };
-      "Mod+Comma" = {
-        action = spawn ["dms" "ipc" "call" "settings" "toggle"];
-        hotkey-overlay.title = "Toggle Settings";
       };
       "Mod+P" = {
         action = spawn ["dms" "ipc" "call" "notepad" "toggle"];
         hotkey-overlay.title = "Toggle Notepad";
       };
-      "Super+Alt+L" = {
-        action = spawn ["dms" "ipc" "call" "lock" "lock"];
-        hotkey-overlay.title = "Toggle Lock Screen";
+      "XF86AudioMedia" = {
+        action = spawn ["dms" "ipc" "call" "settings" "toggle"];
+        hotkey-overlay.title = "Toggle Settings";
+      };
+      "Mod+C" = {
+        action = spawn ["dms" "ipc" "call" "clipboard" "toggle"];
+        hotkey-overlay.title = "Toggle Clipboard Manager";
+      };
+      "Mod+M" = {
+        action = spawn ["dms" "ipc" "call" "processlist" "toggle"];
+        hotkey-overlay.title = "Toggle Process List";
       };
       "Mod+X" = {
         action = spawn ["dms" "ipc" "call" "powermenu" "toggle"];
@@ -78,13 +92,9 @@ in
         action = spawn ["dms" "ipc" "call" "night" "toggle"];
         hotkey-overlay.title = "Toggle Night Mode";
       };
-      "Mod+V" = {
-        action = spawn ["dms" "ipc" "call" "clipboard" "toggle"];
-        hotkey-overlay.title = "Toggle Clipboard Manager";
-      };
-      "Mod+M" = {
-        action = spawn ["dms" "ipc" "call" "processlist" "toggle"];
-        hotkey-overlay.title = "Toggle Process List";
+      "Super+Alt+L" = {
+        action = spawn ["dms" "ipc" "call" "lock" "lock"];
+        hotkey-overlay.title = "Toggle Lock Screen";
       };
 
       "XF86AudioRaiseVolume" = {

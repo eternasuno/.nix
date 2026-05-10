@@ -1,6 +1,7 @@
 {
   inputs,
   vars,
+  pkgs,
   ...
 }: let
   inherit (vars) username;
@@ -13,6 +14,8 @@ in {
 
     programs.dank-material-shell = {
       enable = true;
+      package = pkgs.dms-shell;
+      quickshell.package = pkgs.quickshell;
       enableCalendarEvents = false;
       systemd = {
         enable = true;

@@ -12,7 +12,7 @@
     flakePath = "/home/eternasuno/.nix";
     keyboardLayout = "us";
     timeZone = "Asia/Tokyo";
-    version = "25.05";
+    version = "26.05";
   };
 in {
   nixosConfigurations.${vars.host} = nixpkgs.lib.nixosSystem {

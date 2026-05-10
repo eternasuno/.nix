@@ -2,16 +2,15 @@
   inputs,
   vars,
   ...
-}:
-let
+}: let
   inherit (vars) username;
-in
-{
+in {
   imports = [
     inputs.dankMaterialShell.nixosModules.greeter
   ];
 
   programs.dconf.enable = true;
+  programs.niri.enable = true;
 
   programs.dank-material-shell.greeter = {
     enable = true;

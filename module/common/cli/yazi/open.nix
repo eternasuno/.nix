@@ -5,7 +5,7 @@ in {
     opener = {
       edit = [
         {
-          run = ''\${EDITOR:-vi} %s'';
+          run = "\${EDITOR:-vi} %s";
           desc = "$EDITOR";
           block = true;
           for = "unix";
@@ -37,7 +37,7 @@ in {
           for = "macos";
         }
         {
-          run = ''start "" %s1'';
+          run = "start \"\" %s1";
           desc = "Play";
           for = "windows";
           orphan = true;
@@ -48,7 +48,7 @@ in {
           for = "android";
         }
         {
-          run = ''mediainfo %s1; echo "Press enter to exit"; read _'';
+          run = "mediainfo %s1; echo \"Press enter to exit\"; read _";
           desc = "Show media info";
           block = true;
           for = "unix";
@@ -67,7 +67,7 @@ in {
           for = "macos";
         }
         {
-          run = ''start "" %s1'';
+          run = "start \"\" %s1";
           desc = "Open";
           for = "windows";
           orphan = true;
@@ -102,7 +102,7 @@ in {
           for = "android";
         }
         {
-          run = ''clear; exiftool %s1; echo "Press enter to exit"; read _'';
+          run = "clear; exiftool %s1; echo \"Press enter to exit\"; read _";
           desc = "Show EXIF";
           block = true;
           for = "unix";
@@ -135,7 +135,7 @@ in {
       }
       {
         mime = "text/*";
-        use = ["open" "edit" "reveal"];
+        use = ["edit" "open" "reveal"];
       }
       {
         mime = "image/*";
@@ -147,7 +147,7 @@ in {
       }
       {
         mime = "application/{json,ndjson,javascript,wine-extension-ini,mbox}";
-        use = ["open" "edit" "reveal"];
+        use = ["edit" "open" "reveal"];
       }
       {
         mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}";

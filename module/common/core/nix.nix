@@ -8,7 +8,6 @@
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://niri.cachix.org"
-        "https://devenv.cachix.org"
         "https://darwin.cachix.org"
         "https://nvf.cachix.org"
         "https://home-manager.cachix.org"
@@ -17,7 +16,6 @@
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         "darwin.cachix.org-1:BgK2L96yU4i3OojKDVGH9nN65e58LWbPJrZNVgbsfTA="
         "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
         "home-manager.cachix.org-1:wLVmpPs9J1Na6uhEkqcJcdSmPR61rd76jOnlps6zvM8="

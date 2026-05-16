@@ -13,7 +13,6 @@ in {
 
   programs.niri = {
     enable = true;
-    useNautilus = false;
   };
 
   programs.dank-material-shell.greeter = {

@@ -22,6 +22,7 @@ in {
     ../../module/common/core/nix.nix
     ../../module/common/gui/firefox.nix
     ../../module/common/gui/kitty.nix
+    ../../module/common/gui/mpv.nix
     ../../module/nixos/core/boot.nix
     ../../module/nixos/core/fonts.nix
     ../../module/nixos/core/networking.nix
@@ -35,6 +36,8 @@ in {
     ../../module/nixos/gui/niri
     ../../module/nixos/gui/greeter.nix
     ../../module/nixos/gui/xdg.nix
+    ../../module/nixos/gui/imv.nix
+    ../../module/nixos/gui/mpv.nix
     ../../module/nixos/services/pipewire.nix
   ];
 

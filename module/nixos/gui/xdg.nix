@@ -1,33 +1,15 @@
-{ pkgs, vars, ... }:
-let
-  inherit (vars) username;
-in
 {
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config = {
-      common = {
-        default = [ "gtk" ];
-      };
-    };
-  };
-
-  home-manager.users.${username} = { config, ... }: {
+  pkgs,
+  vars,
+  ...
+}: let
+  inherit (vars) username;
+in {
+  home-manager.users.${username} = {config, ...}: {
     xdg = {
       enable = true;
       mimeApps = {
         enable = true;
-        defaultApplications = {
-          "application/xhtml+xml" = [ "firefox.desktop" ];
-          "inode/directory" = [ "yazi.desktop" ];
-          "text/html" = [ "firefox.desktop" ];
-          "x-scheme-handler/about" = [ "firefox.desktop" ];
-          "x-scheme-handler/http" = [ "firefox.desktop" ];
-          "x-scheme-handler/https" = [ "firefox.desktop" ];
-        };
       };
       userDirs = {
         enable = true;
@@ -42,6 +24,15 @@ in
         videos = "${config.home.homeDirectory}/Videos";
       };
       portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-hyprland
+        ];
+        config = {
+          common = {
+            default = ["hyprland"];
+          };
+        };
         xdgOpenUsePortal = true;
       };
     };

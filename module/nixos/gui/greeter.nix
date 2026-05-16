@@ -10,7 +10,11 @@ in {
   ];
 
   programs.dconf.enable = true;
-  programs.niri.enable = true;
+
+  programs.niri = {
+    enable = true;
+    useNautilus = false;
+  };
 
   programs.dank-material-shell.greeter = {
     enable = true;

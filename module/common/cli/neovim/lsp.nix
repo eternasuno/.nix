@@ -20,7 +20,18 @@ in {
       };
       typescript = {
         enable = true;
-        format.type = ["biome"];
+        format = {
+          enable = true;
+          type = ["biome"];
+        };
+        extraDiagnostics = {
+          enable = true;
+          types = ["biomejs"];
+        };
+        lsp = {
+          enable = true;
+          servers = ["typescript-language-server" "deno"];
+        };
       };
       typst.enable = true;
       yaml.enable = true;
@@ -29,6 +40,9 @@ in {
     lsp = {
       enable = true;
       formatOnSave = true;
+      presets = {
+        tailwindcss-language-server.enable = true;
+      };
     };
 
     keymaps = [

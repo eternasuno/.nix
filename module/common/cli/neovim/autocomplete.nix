@@ -1,4 +1,4 @@
-{vars, ...}: let
+{vars, lib, ...}: let
   inherit (vars) username;
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
@@ -22,44 +22,16 @@ in {
       };
     };
 
-    luaConfigPost = ''
-      -- Normalize LSP nulls (`vim.NIL`) before nvim-cmp matches completion items.
-      local cmp_nil_compat = vim.api.nvim_create_augroup("cmp_nil_compat", { clear = true })
-
-      local function normalize_lsp_null(value, seen)
-        if value == vim.NIL then
-          return nil
-        end
-
-        if type(value) ~= "table" then
-          return value
-        end
-
-        seen = seen or {}
-        if seen[value] then
-          return seen[value]
-        end
-
-        local normalized = {}
-        seen[value] = normalized
-
-        for key, nested in pairs(value) do
-          local normalized_value = normalize_lsp_null(nested, seen)
-          if normalized_value ~= nil then
-            normalized[key] = normalized_value
-          end
-        end
-
-        return normalized
-      end
-
-      vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
-        group = cmp_nil_compat,
-        callback = function()
-          if vim.g.cmp_nil_compat_applied then
-            return
-          end
-
+    augroups = [{
+      name = "cmp_nil_compat";
+      clear = true;
+    }];
+    autocmds = [{
+      event = ["InsertEnter" "CmdlineEnter"];
+      group = "cmp_nil_compat";
+      once = true;
+      callback = lib.generators.mkLuaInline ''
+        function()
           pcall(function()
             require("lz.n").trigger_load("nvim-cmp")
           end)
@@ -67,6 +39,20 @@ in {
           local ok, entry = pcall(require, "cmp.entry")
           if not ok or entry._fill_defaults_with_nil_compat then
             return
+          end
+
+          local function normalize_lsp_null(value, seen)
+            if value == vim.NIL then return nil end
+            if type(value) ~= "table" then return value end
+            seen = seen or {}
+            if seen[value] then return seen[value] end
+            local normalized = {}
+            seen[value] = normalized
+            for key, nested in pairs(value) do
+              local nv = normalize_lsp_null(nested, seen)
+              if nv ~= nil then normalized[key] = nv end
+            end
+            return normalized
           end
 
           local original_fill_defaults = entry.fill_defaults
@@ -77,12 +63,9 @@ in {
               normalize_lsp_null(defaults) or defaults
             )
           end
-
           entry._fill_defaults_with_nil_compat = true
-          vim.g.cmp_nil_compat_applied = true
-          pcall(vim.api.nvim_del_augroup_by_id, cmp_nil_compat)
-        end,
-      })
-    '';
+        end
+      '';
+    }];
   };
 }

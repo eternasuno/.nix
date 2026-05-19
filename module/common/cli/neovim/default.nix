@@ -8,7 +8,7 @@
 in {
   imports = [
     ./autocomplete.nix
-    ./git.nix
+    ./keymap.nix
     ./lsp.nix
     ./navigation.nix
     ./ui.nix

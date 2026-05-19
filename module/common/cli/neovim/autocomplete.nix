@@ -16,7 +16,7 @@ in {
       setupOpts = {
         keymaps = {
           accept_suggestion = "<Tab>";
-          clear_suggestion = "<C-]>";
+          clear_suggestion = "<C-e>";
           accept_word = "<C-j>";
         };
       };

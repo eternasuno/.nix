@@ -44,22 +44,5 @@ in {
         tailwindcss-language-server.enable = true;
       };
     };
-
-    keymaps = [
-      {
-        key = "<leader>da";
-        mode = ["n"];
-        action = "<cmd>Telescope diagnostics<CR>";
-        silent = true;
-        desc = "Show All Diagnostics";
-      }
-      {
-        key = "<leader>dc";
-        mode = ["n"];
-        action = "<cmd>lua vim.diagnostic.open_float(nil, {scope = 'cursor'})<CR>";
-        silent = true;
-        desc = "Show Cursor Diagnostics";
-      }
-    ];
   };
 }

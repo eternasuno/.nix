@@ -1,4 +1,8 @@
-{vars, ...}: let
+{
+  vars,
+  lib,
+  ...
+}: let
   inherit (vars) username;
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
@@ -30,7 +34,7 @@ in {
         };
         lsp = {
           enable = true;
-          servers = ["typescript-go"];
+          servers = ["typescript-language-server" "deno"];
         };
       };
       typst.enable = true;
@@ -42,6 +46,28 @@ in {
       formatOnSave = true;
       presets = {
         tailwindcss-language-server.enable = true;
+      };
+      servers = {
+        "typescript-language-server" = {
+          root_dir = lib.generators.mkLuaInline ''
+            function(bufnr, on_dir)
+              local root = vim.fs.root(bufnr, { "tsconfig.json", "package.json" })
+              if root and not vim.fs.root(bufnr, "deno.json") then
+                on_dir(root)
+              end
+            end
+          '';
+        };
+        "deno" = {
+          root_dir = lib.generators.mkLuaInline ''
+            function(bufnr, on_dir)
+              local root = vim.fs.root(bufnr, "deno.json")
+              if root and not vim.fs.root(bufnr, "tsconfig.json") then
+                on_dir(root)
+              end
+            end
+          '';
+        };
       };
     };
   };

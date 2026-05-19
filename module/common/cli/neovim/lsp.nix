@@ -30,7 +30,7 @@ in {
         };
         lsp = {
           enable = true;
-          servers = ["typescript-language-server" "deno"];
+          servers = ["typescript-language-server"];
         };
       };
       typst.enable = true;

@@ -22,7 +22,7 @@ in {
         enable = true;
         format = {
           enable = true;
-          type = ["biome"];
+          type = ["biome" "biome-check" "biome-organize-imports"];
         };
         extraDiagnostics = {
           enable = true;
@@ -30,7 +30,7 @@ in {
         };
         lsp = {
           enable = true;
-          servers = ["typescript-language-server"];
+          servers = ["typescript-go"];
         };
       };
       typst.enable = true;

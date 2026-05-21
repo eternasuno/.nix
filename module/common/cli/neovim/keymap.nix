@@ -52,6 +52,13 @@ in {
       desc = "Code Action";
     }
     {
+      key = "<leader>cl";
+      mode = ["n"];
+      action = "<cmd>lua vim.lsp.codelens.run()<CR>";
+      silent = true;
+      desc = "Code Lens Action";
+    }
+    {
       key = "<leader>F";
       mode = ["n"];
       action = "<cmd>lua vim.lsp.buf.format()<CR>";

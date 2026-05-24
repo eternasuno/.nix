@@ -1,7 +1,4 @@
-{
-  vars,
-  ...
-}: let
+{vars, ...}: let
   inherit (vars) username;
 in {
   home-manager.users.${username} = {
@@ -9,8 +6,13 @@ in {
       enable = true;
       settings = {
         "$schema" = "https://opencode.ai/config.json";
-        plugin = ["superpowers@git+https://github.com/obra/superpowers.git"];
+        context7 = {
+          enabled = true;
+          type = "remote";
+          url = "https://mcp.context7.com/mcp";
+        };
         lsp = true;
+        plugin = ["superpowers@git+https://github.com/obra/superpowers.git"];
       };
     };
   };

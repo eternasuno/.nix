@@ -101,11 +101,11 @@ in {
       desc = "Show Cursor Diagnostics";
     }
     {
-      key = "<leader>e";
+      key = "<leader>fe";
       mode = ["n" "v"];
-      action = "<cmd>Neotree toggle<CR>";
+      action = "<cmd>Telescope file_browser<CR>";
       silent = true;
-      desc = "Toggle Explorer (Neo-tree)";
+      desc = "Telescope File Browser";
     }
   ];
 }

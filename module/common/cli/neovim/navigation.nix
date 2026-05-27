@@ -3,7 +3,6 @@
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
     binds.whichKey.enable = true;
-    filetree.neo-tree.enable = true;
     git = {
       enable = true;
       gitsigns = {
@@ -11,6 +10,23 @@ in {
         codeActions.enable = true;
       };
     };
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      setupOpts.defaults = {
+        path_display = ["smart" "shorten" "absolute"];
+      };
+      extensions = [
+        {
+          name = "file_browser";
+          packages = [pkgs.vimPlugins.telescope-file-browser-nvim];
+          setup.file_browser = {
+            auto_depth = true;
+            depth = 1;
+            grouped = true;
+            hijack_netrw = true;
+          };
+        }
+      ];
+    };
   };
 }

@@ -23,6 +23,7 @@ in {
     ../../module/common/gui/firefox.nix
     ../../module/common/gui/kitty.nix
     ../../module/common/gui/mpv.nix
+    ../../module/nixos/cli/neovim.nix
     ../../module/nixos/cli/yazi.nix
     ../../module/nixos/core/boot.nix
     ../../module/nixos/core/fonts.nix

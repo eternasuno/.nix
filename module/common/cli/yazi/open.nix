@@ -135,7 +135,7 @@ in {
       }
       {
         mime = "text/*";
-        use = ["edit" "open" "reveal"];
+        use = ["open" "edit" "reveal"];
       }
       {
         mime = "image/*";

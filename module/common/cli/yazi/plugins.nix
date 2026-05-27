@@ -214,11 +214,13 @@ in {
       prepend_fetchers = [
         {
           id = "git";
+          group = "git";
           url = "*";
           run = "git";
         }
         {
           id = "git";
+          group = "git";
           url = "*/";
           run = "git";
         }

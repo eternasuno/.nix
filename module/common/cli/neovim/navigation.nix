@@ -1,6 +1,6 @@
 {
-  vars, 
-  pkgs, 
+  vars,
+  pkgs,
   ...
 }: let
   inherit (vars) username;
@@ -16,9 +16,6 @@ in {
     };
     telescope = {
       enable = true;
-      setupOpts.defaults = {
-        path_display = ["smart" "shorten" "absolute"];
-      };
       extensions = [
         {
           name = "file_browser";

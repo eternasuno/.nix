@@ -6,13 +6,23 @@ in {
       enable = true;
       settings = {
         "$schema" = "https://opencode.ai/config.json";
-        context7 = {
-          enabled = true;
-          type = "remote";
-          url = "https://mcp.context7.com/mcp";
+        mcp = {
+          context7 = {
+            enabled = true;
+            type = "remote";
+            url = "https://mcp.context7.com/mcp";
+          };
+          exa = {
+            enabled = true;
+            type = "remote";
+            url = "https://mcp.exa.ai/mcp";
+          };
         };
         lsp = true;
-        plugin = ["superpowers@git+https://github.com/obra/superpowers.git"];
+        plugin = [
+          "superpowers@git+https://github.com/obra/superpowers.git"
+          "opencode-gemini-auth@latest"
+        ];
       };
     };
   };

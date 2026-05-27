@@ -1,4 +1,8 @@
-{vars, ...}: let
+{
+  vars, 
+  pkgs, 
+  ...
+}: let
   inherit (vars) username;
 in {
   home-manager.users.${username}.programs.nvf.settings.vim = {
@@ -20,9 +24,6 @@ in {
           name = "file_browser";
           packages = [pkgs.vimPlugins.telescope-file-browser-nvim];
           setup.file_browser = {
-            auto_depth = true;
-            depth = 1;
-            grouped = true;
             hijack_netrw = true;
           };
         }

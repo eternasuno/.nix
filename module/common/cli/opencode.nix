@@ -6,6 +6,7 @@ in {
       enable = true;
       settings = {
         "$schema" = "https://opencode.ai/config.json";
+        autoupdate = false;
         mcp = {
           context7 = {
             enabled = true;
@@ -20,8 +21,7 @@ in {
         };
         lsp = true;
         plugin = [
-          "superpowers@git+https://github.com/obra/superpowers.git"
-          "opencode-gemini-auth@latest"
+          "opencode-antigravity-auth@latest"
         ];
       };
     };

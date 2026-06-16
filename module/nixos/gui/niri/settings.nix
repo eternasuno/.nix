@@ -1,8 +1,11 @@
-{ pkgs, inputs, vars, ... }:
-let
-  inherit (vars) username;
-in
 {
+  pkgs,
+  inputs,
+  vars,
+  ...
+}: let
+  inherit (vars) username;
+in {
   home-manager.users.${username} = {
     imports = [
       inputs.niri.homeModules.niri
@@ -16,7 +19,7 @@ in
           touchpad = {
             natural-scroll = false;
             dwt = true;
-            accel-speed = 0.2;
+            accel-speed = 0.15;
             scroll-factor = 1.0;
             accel-profile = "adaptive";
           };
@@ -26,13 +29,20 @@ in
         prefer-no-csd = true;
         layout = {
           gaps = 8;
-          default-column-width = { proportion = 0.6; };
+          background-color = "transparent";
+          default-column-width = {proportion = 0.6;};
           preset-column-widths = [
-            { proportion = 0.4; }
-            { proportion = 0.6; }
-            { proportion = 1.0; }
+            {proportion = 0.4;}
+            {proportion = 0.6;}
+            {proportion = 1.0;}
           ];
         };
+        layer-rules = [
+          {
+            matches = [{namespace = "^quickshell$";}];
+            place-within-backdrop = true;
+          }
+        ];
       };
     };
   };

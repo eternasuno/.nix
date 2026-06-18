@@ -33,6 +33,11 @@ in {
         DisableTelemetry = true;
         DontCheckDefaultBrowser = true;
 
+        BrowserDataBackup = {
+          AllowBackup = false;
+          AllowRestore = false;
+        };
+
         ExtensionSettings = {
           "@testpilot-containers" = {
             installation_mode = "force_installed";
@@ -70,9 +75,6 @@ in {
         };
 
         settings = {
-          # locale
-          "intl.locale.requested" = "zh-CN";
-
           # fonts
           "font.size.variable.x-western" = 18;
           "font.size.monospace.x-western" = 16;
@@ -90,6 +92,12 @@ in {
           "privacy.query_stripping.enabled" = true;
           "privacy.query_stripping.enabled.pbmode" = true;
           "privacy.sanitize.sanitizeOnShutdown" = true;
+          "privacy.clearOnShutdown_v2.cache" = false;
+          "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+          "privacy.clearOnShutdown_v2.formdata" = true;
+          "privacy.clearSiteData.browsingHistoryAndDownloads" = true;
+          "privacy.clearSiteData.cache" = false;
+          "privacy.clearSiteData.cookiesAndStorage" = false;
           "privacy.trackingprotection.enabled" = true;
           "privacy.trackingprotection.emailtracking.enabled" = true;
           "privacy.trackingprotection.socialtracking.enabled" = true;
@@ -118,6 +126,10 @@ in {
           "browser.ml.chat.footerBadge" = false;
           "browser.ml.chat.shortcuts" = false;
           "layout.css.has-selector.enabled" = true;
+          "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
+          "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
           "layout.spellcheckDefault" = 0;
         };
       };

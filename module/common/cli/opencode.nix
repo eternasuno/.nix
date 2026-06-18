@@ -30,33 +30,43 @@ in {
       preset = "opencode-go";
       presets.opencode-go = {
         orchestrator = {
-          model = "opencode-go/glm-5.1";
+          model = "opencode-go/glm-5.2";
+          skills = ["*"];
+          mcps = ["*" "!context7"];
         };
         oracle = {
           model = "opencode-go/deepseek-v4-pro";
           variant = "max";
+          skills = [];
+          mcps = [];
         };
         council = {
           model = "opencode-go/deepseek-v4-pro";
           variant = "high";
+          skills = [];
+          mcps = [];
         };
         librarian = {
           model = "opencode-go/minimax-m2.7";
-          mcps = ["websearch" "context7" "grep_app"];
+          skills = [];
+          mcps = ["websearch" "context7" "gh_grep"];
         };
         explorer = {
           model = "opencode-go/minimax-m2.7";
+          skills = [];
+          mcps = [];
         };
         designer = {
           model = "opencode-go/kimi-k2.6";
           variant = "medium";
+          skills = [];
+          mcps = [];
         };
         fixer = {
           model = "opencode-go/deepseek-v4-flash";
           variant = "high";
-        };
-        observer = {
-          model = "opencode-go/kimi-k2.6";
+          skills = [];
+          mcps = [];
         };
       };
       disabled_agents = [];
@@ -75,6 +85,16 @@ in {
       };
       embedding = {
         provider = "local";
+      };
+    };
+
+    xdg.configFile."opencode/aft.jsonc".text = builtins.toJSON {
+      "$schema" = "https://raw.githubusercontent.com/cortexkit/aft/main/docs/config.schema.json";
+      search_index = true;
+      semantic_search = true;
+      bash = {
+        rewrite = true;
+        compress = true;
       };
     };
   };

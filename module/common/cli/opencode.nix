@@ -2,6 +2,10 @@
   inherit (vars) username;
 in {
   home-manager.users.${username} = {
+    home.sessionVariables = {
+      OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS = "true";
+    };
+
     programs.opencode = {
       enable = true;
       settings = {
@@ -9,9 +13,10 @@ in {
         autoupdate = false;
         lsp = true;
         plugin = [
-          "opencode-antigravity-auth@latest"
-          "oh-my-opencode-slim@latest"
+          "@cortexkit/aft-opencode@latest"
+          "@cortexkit/opencode-antigravity-auth@latest"
           "@cortexkit/opencode-magic-context@latest"
+          "oh-my-opencode-slim@latest"
         ];
         compaction = {
           auto = false;
@@ -26,47 +31,32 @@ in {
       presets.opencode-go = {
         orchestrator = {
           model = "opencode-go/glm-5.1";
-          skills = ["*"];
-          mcps = ["*" "!context7"];
         };
         oracle = {
           model = "opencode-go/deepseek-v4-pro";
           variant = "max";
-          skills = ["simplify"];
-          mcps = [];
         };
         council = {
           model = "opencode-go/deepseek-v4-pro";
           variant = "high";
-          skills = [];
-          mcps = [];
         };
         librarian = {
           model = "opencode-go/minimax-m2.7";
-          skills = [];
           mcps = ["websearch" "context7" "grep_app"];
         };
         explorer = {
           model = "opencode-go/minimax-m2.7";
-          skills = [];
-          mcps = [];
         };
         designer = {
           model = "opencode-go/kimi-k2.6";
           variant = "medium";
-          skills = ["agent-browser"];
-          mcps = [];
         };
         fixer = {
           model = "opencode-go/deepseek-v4-flash";
           variant = "high";
-          skills = [];
-          mcps = [];
         };
         observer = {
           model = "opencode-go/kimi-k2.6";
-          skills = [];
-          mcps = [];
         };
       };
       disabled_agents = [];

@@ -28,6 +28,7 @@ in {
     ../../module/nixos/core/boot.nix
     ../../module/nixos/core/fonts.nix
     ../../module/nixos/core/networking.nix
+    ../../module/nixos/core/nix-ld.nix
     ../../module/nixos/core/security.nix
     ../../module/nixos/core/time.nix
     ../../module/nixos/core/users.nix

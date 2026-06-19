@@ -20,7 +20,7 @@ in {
             natural-scroll = false;
             dwt = true;
             accel-speed = 0.15;
-            scroll-factor = 1.0;
+            scroll-factor = 1.5;
             accel-profile = "adaptive";
           };
           mouse.natural-scroll = false;

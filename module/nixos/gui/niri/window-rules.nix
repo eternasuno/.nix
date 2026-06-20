@@ -32,6 +32,7 @@ in {
     {
       matches = [{app-id = "^kitty$";}];
       default-column-width = {proportion = 0.6;};
+      opacity = 0.9;
     }
   ];
 }

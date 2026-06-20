@@ -47,18 +47,17 @@ in {
           mcps = [];
         };
         librarian = {
-          model = "opencode-go/minimax-m2.7";
+          model = "opencode-go/minimax-m3";
           skills = [];
           mcps = ["websearch" "context7" "gh_grep"];
         };
         explorer = {
-          model = "opencode-go/minimax-m2.7";
+          model = "opencode-go/minimax-m3";
           skills = [];
           mcps = [];
         };
         designer = {
-          model = "opencode-go/kimi-k2.6";
-          variant = "medium";
+          model = "google/antigravity-gemini-3.5-flash";
           skills = [];
           mcps = [];
         };

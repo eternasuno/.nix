@@ -22,14 +22,10 @@ in {
     ../../module/common/core/nix.nix
     ../../module/common/gui/kitty.nix
     ../../module/darwin/core/system.nix
+    ../../module/darwin/core/homebrew.nix
     ../../module/darwin/gui/appstore.nix
     ../../module/darwin/gui/kitty.nix
   ];
-
-  homebrew = {
-    enable = true;
-    onActivation.cleanup = "zap";
-  };
 
   home-manager = {
     backupFileExtension = "backup";

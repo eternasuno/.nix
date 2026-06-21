@@ -14,7 +14,7 @@ in {
     ../../module/common/cli/neovim
     ../../module/common/cli/nh.nix
     ../../module/common/cli/nushell.nix
-    ../../module/common/cli/opencode.nix
+    ../../module/common/cli/opencode
     ../../module/common/cli/starship.nix
     ../../module/common/cli/yazi
     ../../module/common/cli/zoxide.nix

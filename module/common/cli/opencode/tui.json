@@ -1,0 +1,6 @@
+{
+  "plugin": [
+    "@cortexkit/opencode-magic-context@latest",
+    "oh-my-opencode-slim"
+  ]
+}

@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   vars,
   ...
 }: let
@@ -19,6 +20,15 @@ in {
     lsp = {
       enable = true;
       formatOnSave = true;
+    };
+
+    lsp.servers = {
+      "vscode-json-language-server" = {
+        cmd = lib.mkForce [
+          "${pkgs.vscode-json-languageserver}/bin/vscode-json-language-server"
+          "--stdio"
+        ];
+      };
     };
 
     treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [purescript];

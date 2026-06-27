@@ -29,3 +29,4 @@ When side effects are unavoidable, inject dependencies via currying so the core 
 ## Language-Specific Conventions
 
 - [TypeScript](./typescript.md)
+- [Effect-TS](./effect-ts.md)

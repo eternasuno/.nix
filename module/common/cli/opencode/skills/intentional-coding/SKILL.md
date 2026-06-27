@@ -39,6 +39,7 @@ Before implementing:
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 - Search for existing patterns first. Before writing new code, grep for similar implementations in the codebase. Chances are there's a convention to follow.
+- **When encountering a design decision that seems counterintuitive or questionable, explain the reasoning first before implementing any changes.** Do not silently apply changes just because the user suggested them — articulate the tradeoff or principle, let the user decide, then follow their direction.
 
 ### 2. Simplicity First
 

@@ -9,6 +9,24 @@ Group inputs into `XxxParams` records or inject via currying.
 ## Pure Functions
 Inject side-effecty dependencies via currying: `fn = (mainArg) => (deps) => result`.
 
+## Imports
+
+- No `.js` extension in local imports (`from './foo'` not `from './foo.js'`)
+- Use `import type` for type-only imports
+- Group: external libs → internal modules → types
+
+## No Barrel Files
+
+Do not use `index.ts` barrel files. To export a directory, create a file at the parent level with the same name as the directory (e.g., `entity.ts` to export `entity/`).
+
+## Control Flow
+
+All `if`, `for`, `while`, and similar control flow statements must use `{}` braces even for single-statement bodies.
+
+## Export Spacing
+
+Each `export` expression must be followed by a blank line.
+
 ## Naming
 
 | Category | Convention | Example |

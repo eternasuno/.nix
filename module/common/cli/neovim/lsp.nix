@@ -20,6 +20,9 @@ in {
     lsp = {
       enable = true;
       formatOnSave = true;
+      lspconfig = {
+        enable = true;
+      };
     };
 
     lsp.servers = {

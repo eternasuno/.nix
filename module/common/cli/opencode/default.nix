@@ -12,7 +12,6 @@ in {
 
     programs.opencode = {
       enable = true;
-      extraPackages = with pkgs; [bun];
       settings = {
         plugin = [
           "oh-my-opencode-slim"
@@ -27,12 +26,6 @@ in {
         compaction = {
           auto = false;
           prune = false;
-        };
-        mcp = {
-          lightpanda = {
-            type = "local";
-            command = ["bunx" "-y" "lightpanda-mcp"];
-          };
         };
       };
       skills = ./skills;

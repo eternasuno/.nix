@@ -1,5 +1,14 @@
-{ lib, pkgs, config, ... }:
 {
+  lib,
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = ["v4l2loopback"];
@@ -32,7 +41,7 @@
       enable = true;
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "cuts_alt" ];
+          selected_themes = ["cuts_alt"];
         })
       ];
       theme = "cuts_alt";

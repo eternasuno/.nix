@@ -1,7 +1,6 @@
 {
   nixpkgs,
   home-manager,
-  lanzaboote,
   nixos-hardware,
   ...
 } @ inputs: let
@@ -25,7 +24,6 @@ in {
       ./configuration.nix
       ./hardware-configuration.nix
       home-manager.nixosModules.home-manager
-      lanzaboote.nixosModules.lanzaboote
       nixos-hardware.nixosModules.framework-13-7040-amd
     ];
   };

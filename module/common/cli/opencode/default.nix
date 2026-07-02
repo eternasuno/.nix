@@ -32,7 +32,7 @@ in {
     };
 
     xdg.configFile = {
-      "opencode/magic-context.jsonc".source = ./magic-context.jsonc;
+      "cortexkit/magic-context.jsonc".source = ./magic-context.jsonc;
       "opencode/oh-my-opencode-slim.json".source = ./oh-my-opencode-slim.json;
       "opencode/tui.json".source = ./tui.json;
     };

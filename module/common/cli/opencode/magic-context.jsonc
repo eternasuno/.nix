@@ -5,10 +5,10 @@
     "two_pass": true
   },
   "dreamer": {
-    "schedule": "",
-    "model": "opencode-go/deepseek-v4-flash"
+    "disable": true
   },
   "sidekick": {
+    "enabled": true,
     "model": "opencode-go/deepseek-v4-flash"
   }
 }

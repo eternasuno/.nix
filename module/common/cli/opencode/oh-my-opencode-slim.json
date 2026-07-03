@@ -43,7 +43,7 @@
         "mcps": []
       },
       "designer": {
-        "model": "google/antigravity-gemini-3.5-flash",
+        "model": "opencode-go/kimi-k2.6",
         "variant": "medium",
         "skills": [],
         "mcps": []
@@ -55,7 +55,7 @@
         "mcps": []
       },
       "observer": {
-        "model": "opencode-go/kimi-k2.7-code",
+        "model": "opencode-go/mimo-v2.5",
         "skills": [],
         "mcps": []
       }

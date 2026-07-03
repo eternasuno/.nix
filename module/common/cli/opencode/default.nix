@@ -1,8 +1,4 @@
-{
-  vars,
-  pkgs,
-  ...
-}: let
+{vars, ...}: let
   inherit (vars) username;
 in {
   home-manager.users.${username} = {
@@ -15,7 +11,6 @@ in {
       settings = {
         plugin = [
           "oh-my-opencode-slim"
-          "@cortexkit/opencode-antigravity-auth@latest"
           "@cortexkit/opencode-magic-context@latest"
         ];
         agent = {

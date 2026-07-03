@@ -1,12 +1,11 @@
-{ pkgs, ... }: {
-
-  environment.systemPackages = [ pkgs.mas ];
-
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.mas];
 
   homebrew = {
     masApps = {
-      "uBlock Origin Lite" = 6745342698;
       "Tampermonkey" = 6738342400;
+      "Vimlike" = 1584519802;
+      "uBlock Origin Lite" = 6745342698;
     };
   };
 }

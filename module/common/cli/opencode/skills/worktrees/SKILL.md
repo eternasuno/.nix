@@ -1,6 +1,7 @@
 ---
 name: worktrees
 description: Manage Git worktrees as OMO safe isolated coding lanes for complex, risky, or parallel work.
+disable-model-invocation: true
 ---
 
 # Worktrees Orchestration Protocol

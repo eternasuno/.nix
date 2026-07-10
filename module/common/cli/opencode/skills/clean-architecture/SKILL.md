@@ -1,6 +1,6 @@
 ---
 name: clean-architecture
-description: Architecture guidelines for project structure. Use when designing new features, reviewing code, determining layer boundaries, creating new files, or moving code between modules. Always load this skill before adding new source or test files to ensure correct layer placement and dependency direction.
+description: Architecture layer rules (Entity → Port → Usecase → Adapter) — inward dependency direction. Load before creating files, designing modules, or setting up package structure.
 ---
 
 # Clean Architecture

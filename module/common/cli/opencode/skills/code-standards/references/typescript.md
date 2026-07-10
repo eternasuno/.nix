@@ -38,11 +38,59 @@ Each `export` expression must be followed by a blank line.
 | Constants | UPPER_SNAKE_CASE | `MAX_RETRIES`, `DEFAULT_TIMEOUT` |
 | Enums | PascalCase | `HttpMethod`, `ColorScheme` |
 
+## Default Parameters
+
+Use default parameters instead of `||` short-circuiting:
+
+```typescript
+// Bad
+function createMicrobrewery(name) {
+  const breweryName = name || 'Hipster Brew Co.';
+}
+
+// Good
+function createMicrobrewery(name = 'Hipster Brew Co.') {
+  // ...
+}
+```
+
+Default parameters only replace `undefined` — `''`, `false`, `0`, `null`, and `NaN` pass through unchanged.
+
+## No Boolean Flags
+
+A boolean flag in a function signature signals it does more than one thing. Split instead:
+
+```typescript
+// Bad
+function createFile(name: string, temp: boolean) { ... }
+
+// Good
+function createFile(name: string) { ... }
+function createTempFile(name: string) { ... }
+```
+
 ## Functional over OOP
 
 - `type` not `interface` for object shapes
 - No `class`, no `this`
 - Use discriminated unions over inheritance
+
+## Pipeline over Imperative Loops
+
+Prefer `.map`, `.filter`, `.reduce` chains over `for` / `for..of` loops:
+
+```typescript
+// Bad
+let totalLines = 0;
+for (const p of programmers) { totalLines += p.linesOfCode; }
+
+// Good
+const totalLines = programmers.reduce((sum, p) => sum + p.linesOfCode, 0);
+```
+
+## Caller Above Callee
+
+When function A calls function B, keep A above B in the source file so the code reads top-down like a newspaper.
 
 ## Imports
 

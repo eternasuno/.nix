@@ -23,9 +23,10 @@ When work must cross session boundaries, save `.slim/deepwork/handoff-<slug>.md`
 1. Original requirements verified
 2. All tests pass
 3. Build/typecheck/lint clean
-4. Progress file updated
-5. Handoff document written (if crossing sessions)
-6. Final summary stated
+4. Evaluate whether project knowledge (structure, constraints, architecture) was discovered and should be persisted
+5. Progress file updated
+6. Handoff document written (if crossing sessions)
+7. Final summary stated
 
 ## When Resuming
 

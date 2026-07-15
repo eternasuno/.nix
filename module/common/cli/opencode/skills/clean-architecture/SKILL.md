@@ -1,6 +1,6 @@
 ---
 name: clean-architecture
-description: Architecture layer rules (Entity → Port → Usecase → Adapter) — inward dependency direction. Load before creating files, designing modules, or setting up package structure.
+description: Architecture layer rules (Entity → Port → Usecase → Adapter) — inward dependency direction, testing patterns, monorepo splitting. FIRE AFTER domain-modeling has clarified domain concepts. MUST load when creating files, designing module boundaries, or setting up package structure. Do NOT load for code-level conventions (use code-standards).
 ---
 
 # Clean Architecture

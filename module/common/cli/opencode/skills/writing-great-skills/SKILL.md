@@ -1,6 +1,6 @@
 ---
 name: writing-great-skills
-description: Skill authoring principles — invocation model, information hierarchy, leading words, pruning, failure modes. Load when writing, editing, or reviewing any SKILL.md.
+description: Skill authoring principles — invocation model, information hierarchy, leading words, pruning, failure modes, testing and evaluation. Load ONLY when writing or editing SKILL.md content. Do NOT load for skill configuration, permissions, or MCP setup — use oh-my-opencode-slim instead.
 ---
 
 A skill exists to wrangle determinism out of a stochastic system. **Predictability** — the agent taking the same *process* every run, not producing the same output — is the root virtue; every principle below serves it.
@@ -114,7 +114,7 @@ Ask about edge cases, input/output formats, success criteria, and dependencies. 
 
 After writing the draft, come up with 2-3 realistic test prompts — the kind of thing a real user would say. Share them: "Here are a few test cases I'd like to try. Do these look right?"
 
-Save to `evals/evals.json`:
+Before saving, ensure `evals/` is in `.gitignore` (add if missing). Save to `evals/evals.json`:
 
 ```json
 {
@@ -132,7 +132,7 @@ Save to `evals/evals.json`:
 
 ### Run & Evaluate
 
-Organize results into `<skill-name>-workspace/iteration-N/`.
+Before organizing, ensure `*-workspace/` is in `.gitignore` (add if missing). Organize results into `<skill-name>-workspace/iteration-N/`.
 
 **For each test case**, spawn two subagents in the same turn — one with the skill, one without (baseline). While runs are in progress, draft quantitative assertions. Good assertions are objectively verifiable with descriptive names.
 

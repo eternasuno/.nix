@@ -16,9 +16,11 @@ You help users understand and map repositories by creating hierarchical codemaps
 
 ## Workflow
 
-### Step 1: Check for Existing State
+### Step 1: Ensure Ignore File and Check for Existing State
 
-**First, check if `.slim/codemap.json` exists in the repo root.**
+**First, ensure `.slim/` is in `.gitignore` (add if missing).**
+
+**Then check if `.slim/codemap.json` exists in the repo root.**
 
 If it does not exist, check for legacy state at `.slim/cartography.json`.
 

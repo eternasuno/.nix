@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: Sharpen domain language, challenge fuzzy terms, record ADRs, maintain glossary. Trigger on vague/overloaded terms, code-description contradictions, or irreversible decisions with real tradeoffs.
+description: Sharpen domain language, challenge fuzzy terms, record ADRs, maintain glossary. FIRE BEFORE clean-architecture — clarify domain concepts BEFORE module structure decisions. ALWAYS trigger on vague/overloaded terms, code-description contradictions, or irreversible design decisions with real tradeoffs. Do NOT use for routine code style (use code-standards).
 ---
 
 Actively build and sharpen the project's domain model as you work.

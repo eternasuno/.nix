@@ -1,5 +1,5 @@
 ---
-name: deep-work
+name: deepwork
 description: Complex task workflow orchestrator — multi-phase implementation with planning, execution, verification, review, and handoff. User-invoked for heavy sessions.
 disable-model-invocation: true
 ---
@@ -18,7 +18,7 @@ Phase 3: Verify     → `references/verify.md`
 Phase 4: Review     → `references/review.md`
 Phase 5: Handoff    → `references/handoff.md`
 
-Track progress in `.slim/deepwork/<slug>.md`. Read each phase file when ready to begin that phase.
+Before tracking, ensure `.slim/` is in `.gitignore` (add if missing). Track progress in `.slim/deepwork/<slug>.md`. Read each phase file when ready to begin that phase.
 
 ## Transition
 

@@ -39,7 +39,7 @@ in {
       p7zip
       poppler-utils
       ripgrep
-      unar
+      libarchive
     ];
   };
 }

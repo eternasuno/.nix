@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  vars,
-  ...
-}: {
+{pkgs, ...}: {
   security = {
     polkit.enable = true;
     rtkit.enable = true;
@@ -18,6 +13,7 @@
 
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
-  services.dbus.packages = with pkgs; [gcr];
+  services.dbus.packages = with pkgs; [gcr accountsservice];
+  systemd.packages = [pkgs.accountsservice];
   environment.systemPackages = with pkgs; [libsecret];
 }

@@ -12,6 +12,13 @@ in {
       inputs.dankMaterialShell.homeModules.niri
     ];
 
+    home.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QS_ICON_THEME = "breeze";
+    };
+
+    home.packages = with pkgs; [ kdePackages.breeze-icons ];
+
     programs.dank-material-shell = {
       enable = true;
       package = pkgs.dms-shell;

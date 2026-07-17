@@ -14,6 +14,7 @@ in {
     ../../module/common/cli/nh.nix
     ../../module/common/cli/nushell.nix
     ../../module/common/cli/opencode
+    ../../module/darwin/cli/opencode
     ../../module/common/cli/starship.nix
     ../../module/common/cli/yazi
     ../../module/common/cli/zsh.nix

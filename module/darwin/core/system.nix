@@ -7,7 +7,17 @@ in {
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.startup.chime = false;
+
   system.defaults = {
+    CustomSystemPreferences = {
+      "com.apple.systemsound" = {
+        "com.apple.sound.uiaudio.enabled" = 0;
+      };
+      "com.apple.applicationaccess" = {
+        "allowWritingTools" = false;
+      };
+    };
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
@@ -15,6 +25,13 @@ in {
       "com.apple.keyboard.fnState" = true;
       InitialKeyRepeat = 15;
       KeyRepeat = 2;
+
+      NSAutomaticSpellingCorrectionEnabled = false;
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticInlinePredictionEnabled = false;
     };
 
     dock = {
@@ -41,6 +58,11 @@ in {
 
     loginwindow = {
       GuestEnabled = false;
+    };
+
+    universalaccess = {
+      reduceMotion = true;
+      reduceTransparency = true;
     };
   };
 }

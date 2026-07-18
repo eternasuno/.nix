@@ -1,4 +1,8 @@
-{vars, ...}: let
+{
+  vars,
+  pkgs,
+  ...
+}: let
   inherit (vars) username;
 in {
   home-manager.users.${username} = {
@@ -8,6 +12,7 @@ in {
 
     programs.opencode = {
       enable = true;
+      extraPackages = with pkgs; [bun];
       settings = {
         plugin = [
           "oh-my-opencode-slim"

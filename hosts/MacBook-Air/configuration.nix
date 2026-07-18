@@ -14,7 +14,6 @@ in {
     ../../module/common/cli/nh.nix
     ../../module/common/cli/nushell.nix
     ../../module/common/cli/opencode
-    ../../module/darwin/cli/opencode.nix
     ../../module/common/cli/starship.nix
     ../../module/common/cli/yazi
     ../../module/common/cli/zsh.nix
@@ -22,6 +21,7 @@ in {
     ../../module/common/core/fonts.nix
     ../../module/common/core/nix.nix
     ../../module/common/gui/kitty.nix
+    ../../module/darwin/cli/opencode.nix
     ../../module/darwin/core/system.nix
     ../../module/darwin/core/homebrew.nix
     ../../module/darwin/gui/appstore.nix

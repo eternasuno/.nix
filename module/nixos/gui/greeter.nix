@@ -1,24 +1,24 @@
 {
-  inputs,
   vars,
   pkgs,
   ...
 }: let
   inherit (vars) username;
 in {
-  imports = [
-    inputs.dankMaterialShell.nixosModules.greeter
-  ];
-
   programs.dconf.enable = true;
 
   programs.niri = {
     enable = true;
   };
 
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   services.displayManager.dms-greeter = {
     enable = true;
-    compositor.name = "niri";
+    compositor.name = "hyprland";
     configHome = "/home/${username}";
     quickshell.package = pkgs.quickshell;
   };

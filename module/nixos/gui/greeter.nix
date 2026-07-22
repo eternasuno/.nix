@@ -11,14 +11,9 @@ in {
     enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   services.displayManager.dms-greeter = {
     enable = true;
-    compositor.name = "hyprland";
+    compositor.name = "niri";
     configHome = "/home/${username}";
     quickshell.package = pkgs.quickshell;
   };

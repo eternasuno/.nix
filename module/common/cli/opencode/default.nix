@@ -15,8 +15,9 @@ in {
       extraPackages = with pkgs; [bun];
       settings = {
         plugin = [
+          "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
-          "@cortexkit/opencode-magic-context@latest"
+          "@cortexkit/opencode-magic-context"
         ];
         agent = {
           explore = {disable = true;};

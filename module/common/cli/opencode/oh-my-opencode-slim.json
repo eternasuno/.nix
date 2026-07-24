@@ -5,13 +5,13 @@
   "presets": {
     "opencode-go": {
       "orchestrator": {
-        "model": "opencode-go/minimax-m3",
+        "model": "opencode-go/hy3",
         "variant": "max",
         "skills": ["*"],
         "mcps": ["*", "!context7"]
       },
       "oracle": {
-        "model": "opencode-go/qwen3.7-max",
+        "model": "opencode-go/qwen3.7-plus",
         "variant": "max",
         "skills": ["simplify"],
         "mcps": []

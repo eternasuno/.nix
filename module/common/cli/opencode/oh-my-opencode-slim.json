@@ -7,17 +7,19 @@
       "orchestrator": {
         "model": "opencode-go/minimax-m3",
         "variant": "max",
-        "skills": [
-          "*"
-        ]
+        "skills": ["*"],
+        "mcps": ["*", "!context7"]
       },
       "oracle": {
         "model": "opencode-go/qwen3.7-max",
-        "variant": "max"
+        "variant": "max",
+        "skills": ["simplify"],
+        "mcps": []
       },
       "librarian": {
         "model": "opencode-go/deepseek-v4-flash",
         "variant": "high",
+        "skills": [],
         "mcps": [
           "websearch",
           "context7",
@@ -26,19 +28,27 @@
       },
       "explorer": {
         "model": "opencode-go/deepseek-v4-flash",
-        "variant": "max"
+        "variant": "max",
+        "skills": [],
+        "mcps": []
       },
       "designer": {
         "model": "opencode-go/kimi-k2.7-code",
-        "variant": "medium"
+        "variant": "medium",
+        "skills": [],
+        "mcps": []
       },
       "fixer": {
         "model": "opencode-go/deepseek-v4-flash",
-        "variant": "high"
+        "variant": "high",
+        "skills": [],
+        "mcps": []
       },
       "observer": {
         "model": "opencode-go/mimo-v2.5",
-        "variant": "max"
+        "variant": "max",
+        "skills": [],
+        "mcps": []
       }
     }
   }

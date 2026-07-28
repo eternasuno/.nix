@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   vars,
   ...
 }: let
@@ -22,15 +21,6 @@ in {
       formatOnSave = true;
       lspconfig = {
         enable = true;
-      };
-    };
-
-    lsp.servers = {
-      "vscode-json-language-server" = {
-        cmd = lib.mkForce [
-          "${pkgs.vscode-json-languageserver}/bin/vscode-json-language-server"
-          "--stdio"
-        ];
       };
     };
 

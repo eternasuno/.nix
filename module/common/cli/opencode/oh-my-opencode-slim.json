@@ -7,13 +7,20 @@
       "orchestrator": {
         "model": "opencode-go/deepseek-v4-flash",
         "variant": "max",
-        "skills": ["*"],
-        "mcps": ["*", "!context7"]
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
       },
       "oracle": {
         "model": "opencode-go/qwen3.7-plus",
         "variant": "max",
-        "skills": ["simplify"],
+        "skills": [
+          "simplify"
+        ],
         "mcps": []
       },
       "librarian": {

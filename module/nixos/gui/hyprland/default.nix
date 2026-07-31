@@ -1,23 +1,21 @@
-{
-  vars,
-  pkgs,
-  ...
-}: let
+{vars, ...}: let
   inherit (vars) username;
 in {
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
+  imports = [
+    ./programs.nix
+  ];
 
   home-manager.users.${username} = {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
       configType = "lua";
-      extraConfig = builtins.readFile ./extra.lua;
+      extraLuaFiles = {
+        binds = ./lua/binds.lua;
+        windowrules = ./lua/windowrules.lua;
+        config = ./lua/config.lua;
+      };
+      extraConfig = builtins.readFile ./lua/hyprland.lua;
     };
   };
 }

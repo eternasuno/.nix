@@ -46,9 +46,6 @@ for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
 
--- Column width cycling (scrolling layout)
-hl.bind(mod .. " + R", hl.dsp.layout("rollnext"))
-
 -- Resize window
 hl.bind(mod .. " + SHIFT + Left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
 hl.bind(mod .. " + SHIFT + Right", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))

@@ -21,3 +21,12 @@ hl.config({
     middle_click_paste = false,
   },
 })
+
+-- Vertical slide for workspace switching (scrolling layout tape is horizontal)
+hl.animation({
+  leaf = "workspaces",
+  enabled = true,
+  speed = 2.5,
+  bezier = "default",
+  style = "slidevert",
+})

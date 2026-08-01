@@ -15,13 +15,13 @@ hl.bind(mod .. " + B", hl.dsp.exec_cmd("$BROWSER"))
 -- Application launcher
 hl.bind(mod .. " + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 
--- Focus navigation (columns in scrolling layout)
-hl.bind(mod .. " + Left", hl.dsp.focus({ direction = "l" }))
-hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
-hl.bind(mod .. " + H", hl.dsp.focus({ direction = "l" }))
-hl.bind(mod .. " + L", hl.dsp.focus({ direction = "r" }))
-hl.bind(mod .. " + U", hl.dsp.focus({ direction = "d" }))
-hl.bind(mod .. " + I", hl.dsp.focus({ direction = "u" }))
+-- Focus navigation (cycle through windows in layout order)
+hl.bind(mod .. " + Left", hl.dsp.window.cycle_next({ next = false }))
+hl.bind(mod .. " + Right", hl.dsp.window.cycle_next())
+hl.bind(mod .. " + H", hl.dsp.window.cycle_next({ next = false }))
+hl.bind(mod .. " + L", hl.dsp.window.cycle_next())
+hl.bind(mod .. " + U", hl.dsp.window.cycle_next({ next = false }))
+hl.bind(mod .. " + I", hl.dsp.window.cycle_next())
 
 -- Focus workspace
 hl.bind(mod .. " + Up", hl.dsp.focus({ workspace = "-1" }))
@@ -45,6 +45,12 @@ hl.bind(mod .. " + CTRL + I", hl.dsp.window.move({ direction = "u" }))
 for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
+
+-- Touchpad gestures (4-finger)
+hl.gesture({ fingers = 4, direction = "left",  action = function() hl.dispatch(hl.dsp.window.cycle_next({ next = false })) end })
+hl.gesture({ fingers = 4, direction = "right", action = function() hl.dispatch(hl.dsp.window.cycle_next()) end })
+hl.gesture({ fingers = 4, direction = "up",    action = function() hl.dispatch(hl.dsp.focus({ workspace = "-1" })) end })
+hl.gesture({ fingers = 4, direction = "down",  action = function() hl.dispatch(hl.dsp.focus({ workspace = "+1" })) end })
 
 -- Resize window
 hl.bind(mod .. " + SHIFT + Left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))

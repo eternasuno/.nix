@@ -1,18 +1,21 @@
 -- Misc: disable default wallpaper/splash to prevent flash before DMS
 hl.config({
   general = {
+    border_size = 1,
+    gaps_in = 4,
+    gaps_out = 4,
     layout = "scrolling",
-    gaps_in = 8,
-    gaps_out = 8,
+    resize_on_border = true,
   },
   input = {
     accel_profile = "adaptive",
     follow_mouse = 1,
     touchpad = {
-      natural_scroll = false,
       disable_while_typing = true,
-      scroll_factor = 1.5,
       drag_3fg = 1,
+      natural_scroll = false,
+      scroll_factor = 1.5,
+      tap_and_drag = false,
     },
   },
   misc = {
@@ -20,13 +23,4 @@ hl.config({
     disable_splash_rendering = true,
     middle_click_paste = false,
   },
-})
-
--- Vertical slide for workspace switching (scrolling layout tape is horizontal)
-hl.animation({
-  leaf = "workspaces",
-  enabled = true,
-  speed = 2.5,
-  bezier = "default",
-  style = "slidevert",
 })

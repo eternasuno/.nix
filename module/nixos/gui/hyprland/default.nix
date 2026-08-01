@@ -14,6 +14,7 @@ in {
         binds = ./lua/binds.lua;
         windowrules = ./lua/windowrules.lua;
         config = ./lua/config.lua;
+        animation = ./lua/animation.lua;
       };
       extraConfig = builtins.readFile ./lua/hyprland.lua;
     };

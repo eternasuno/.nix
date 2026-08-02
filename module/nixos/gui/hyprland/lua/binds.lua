@@ -3,13 +3,12 @@ local mod = "SUPER"
 
 -- Window management
 hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(mod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + SHIFT + V", hl.dsp.window.cycle_next({ floating = true }))
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 
 -- Applications
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("kitty"))
+hl.bind(mod .. " + Return", hl.dsp.workspace.toggle_special())
 hl.bind(mod .. " + B", hl.dsp.exec_cmd("$BROWSER"))
 
 -- Application launcher
@@ -20,8 +19,6 @@ hl.bind(mod .. " + Left", hl.dsp.window.cycle_next({ next = false }))
 hl.bind(mod .. " + Right", hl.dsp.window.cycle_next())
 hl.bind(mod .. " + H", hl.dsp.window.cycle_next({ next = false }))
 hl.bind(mod .. " + L", hl.dsp.window.cycle_next())
-hl.bind(mod .. " + U", hl.dsp.window.cycle_next({ next = false }))
-hl.bind(mod .. " + I", hl.dsp.window.cycle_next())
 
 -- Focus workspace
 hl.bind(mod .. " + Up", hl.dsp.focus({ workspace = "-1" }))
@@ -47,10 +44,34 @@ for i = 1, 9 do
 end
 
 -- Touchpad gestures (4-finger)
-hl.gesture({ fingers = 4, direction = "left",  action = function() hl.dispatch(hl.dsp.window.cycle_next({ next = false })) end })
-hl.gesture({ fingers = 4, direction = "right", action = function() hl.dispatch(hl.dsp.window.cycle_next()) end })
-hl.gesture({ fingers = 4, direction = "up",    action = function() hl.dispatch(hl.dsp.focus({ workspace = "-1" })) end })
-hl.gesture({ fingers = 4, direction = "down",  action = function() hl.dispatch(hl.dsp.focus({ workspace = "+1" })) end })
+hl.gesture({
+  fingers = 4,
+  direction = "left",
+  action = function()
+    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
+  end,
+})
+hl.gesture({
+  fingers = 4,
+  direction = "right",
+  action = function()
+    hl.dispatch(hl.dsp.window.cycle_next())
+  end,
+})
+hl.gesture({
+  fingers = 4,
+  direction = "up",
+  action = function()
+    hl.dispatch(hl.dsp.focus({ workspace = "-1" }))
+  end,
+})
+hl.gesture({
+  fingers = 4,
+  direction = "down",
+  action = function()
+    hl.dispatch(hl.dsp.focus({ workspace = "+1" }))
+  end,
+})
 
 -- Resize window
 hl.bind(mod .. " + SHIFT + Left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
@@ -62,10 +83,8 @@ hl.bind(mod .. " + SHIFT + Down", hl.dsp.window.resize({ x = 0, y = 10, relative
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
 
--- Screenshots
-hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("grimblast copy screen"))
-hl.bind("ALT + Print", hl.dsp.exec_cmd("grimblast copy output"))
+-- Screen capture toolbar
+hl.bind("Print", hl.dsp.exec_cmd("dms ipc call screenCaptureToolbar toggle"))
 
 -- DMS modals
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("dms ipc call notifications toggle"))

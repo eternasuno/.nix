@@ -24,7 +24,7 @@ hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
 hl.bind(mod .. " + K", hl.dsp.focus({ direction = "u" }))
 hl.bind(mod .. " + J", hl.dsp.focus({ direction = "d" }))
 
--- Focus workspace
+-- Focus workspace (+1/-1: relative among open workspaces, skips destroyed gaps)
 hl.bind(mod .. " + ALT + Up", hl.dsp.focus({ workspace = "-1" }))
 hl.bind(mod .. " + ALT + Down", hl.dsp.focus({ workspace = "+1" }))
 hl.bind(mod .. " + ALT + K", hl.dsp.focus({ workspace = "-1" }))
@@ -39,6 +39,12 @@ hl.bind(mod .. " + CTRL + Up", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + CTRL + Down", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mod .. " + CTRL + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + CTRL + J", hl.dsp.window.move({ direction = "d" }))
+
+-- Move window to workspace (+1/-1: relative among open workspaces, skips destroyed gaps)
+hl.bind(mod .. " + ALT + CTRL + Up", hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(mod .. " + ALT + CTRL + Down", hl.dsp.window.move({ workspace = "+1" }))
+hl.bind(mod .. " + ALT + CTRL + K", hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(mod .. " + ALT + CTRL + J", hl.dsp.window.move({ workspace = "+1" }))
 
 -- Resize window (100px steps, hold to repeat)
 -- Grow toward direction
@@ -73,6 +79,9 @@ hl.bind(mod .. " + ALT + SHIFT + J", hl.dsp.window.resize({ x = 0, y = -100, rel
 for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
+
+-- New empty workspace
+hl.bind(mod .. " + E", hl.dsp.focus({ workspace = "empty" }))
 
 -- Touchpad gestures (4-finger)
 hl.gesture({

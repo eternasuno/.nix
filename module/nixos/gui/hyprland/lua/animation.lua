@@ -16,9 +16,6 @@ hl.animation({
 hl.animation({ leaf = "fadeSwitch", enabled = true, speed = 3, spring = "apple_spring" })
 hl.animation({ leaf = "fadeShadow", enabled = true, speed = 3, spring = "apple_spring" })
 
--- Layers (menus, panels): macOS-style slide
-hl.animation({ leaf = "layers", enabled = true, speed = 5, spring = "apple_soft", style = "slide" })
-
 -- Vertical slide for workspace switching (scrolling layout tape is horizontal)
 hl.animation({
   leaf = "workspaces",

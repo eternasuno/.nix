@@ -29,6 +29,13 @@ in {
       };
     };
 
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+    };
+
+    systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
+
     home.packages = with pkgs; [slurp jq satty];
   };
 }

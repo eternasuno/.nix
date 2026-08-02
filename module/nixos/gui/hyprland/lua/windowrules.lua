@@ -16,9 +16,3 @@ hl.window_rule({
   scrolling_width = 1.0,
   opacity = 0.9,
 })
-
--- DMS layers: no animation
-hl.layer_rule({
-  match = { namespace = "^dms:.*$" },
-  no_anim = true,
-})

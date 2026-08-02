@@ -18,6 +18,9 @@ hl.config({
       tap_and_drag = false,
     },
   },
+  scrolling = {
+    explicit_column_widths = "0.333, 0.5, 0.667, 1.0",
+  },
   misc = {
     disable_hyprland_logo = true,
     disable_splash_rendering = true,

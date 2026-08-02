@@ -37,7 +37,7 @@ in {
     ../../module/nixos/gui/firefox.nix
     ../../module/nixos/gui/gtk.nix
     ../../module/nixos/gui/kitty.nix
-    ../../module/nixos/gui/niri
+    ../../module/nixos/gui/hyprland
     ../../module/nixos/gui/greeter.nix
     ../../module/nixos/gui/xdg.nix
     ../../module/nixos/gui/imv.nix

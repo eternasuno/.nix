@@ -1,0 +1,17 @@
+-- DMS Include Configs (stubs created by dank-material-shell.nix activationScript)
+--[[
+require("dms.binds")
+require("dms.binds-user")
+require("dms.colors")
+require("dms.cursor")
+require("dms.layout")
+require("dms.outputs")
+require("dms.windowrules")
+]]
+pcall(require, "dms.binds")
+pcall(require, "dms.binds-user")
+pcall(require, "dms.colors")
+pcall(require, "dms.cursor")
+pcall(require, "dms.layout")
+pcall(require, "dms.outputs")
+pcall(require, "dms.windowrules")

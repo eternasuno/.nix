@@ -17,8 +17,8 @@ hl.window_rule({
   opacity = 0.9,
 })
 
--- DMS spotlight: no animation
+-- DMS layers: no animation
 hl.layer_rule({
-  match = { namespace = "dms:spotlight" },
+  match = { namespace = "^dms:.*$" },
   no_anim = true,
 })

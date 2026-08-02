@@ -14,27 +14,60 @@ hl.bind(mod .. " + B", hl.dsp.exec_cmd("$BROWSER"))
 -- Application launcher
 hl.bind(mod .. " + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 
--- Focus navigation (cycle through windows in layout order)
-hl.bind(mod .. " + Left", hl.dsp.window.cycle_next({ next = false }))
-hl.bind(mod .. " + Right", hl.dsp.window.cycle_next())
-hl.bind(mod .. " + H", hl.dsp.window.cycle_next({ next = false }))
-hl.bind(mod .. " + L", hl.dsp.window.cycle_next())
+-- Focus navigation (direction-based, follows visual layout order)
+hl.bind(mod .. " + Left", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
+hl.bind(mod .. " + H", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + L", hl.dsp.focus({ direction = "r" }))
+hl.bind(mod .. " + Up", hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
+hl.bind(mod .. " + K", hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + J", hl.dsp.focus({ direction = "d" }))
 
 -- Focus workspace
-hl.bind(mod .. " + Up", hl.dsp.focus({ workspace = "-1" }))
-hl.bind(mod .. " + Down", hl.dsp.focus({ workspace = "+1" }))
-hl.bind(mod .. " + K", hl.dsp.focus({ workspace = "-1" }))
-hl.bind(mod .. " + J", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mod .. " + ALT + Up", hl.dsp.focus({ workspace = "-1" }))
+hl.bind(mod .. " + ALT + Down", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mod .. " + ALT + K", hl.dsp.focus({ workspace = "-1" }))
+hl.bind(mod .. " + ALT + J", hl.dsp.focus({ workspace = "+1" }))
 
--- Swap window with neighbor (no re-layout)
-hl.bind(mod .. " + CTRL + Left", hl.dsp.window.swap({ direction = "l" }))
-hl.bind(mod .. " + CTRL + Right", hl.dsp.window.swap({ direction = "r" }))
-hl.bind(mod .. " + CTRL + H", hl.dsp.window.swap({ direction = "l" }))
-hl.bind(mod .. " + CTRL + L", hl.dsp.window.swap({ direction = "r" }))
-hl.bind(mod .. " + CTRL + Up", hl.dsp.window.move({ workspace = "-1" }))
-hl.bind(mod .. " + CTRL + Down", hl.dsp.window.move({ workspace = "+1" }))
-hl.bind(mod .. " + CTRL + K", hl.dsp.window.move({ workspace = "-1" }))
-hl.bind(mod .. " + CTRL + J", hl.dsp.window.move({ workspace = "+1" }))
+-- Move window (no re-layout)
+hl.bind(mod .. " + CTRL + Left", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mod .. " + CTRL + Right", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mod .. " + CTRL + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mod .. " + CTRL + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mod .. " + CTRL + Up", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mod .. " + CTRL + Down", hl.dsp.window.move({ direction = "d" }))
+hl.bind(mod .. " + CTRL + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mod .. " + CTRL + J", hl.dsp.window.move({ direction = "d" }))
+
+-- Resize window (100px steps, hold to repeat)
+-- Grow toward direction
+hl.bind(mod .. " + SHIFT + Left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + Right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + Up", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + Down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + L", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
+hl.bind(mod .. " + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
+
+-- Shrink toward direction
+hl.bind(mod .. " + ALT + SHIFT + Left", hl.dsp.window.resize({ x = 100, y = 0, relative = true }), { repeating = true })
+hl.bind(
+  mod .. " + ALT + SHIFT + Right",
+  hl.dsp.window.resize({ x = -100, y = 0, relative = true }),
+  { repeating = true }
+)
+hl.bind(mod .. " + ALT + SHIFT + Up", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
+hl.bind(
+  mod .. " + ALT + SHIFT + Down",
+  hl.dsp.window.resize({ x = 0, y = -100, relative = true }),
+  { repeating = true }
+)
+hl.bind(mod .. " + ALT + SHIFT + H", hl.dsp.window.resize({ x = 100, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + ALT + SHIFT + L", hl.dsp.window.resize({ x = -100, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + ALT + SHIFT + K", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
+hl.bind(mod .. " + ALT + SHIFT + J", hl.dsp.window.resize({ x = 0, y = -100, relative = true }), { repeating = true })
 
 -- Workspace switching
 for i = 1, 9 do
@@ -46,14 +79,14 @@ hl.gesture({
   fingers = 4,
   direction = "left",
   action = function()
-    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
+    hl.dispatch(hl.dsp.focus({ direction = "l" }))
   end,
 })
 hl.gesture({
   fingers = 4,
   direction = "right",
   action = function()
-    hl.dispatch(hl.dsp.window.cycle_next())
+    hl.dispatch(hl.dsp.focus({ direction = "r" }))
   end,
 })
 hl.gesture({

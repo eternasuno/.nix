@@ -13,7 +13,7 @@ in {
 
     programs.opencode = {
       enable = true;
-      extraPackages = with pkgs; [bun];
+      extraPackages = with pkgs; [ nodejs ];
       settings = {
         plugin = [
           "@dietrichgebert/ponytail"

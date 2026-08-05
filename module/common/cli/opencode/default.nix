@@ -8,6 +8,7 @@ in {
   home-manager.users.${username} = {
     home.sessionVariables = {
       OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS = "true";
+      OPENCODE_ENABLE_EXA = "true";
     };
 
     programs.opencode = {

@@ -80,9 +80,6 @@ for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
 
--- New empty workspace
-hl.bind(mod .. " + E", hl.dsp.focus({ workspace = "empty" }))
-
 -- Touchpad gestures (4-finger)
 hl.gesture({
   fingers = 4,

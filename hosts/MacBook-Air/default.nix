@@ -9,8 +9,8 @@
     email = "22316214+eternasuno@users.noreply.github.com";
     flakePath = "/Users/eternasuno/.nix";
     timeZone = "Asia/Tokyo";
-    version = "25.05";
-    darwinStateVersion = 6;
+    version = "26.05";
+    darwinStateVersion = 7;
   };
 in {
   darwinConfigurations.${vars.host} = darwin.lib.darwinSystem {

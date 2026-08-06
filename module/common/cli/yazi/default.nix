@@ -6,11 +6,9 @@
   inherit (vars) username;
 in {
   imports = [
-    ./settings.nix
     ./open.nix
     ./plugins.nix
     ./keymap.nix
-    ./theme.nix
   ];
 
   home-manager.users.${username} = {

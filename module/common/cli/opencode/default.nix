@@ -18,7 +18,7 @@ in {
         plugin = [
           "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
-          "@cortexkit/opencode-magic-context@0.34.0"
+          "@cortexkit/opencode-magic-context@0.34.2"
         ];
         agent = {
           explore = {disable = true;};

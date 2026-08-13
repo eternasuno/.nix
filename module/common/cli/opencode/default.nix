@@ -13,12 +13,12 @@ in {
 
     programs.opencode = {
       enable = true;
-      extraPackages = with pkgs; [ nodejs ];
+      extraPackages = with pkgs; [nodejs];
       settings = {
         plugin = [
           "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
-          "@cortexkit/opencode-magic-context@0.34.0"
+          "@cortexkit/opencode-magic-context@0.36.1"
         ];
         agent = {
           explore = {disable = true;};

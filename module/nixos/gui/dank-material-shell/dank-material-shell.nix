@@ -6,8 +6,6 @@
 }: let
   inherit (vars) username;
 in {
-  programs.gpu-screen-recorder.enable = true;
-
   home-manager.users.${username} = {
     imports = [
       inputs.dankMaterialShell.homeModules.dank-material-shell
@@ -28,14 +26,5 @@ in {
         screenCaptureToolbar.enable = true;
       };
     };
-
-    qt = {
-      enable = true;
-      platformTheme.name = "qtct";
-    };
-
-    systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
-
-    home.packages = with pkgs; [slurp jq satty];
   };
 }

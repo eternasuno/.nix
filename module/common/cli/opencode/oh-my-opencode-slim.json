@@ -27,7 +27,6 @@
         "variant": "high",
         "skills": [],
         "mcps": [
-          "websearch",
           "context7",
           "gh_grep"
         ]

@@ -19,6 +19,14 @@ in {
           "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
           "@cortexkit/opencode-magic-context@0.35.1"
+          [
+            "@omniroute/opencode-plugin"
+            {
+              providerId = "omniroute";
+              baseURL = "https://omniroute.eternasuno.ddns.net";
+              autoSyncIntervalMs = 0;
+            }
+          ]
         ];
         agent = {
           explore = {disable = true;};

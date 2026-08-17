@@ -19,18 +19,30 @@ in {
           "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
           "@cortexkit/opencode-magic-context@0.35.1"
-          [
-            "@omniroute/opencode-plugin"
-            {
-              providerId = "omniroute";
-              baseURL = "https://omniroute.eternasuno.ddns.net";
-              autoSyncIntervalMs = 0;
-            }
-          ]
         ];
         agent = {
           explore = {disable = true;};
           general = {disable = true;};
+        };
+        provider = {
+          omniroute = {
+            npm = "@ai-sdk/openai-compatible";
+            name = "OmniRoute";
+            options = {
+              baseURL = "https://omniroute.eternasuno.ddns.net";
+            };
+            models = {
+              "omniroute/deepseek-v4-flash" = {
+                name = "deepseek-v4-flash";
+              };
+              "omniroute/gemini" = {
+                name = "gemini";
+              };
+              "omniroute/gpt-5-6-luna" = {
+                name = "gpt-5-6-luna";
+              };
+            };
+          };
         };
         lsp = true;
         compaction = {

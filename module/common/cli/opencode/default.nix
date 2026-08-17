@@ -32,14 +32,14 @@ in {
               baseURL = "https://omniroute.eternasuno.ddns.net";
             };
             models = {
-              "omniroute/deepseek-v4-flash" = {
+              "auto/deepseek-v4-flash" = {
                 name = "deepseek-v4-flash";
               };
-              "omniroute/gemini" = {
+              "auto/gemini" = {
                 name = "gemini";
               };
-              "omniroute/gpt-5-6-luna" = {
-                name = "gpt-5-6-luna";
+              "auto/gpt-5.6-luna" = {
+                name = "gpt-5.6-luna";
               };
             };
           };

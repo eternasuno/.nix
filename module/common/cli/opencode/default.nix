@@ -16,30 +16,25 @@ in {
       extraPackages = with pkgs; [bun nodejs];
       settings = {
         plugin = [
-          "@dietrichgebert/ponytail"
           "oh-my-opencode-slim"
+          "@dietrichgebert/ponytail"
           "@cortexkit/opencode-magic-context@0.35.1"
+          "@cortexkit/opencode-antigravity-auth@latest"
         ];
         agent = {
           explore = {disable = true;};
           general = {disable = true;};
         };
         provider = {
-          omniroute = {
+          v2ex = {
             npm = "@ai-sdk/openai-compatible";
-            name = "OmniRoute";
+            name = "V2EX";
             options = {
-              baseURL = "https://omniroute.eternasuno.ddns.net";
+              baseURL = "https://edge.v2ex.com/chat/v1";
             };
             models = {
-              "auto/deepseek-v4-flash" = {
+              "coder-ds4-0731" = {
                 name = "deepseek-v4-flash";
-              };
-              "auto/gemini" = {
-                name = "gemini";
-              };
-              "auto/gpt-5.6-luna" = {
-                name = "gpt-5.6-luna";
               };
             };
           };

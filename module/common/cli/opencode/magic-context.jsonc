@@ -1,6 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/cortexkit/magic-context/master/assets/magic-context.schema.json",
-  "auto_update": false,
   "historian": {
     "model": "opencode-go/deepseek-v4-flash",
     "two_pass": true

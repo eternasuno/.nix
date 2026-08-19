@@ -2,6 +2,6 @@
   "plugin": [
     "oh-my-opencode-slim",
     "@cortexkit/opencode-antigravity-auth",
-    "@cortexkit/opencode-magic-context",
+    "@cortexkit/opencode-magic-context"
   ]
 }

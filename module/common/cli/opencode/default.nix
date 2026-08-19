@@ -15,10 +15,17 @@ in {
       enable = true;
       extraPackages = with pkgs; [bun nodejs];
       settings = {
+        mcp = {
+          deepwiki = {
+            type = "remote";
+            url = "https://mcp.deepwiki.com/mcp";
+            enabled = true;
+          };
+        };
         plugin = [
           "oh-my-opencode-slim"
           "@dietrichgebert/ponytail"
-          "@cortexkit/opencode-magic-context@0.35.1"
+          "@cortexkit/opencode-magic-context@latest"
           "@cortexkit/opencode-antigravity-auth@latest"
         ];
         agent = {

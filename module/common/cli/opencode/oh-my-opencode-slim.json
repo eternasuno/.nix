@@ -25,7 +25,6 @@
       "oracle": {
         "model": [
           "v2ex/coder-ds4-0731",
-          "amd/DeepSeek-V4-Flash",
           "opencode-go/deepseek-v4-flash",
           "openrouter/~deepseek/deepseek-v4-flash-latest",
           "opencode/deepseek-v4-flash-free"
@@ -39,7 +38,6 @@
       "librarian": {
         "model": [
           "v2ex/coder-ds4-0731",
-          "amd/DeepSeek-V4-Flash",
           "opencode-go/deepseek-v4-flash",
           "openrouter/~deepseek/deepseek-v4-flash-latest",
           "opencode/deepseek-v4-flash-free"
@@ -54,7 +52,6 @@
       "explorer": {
         "model": [
           "v2ex/coder-ds4-0731",
-          "amd/DeepSeek-V4-Flash",
           "opencode-go/deepseek-v4-flash",
           "openrouter/~deepseek/deepseek-v4-flash-latest",
           "opencode/deepseek-v4-flash-free"
@@ -77,7 +74,6 @@
       "fixer": {
         "model": [
           "v2ex/coder-ds4-0731",
-          "amd/DeepSeek-V4-Flash",
           "opencode-go/deepseek-v4-flash",
           "openrouter/~deepseek/deepseek-v4-flash-latest",
           "opencode/deepseek-v4-flash-free"

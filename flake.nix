@@ -42,5 +42,9 @@
       url = "github:adriankarlen/textfox";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    maki = {
+      url = "github:tontinton/maki";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

@@ -12,6 +12,7 @@ in {
     ../../module/common/cli/lazygit.nix
     ../../module/common/cli/neovim
     ../../module/common/cli/nh.nix
+    ../../module/common/cli/maki
     ../../module/common/cli/nushell.nix
     ../../module/common/cli/opencode
     ../../module/common/cli/starship.nix

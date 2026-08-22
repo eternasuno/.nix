@@ -1,0 +1,11 @@
+[mcp.deepwiki]
+url = "https://mcp.deepwiki.com/mcp"
+enabled = true
+
+[mcp.gh-grep]
+url = "https://mcp.grep.app"
+enabled = true
+
+[mcp.context7]
+url = "https://mcp.context7.com/mcp"
+enabled = true

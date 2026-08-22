@@ -1,0 +1,15 @@
+[websearch]
+default = "allow"
+
+[webfetch]
+default = "allow"
+
+[mcp]
+default = "allow"
+
+[bash]
+default = "allow"
+
+prompt = ["rm *"]
+
+deny = ["sudo *"]

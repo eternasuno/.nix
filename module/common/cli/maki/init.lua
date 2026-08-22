@@ -1,10 +1,12 @@
+require("review")
+
 maki.setup({
   always_thinking = "high",
 
   provider = {
     default_model = "openai/gpt-5.6-luna",
     allowed_models = {
-      "openai/*",
+      "openai/gpt-5.6*",
       "opencode/*-free",
       "opencode-go/*",
       "openrouter/google/gemini-3.7-flash",

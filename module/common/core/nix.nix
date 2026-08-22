@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   nix = {
     settings = {
       experimental-features = [
@@ -12,7 +16,6 @@
         "https://home-manager.cachix.org"
         "https://hyprland.cachix.org"
         "https://lanzaboote.cachix.org"
-        "https://cache.numtide.com"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -21,7 +24,6 @@
         "home-manager.cachix.org-1:wLVmpPs9J1Na6uhEkqcJcdSmPR61rd76jOnlps6zvM8="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "lanzaboote.cachix.org-1:Nt9//zGmqkg1k5iu+B3bkj3OmHKjSw9pvf3faffLLNk="
-        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       ];
       auto-optimise-store = true;
     };
@@ -34,8 +36,8 @@
     overlays = [
       # obscura from NixOS/nixpkgs#555157 (darwin support PR), pinned as flake input
       (final: prev: {
-        obscura = (prev.callPackage "${inputs.obscura-pr}/pkgs/by-name/ob/obscura/package.nix" { }).overrideAttrs (old: {
-          cargoBuildFlags = [ "--features" "render" ];
+        obscura = (prev.callPackage "${inputs.obscura-pr}/pkgs/by-name/ob/obscura/package.nix" {}).overrideAttrs (old: {
+          cargoBuildFlags = ["--features" "render"];
         });
       })
     ];

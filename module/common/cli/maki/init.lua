@@ -16,7 +16,7 @@ maki.setup({
       "openai/gpt-5.6*",
       "opencode-go/qwen3.8-flash",
       "opencode-go/kimi-k2.7-code",
-      "opencode-go/deepseek-v4-flash",
+      "opencode-go/deepseek-v4.1-flash",
       "openrouter/openrouter/free",
     },
   },

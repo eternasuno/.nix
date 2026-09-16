@@ -21,6 +21,8 @@ Do not reimplement established parsing, encoding, validation, concurrency, crypt
 - Inline one-use helpers that only rename an expression or reconstruct unchanged state.
 - Prefer direct control flow and visible data flow over speculative abstractions, wrappers, indirection, and unused configurability.
 - Keep sequential work sequential; name meaningful stages instead of compressing operations into dense expressions.
+- Keep control and data flow visible, use semantic names, and extract helpers only for reuse, meaningful complexity, or a real boundary; inline helpers that only rename one expression.
+- Write comments only when very necessary to explain why, such as a non-obvious constraint, compatibility or security reason, business decision, or side-effect ordering. Let visible behavior remain expressed by code.
 - Trace the real call path before adding a layer or representation. Delete a module when its former responsibility collapses to direct composition with no independent policy.
 - Avoid representation round-trips such as callback → Promise → effect when the external operation can implement the consumer's abstraction directly.
 - Before writing preprocessing or normalization, verify whether the platform or dependency already guarantees it.

@@ -14,8 +14,7 @@ Apply these rules in addition to the language-independent guidance in `SKILL.md`
 
 ## Functions and defaults
 
-- Define every function with arrow syntax, including exported functions, callbacks, factories, and test helpers.
-- Keep state and behavior in explicit parameters or closures; do not use `this`.
+- Define every function with arrow syntax, including exported functions, callbacks, factories, and test helpers, whenever the language and surrounding API allow it. Do not use `this`; use explicit parameters or closures for state and behavior. Use another form only when an external API or language construct requires it.
 - Apply safe defaults at destructuring boundaries. Preserve meaningful values such as `0`, `false`, and empty strings; use `??` when omission differs from falsiness.
 
 ## Collections and comparison

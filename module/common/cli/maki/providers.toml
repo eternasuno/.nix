@@ -1,0 +1,5 @@
+[commandcode]
+protocol = "openai"
+base_url = "https://api.commandcode.ai/provider/v1"
+api_key_env = "COMMANDCODE_API_KEY"
+discover_models = true

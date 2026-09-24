@@ -16,7 +16,7 @@ maki.setup({
       "commandcode/deepseek/deepseek-v4.1-flash",
       "commandcode/google/gemini-3.8-flash",
       "commandcode/meta/muse-spark-1.3-contributor",
-      "commandcode/xiaomi/mimo-v2.6-pro",
+      "commandcode/gpt-6-luna",
       "openrouter/openrouter/free",
     },
   },

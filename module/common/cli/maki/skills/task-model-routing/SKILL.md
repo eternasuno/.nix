@@ -14,12 +14,12 @@ Each task performs one concrete, independently verifiable objective. A fix and i
 Select the exact model and subagent type according to the task:
 
 - **Research and code exploration**
-  - Model: `commandcode/deepseek/deepseek-v4.1-flash`
+  - Model: `commandcode/meta/muse-spark-1.3-contributor`
   - Type: `research`
   - Use for documentation lookup, external research, codebase search, locating files or symbols, understanding existing code, and read-only investigation.
   - Return evidence: relevant files or symbols, current behavior, control or data flow, constraints and conventions, tests, and unknowns, with source or file/line citations. Modification designs, implementation steps, target architectures, and option recommendations are outside this route and belong to the parent agent.
 - **Code changes**
-  - Model: `commandcode/deepseek/deepseek-v4.1-flash`
+  - Model: `commandcode/meta/muse-spark-1.3-contributor`
   - Type: `general`
   - Use for well-defined implementation, bug fixes, refactoring, tests, configuration changes, and other non-visual code modifications.
 - **Review**

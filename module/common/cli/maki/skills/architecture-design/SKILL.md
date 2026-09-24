@@ -50,6 +50,8 @@ These are logical roles. Do not create separate packages, classes, interfaces, o
 - Split modules when ownership, responsibility, technology, lifecycle, deployment, or size creates a real boundary.
 - Prefer deletion or collapse of layers whose responsibility has disappeared.
 - Preserve required validation, security, consistency, failure semantics, resource lifetime, side-effect ordering, and performance constraints.
+- For application-scoped capabilities shared across multiple components, assemble the dependency once at the application root when explicit parameter threading would obscure the dependency; treat it as runtime-scoped sharing, not a process-global singleton.
+- Initialize the capability once during dependency assembly; consumers retrieve the initialized service rather than independently repeating initialization, which can duplicate resources and fragment instance-local state.
 
 ## Domain vocabulary
 

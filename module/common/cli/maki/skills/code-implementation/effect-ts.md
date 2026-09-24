@@ -80,3 +80,13 @@ Expose one canonical execution form at a boundary.
 Do not maintain duplicate Promise and Effect APIs unless both are explicitly required.
 
 Keep business-oriented operation names independent of execution mechanism.
+
+## Testing
+
+Test project-owned behavior rather than capabilities provided by Effect or other dependencies. Delete a test when the source has no project-specific observable behavior worth asserting.
+
+Prefer production Layers in tests. When a substitute is necessary, use `Layer.mock` instead of casting an incomplete fake service or building an ad hoc fixture layer.
+
+Prefer direct Effect expressions over one-use `make*` wrappers, custom service types, and unnecessary Layer indirection. Introduce a helper or service only when it represents a meaningful reusable boundary. Name meaningful Layer values with a `Live` suffix.
+
+Combine dependent Layers before providing them; avoid chaining multiple `Effect.provide` calls when a single merged Layer preserves service lifecycle behavior. Apply this to all Effect code, not only tests.

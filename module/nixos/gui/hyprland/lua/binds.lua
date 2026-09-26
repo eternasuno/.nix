@@ -13,17 +13,15 @@ hl.bind(mod .. " + B", hl.dsp.exec_cmd("$BROWSER"))
 -- Application launcher
 hl.bind(mod .. " + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 
--- Focus navigation (scrolling layout: layoutmsg focus works with full-width
--- columns e.g. kitty scrolling_width=1.0 where movefocus l/r fails to leave,
--- and wraps instead of jumping monitors)
-hl.bind(mod .. " + Left", hl.dsp.layout("focus l"))
-hl.bind(mod .. " + Right", hl.dsp.layout("focus r"))
-hl.bind(mod .. " + H", hl.dsp.layout("focus l"))
-hl.bind(mod .. " + L", hl.dsp.layout("focus r"))
-hl.bind(mod .. " + Up", hl.dsp.layout("focus u"))
-hl.bind(mod .. " + Down", hl.dsp.layout("focus d"))
-hl.bind(mod .. " + K", hl.dsp.layout("focus u"))
-hl.bind(mod .. " + J", hl.dsp.layout("focus d"))
+-- Focus navigation (direction-based, follows visual layout order)
+hl.bind(mod .. " + Left", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
+hl.bind(mod .. " + H", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + L", hl.dsp.focus({ direction = "r" }))
+hl.bind(mod .. " + Up", hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
+hl.bind(mod .. " + K", hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + J", hl.dsp.focus({ direction = "d" }))
 
 -- Focus workspace (+1/-1: relative among open workspaces, skips destroyed gaps)
 hl.bind(mod .. " + ALT + Up", hl.dsp.focus({ workspace = "-1" }))
@@ -88,14 +86,14 @@ hl.gesture({
   fingers = 4,
   direction = "left",
   action = function()
-    hl.dispatch(hl.dsp.layout("focus l"))
+    hl.dispatch(hl.dsp.focus({ direction = "l" }))
   end,
 })
 hl.gesture({
   fingers = 4,
   direction = "right",
   action = function()
-    hl.dispatch(hl.dsp.layout("focus r"))
+    hl.dispatch(hl.dsp.focus({ direction = "r" }))
   end,
 })
 hl.gesture({

@@ -19,6 +19,10 @@ in {
 
         scrollback_indicator_opacity = "0.0";
 
+        # Don't restore maximized state: on scrolling layout a maximized
+        # window can't be moved (movewindow rejects fullscreen windows)
+        remember_window_size = "no";
+
         sync_to_monitor = "yes";
 
         background = "#282c34";

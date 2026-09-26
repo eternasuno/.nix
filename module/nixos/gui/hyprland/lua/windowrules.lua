@@ -15,4 +15,5 @@ hl.window_rule({
   match = { class = "^kitty$" },
   scrolling_width = 1.0,
   opacity = 0.9,
+  suppress_event = "maximize",
 })

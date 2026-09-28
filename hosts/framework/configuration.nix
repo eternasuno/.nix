@@ -37,7 +37,6 @@ in {
     ../../module/nixos/gui/dank-material-shell
     ../../module/nixos/gui/fcitx5.nix
     ../../module/nixos/gui/firefox.nix
-    ../../module/nixos/gui/bitwarden.nix
     ../../module/nixos/gui/gtk.nix
     ../../module/nixos/gui/kitty.nix
     ../../module/nixos/gui/hyprland

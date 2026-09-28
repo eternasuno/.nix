@@ -10,6 +10,7 @@ in {
       full-border = pkgs.yaziPlugins.full-border;
       git = pkgs.yaziPlugins.git;
       lazygit = pkgs.yaziPlugins.lazygit;
+      mount = pkgs.yaziPlugins.mount;
       smart-enter = pkgs.yaziPlugins.smart-enter;
     };
 

@@ -47,6 +47,7 @@ in {
     ../../module/nixos/gui/mpv.nix
     ../../module/nixos/services/pipewire.nix
     ../../module/nixos/services/printing.nix
+    ../../module/nixos/services/udisks.nix
   ];
 
   home-manager = {

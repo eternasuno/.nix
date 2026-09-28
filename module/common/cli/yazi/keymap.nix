@@ -13,6 +13,16 @@ in {
         run = "plugin smart-enter";
         desc = "Enter directory or open file";
       }
+      {
+        on = "M";
+        run = "plugin mount";
+        desc = "Open mount manager";
+      }
+      {
+        on = ["g" "m"];
+        run = "cd /run/media/${username}";
+        desc = "Go to removable media";
+      }
     ];
   };
 }

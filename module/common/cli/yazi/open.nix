@@ -10,18 +10,6 @@ in {
           block = true;
           for = "unix";
         }
-        {
-          run = "code %s";
-          desc = "code";
-          orphan = true;
-          for = "windows";
-        }
-        {
-          run = "code -w %s";
-          desc = "code (block)";
-          block = true;
-          for = "windows";
-        }
       ];
 
       play = [

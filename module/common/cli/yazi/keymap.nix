@@ -18,11 +18,6 @@ in {
         run = "plugin mount";
         desc = "Open mount manager";
       }
-      {
-        on = ["g" "m"];
-        run = "cd /run/media/${username}";
-        desc = "Go to removable media";
-      }
     ];
   };
 }

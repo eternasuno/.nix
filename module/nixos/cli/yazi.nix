@@ -8,6 +8,7 @@ in {
   home-manager.users.${username} = {
     xdg.mimeApps.defaultApplications = {
       "inode/directory" = ["yazi.desktop"];
+      "inode/mount-point" = ["yazi.desktop"];
     };
 
     xdg.desktopEntries.yazi = {
@@ -18,7 +19,7 @@ in {
       exec = "${pkgs.kitty}/bin/kitty yazi %U";
       terminal = false;
       categories = ["System" "FileManager" "FileTools" "ConsoleOnly"];
-      mimeType = ["inode/directory"];
+      mimeType = ["inode/directory" "inode/mount-point"];
     };
   };
 }

@@ -1,5 +1,5 @@
 maki.setup({
-  always_thinking = "high",
+  always_thinking = "adaptive",
   plugins = {
     task = {
       allow_model = true,

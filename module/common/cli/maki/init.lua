@@ -1,3 +1,5 @@
+maki.pack.add({ "https://github.com/eternasuno/maki-kanban" })
+
 maki.setup({
   always_thinking = "adaptive",
   plugins = {
@@ -14,8 +16,6 @@ maki.setup({
   provider = {
     allowed_models = {
       "cpa*",
-      "openai/gpt-5.6-*",
-      "openai/gpt-6-*",
       "openrouter/openrouter/free",
     },
   },

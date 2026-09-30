@@ -1,27 +1,65 @@
 [cpa-codex]
 display_name = "CPA Codex"
 protocol = "openai-responses"
-base_url = "https://cpa.eternasuno.ddns.net/v1"
+base_url = "https://cli-proxy-api.eternasuno.ddns.net/v1"
 api_key_env = "CPA_API_KEY"
+discover_models = false
 
 [[cpa-codex.models]]
 id = "gpt-6-luna"
 context_window = 272000
 max_output_tokens = 128000
+supports_thinking = true
+
+
+[cpa-codex.models.thinking_fields]
+off      = { reasoning = { effort = "none" } }
+minimal  = { reasoning = { effort = "low" } }
+low      = { reasoning = { effort = "low" } }
+medium   = { reasoning = { effort = "medium" } }
+high     = { reasoning = { effort = "high" } }
+xhigh    = { reasoning = { effort = "xhigh" } }
+max      = { reasoning = { effort = "max" } }
+adaptive = { reasoning = { effort = "max" } }
 
 [[cpa-codex.models]]
 id = "gpt-6.1-sol"
 context_window = 272000
 max_output_tokens = 128000
+supports_thinking = true
+requires_thinking = true
 
+[cpa-codex.models.thinking_fields]
+off      = { reasoning = { effort = "low" } }
+minimal  = { reasoning = { effort = "low" } }
+low      = { reasoning = { effort = "low" } }
+medium   = { reasoning = { effort = "medium" } }
+high     = { reasoning = { effort = "high" } }
+xhigh    = { reasoning = { effort = "xhigh" } }
+max      = { reasoning = { effort = "max" } }
+adaptive = { reasoning = { effort = "medium" } }
 
 [cpa-antigravity]
 display_name = "CPA Antigravity"
 protocol = "google"
 base_url = "https://cpa.eternasuno.ddns.net/v1beta"
 api_key_env = "CPA_API_KEY"
+discover_models = false
 
 [[cpa-antigravity.models]]
 id = "gemini-3.8-flash-high"
 context_window = 1048576
 max_output_tokens = 65536
+supports_thinking = true
+requires_thinking = true
+
+
+[cpa-antigravity.models.thinking_fields]
+off      = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
+minimal  = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
+low      = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
+medium   = { generationConfig = { thinkingConfig = { thinkingLevel = "medium" } } }
+high     = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
+xhigh    = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
+max      = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
+adaptive = { generationConfig = { thinkingConfig = { thinkingLevel = "medium" } } }

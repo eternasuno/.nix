@@ -14,20 +14,20 @@ Each task performs one concrete, independently verifiable objective. A fix and i
 Select the exact model and subagent type according to the task:
 
 - **Research and code exploration**
-  - Model: `commandcode/deepseek/deepseek-v4.1-flash`
+  - Model: `cpa-codex/gpt-6.1-sol`
   - Type: `research`
   - Use for documentation lookup, external research, codebase search, locating files or symbols, understanding existing code, and read-only investigation.
   - Return evidence: relevant files or symbols, current behavior, control or data flow, constraints and conventions, tests, and unknowns, with source or file/line citations. Modification designs, implementation steps, target architectures, and option recommendations are outside this route and belong to the parent agent.
 - **Code changes**
-  - Model: `commandcode/deepseek/deepseek-v4.1-flash`
+  - Model: `cpa-codex/gpt-6.1-sol`
   - Type: `general`
   - Use for well-defined implementation, bug fixes, refactoring, tests, configuration changes, and other non-visual code modifications.
 - **Review**
-  - Model: `openai/gpt-5.6-luna`
+  - Model: `cpa-codex/gpt-6.1-sol`
   - Type: `research`
   - Use for code review, security analysis, architecture assessment, difficult debugging, regression detection, and maintainability review. Report concrete findings with severity and file/line references. Do not modify files.
 - **UI design**
-  - Model: `commandcode/google/gemini-3.8-flash`
+  - Model: `cpa-antigravity/gemini-3.8-flash-high`
   - Type: `general`
   - Use for visual UI work, layout, styling, component design, design-system implementation, and other visual modifications.
 

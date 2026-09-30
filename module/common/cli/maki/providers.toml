@@ -1,5 +1,27 @@
-[commandcode]
-protocol = "openai"
-base_url = "https://api.commandcode.ai/provider/v1"
-api_key_env = "COMMANDCODE_API_KEY"
-discover_models = true
+[cpa-codex]
+display_name = "CPA Codex"
+protocol = "openai-responses"
+base_url = "https://cpa.eternasuno.ddns.net/v1"
+api_key_env = "CPA_API_KEY"
+
+[[cpa-codex.models]]
+id = "gpt-6-luna"
+context_window = 272000
+max_output_tokens = 128000
+
+[[cpa-codex.models]]
+id = "gpt-6.1-sol"
+context_window = 272000
+max_output_tokens = 128000
+
+
+[cpa-antigravity]
+display_name = "CPA Antigravity"
+protocol = "google"
+base_url = "https://cpa.eternasuno.ddns.net/v1beta"
+api_key_env = "CPA_API_KEY"
+
+[[cpa-antigravity.models]]
+id = "gemini-3.8-flash-high"
+context_window = 1048576
+max_output_tokens = 65536

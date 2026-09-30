@@ -13,11 +13,10 @@ maki.setup({
   },
   provider = {
     allowed_models = {
-      "commandcode/deepseek/deepseek-v4.1-flash",
-      "commandcode/google/gemini-3.8-flash",
-      "openrouter/openrouter/free",
+      "cpa*",
       "openai/gpt-5.6-*",
       "openai/gpt-6-*",
+      "openrouter/openrouter/free",
     },
   },
 })

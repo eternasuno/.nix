@@ -51,9 +51,7 @@ Better:
 ```text
 The project already uses Effect Schema for boundary validation and serialization. Introducing Zod here would add a second schema system without providing a required capability.
 
-➡️ Recommendation: use Effect Schema.
-
-Do you want to commit to that choice?
+Use the existing Effect Schema convention. No further approval is needed for this evidence-backed local choice.
 ```
 
 ## Do Not Invent Requirements
@@ -86,7 +84,7 @@ Appropriate for `feature-design`:
 - use Effect Schema rather than introducing another schema library
 ```
 
-Usually leave to `architecture-design`:
+Usually leave to structural design or local implementation:
 
 ```text
 - exact domain primitives

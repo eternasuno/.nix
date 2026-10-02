@@ -1,30 +1,28 @@
 # Skill mechanics
 
-The skill-specific branch of [`writing-for-agents`](SKILL.md): what changes when the document is a skill (frontmatter, the invocation choice, and router skills). Everything else about writing it is the universal reference in `SKILL.md`.
+## Verified Maki behavior
 
-## Frontmatter contract
+These facts were checked against the installed Maki 0.5.7 build source. Recheck the active version and its skill plugin before relying on them for a different deployment.
 
-A skill directory contains a `SKILL.md` with YAML frontmatter. Keep `name` aligned with the directory name and use only the characters accepted by the runtime. Keep `description` concise and accurate: state the skill's capability, then its distinct trigger conditions. Do not put the workflow or command reference in the description. Set `disable-model-invocation: true` only when the skill is intentionally user-invoked.
+- Discovery scans immediate subdirectories containing `SKILL.md` in configured/global/project skill locations. Later entries with the same name replace earlier ones.
+- YAML frontmatter supplies `name` and `description`; the name defaults to the directory name, and description to an empty string. Keep names aligned with directory names and descriptions concise, with capability and distinct trigger conditions.
+- Discovery reads files internally, but the skill tool's startup description lists names/descriptions, not full bodies. The description is a discovery hint, not an enforcement mechanism.
+- The `skill` tool rediscovers by name and returns the body without frontmatter. It does not execute Markdown or automatically load linked references.
+- Direct file reading accesses the file independently of named skill invocation, subject to ordinary permissions. It is not a frontmatter-aware invocation gate.
+- This version does not implement `disable-model-invocation` or a user-only skill category. Those fields do not hide descriptions, prevent model invocation, or block direct reads. Do not use them as access controls.
+- Skill directories are separate from command discovery. A slash command requires a separately configured command; a skill name alone does not establish one.
 
-For a model-invoked skill, the description is an always-loaded context pointer: use concrete task language and distinguish neighboring skills. For a user-invoked skill, it is a short human-facing summary.
+## Evidence and rechecking
 
-## Invocation
+Installed-build source functions:
 
-Two choices, trading the two loads:
+- `plugins/skill/init.lua`: `scan_skill_dir`, `discover_skills`, startup tool description, and named tool handler.
+- `plugins/skill/skill_helpers.lua`: `parse_frontmatter` and `build_skill_list`.
+- `plugins/read/init.lua`: path-based read handler.
+- `maki-agent/src/command.rs`: command-directory discovery.
 
-- A **model-invoked** skill keeps a `description`, so the agent can fire it autonomously, and other skills can reach it. You can still type its name: model-invocation always _includes_ user reach; a description only ever adds agent discovery, never removes the human's. The description is the skill's top-level context pointer, forced to stay loaded at all times: permanent context load in exchange for discoverability. A model-invoked skill whose content is all reference is also one home for shared reference: another skill can invoke it, so reference needed by several skills lives in one place. Mechanics: omit `disable-model-invocation`, and write a model-facing description carrying the trigger branches (the pointer-writing rules in `SKILL.md` apply in full).
-- A **user-invoked** skill strips the description from the agent's reach: only the human typing its name can invoke it, and no other skill can. Zero context load, but it spends cognitive load: you are the index that must remember it exists. Mechanics: set `disable-model-invocation: true`; the `description` becomes human-facing: a one-line summary, trigger lists stripped.
+Identify the active binary/version and its build source rather than assuming a separate checkout or the repository lock is the installed revision. Inspect supported fields and loading paths before documenting invocation behavior. Unsupported metadata is not a safety boundary.
 
-Pick model-invocation only when the agent must reach the skill on its own, or another skill must. If it only ever fires by hand, make it user-invoked and pay no context load.
+## Packaging
 
-Shared reference that two user-invoked skills both need can live in neither: with no descriptions, neither can fire the other. Push it to a plain file outside the skill system: external reference any skill can point at.
-
-## Splitting by invocation
-
-The invocation cut of splitting (the sequence cut lives in `SKILL.md`): split off a model-invoked skill when you have a distinct leading word that should trigger it on its own (a trigger word you actually use in your prompts), or another skill must reach it. You pay context load for the new always-loaded description, so that independent reach has to be worth it.
-
-Keep supporting references directly reachable from `SKILL.md`; deeper chains increase the chance that the agent misses required material.
-
-## Router skills
-
-When user-invoked skills multiply past what you can remember, that piled-up cognitive load is cured by a **router skill**: one user-invoked skill that names the others and when to reach for each, so the human has one skill to remember instead of many. It can only hint, never fire them: user-invoked skills have no description, so nothing but the human can reach them.
+Keep the main description focused on when to use the skill. Keep supporting files inside its directory with explicit reading conditions. Avoid router skills and invocation-based splitting unless the actual runtime and a demonstrated independent need justify them; a plain conditional reference often suffices.

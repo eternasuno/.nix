@@ -8,9 +8,13 @@ Prefer tests that exercise the real composition of the unit or workflow under te
 
 Do not expose private implementation details solely to make them directly testable.
 
+For host integration, load and dispatch through the real host boundary; exercise observable behavior and cleanup rather than registration alone. Verify trusted loading separately from operation under declared permissions. Confirm that test setup uses the same ownership, module cache, and execution context as the behavior being claimed.
+
+Isolate working directories, environment variables, and other process-wide state when tests run concurrently. Use a subprocess when the integration boundary requires different process state; preserve cleanup and failure diagnostics.
+
 ## Test doubles
 
-Use simple fakes or stubs for real capability boundaries.
+Use simple fakes or stubs for real capability boundaries. Choose deterministic dependency composition appropriate to the test; external networks, databases, and uncontrolled side effects require an explicit integration boundary and lifecycle management.
 
 Do not introduce production interfaces or services solely to enable mocking.
 
@@ -27,7 +31,9 @@ Assert meaningful behavior:
 - cleanup and cancellation;
 - persisted or emitted results.
 
-Avoid tests that merely mirror implementation structure.
+Avoid tests that merely mirror implementation structure or only recheck language/framework/dependency guarantees without project-specific behavior. Do not add assertions that can pass regardless of the behavior being claimed.
+
+Add or retain a test when it verifies a distinct contract, relevant edge/failure case, integration boundary, or regression risk. Remove or consolidate redundant tests only after checking their behavior and boundary coverage; similar-looking cases may protect different risks. Test count alone is not a reason to add or delete tests.
 
 ## Failures
 

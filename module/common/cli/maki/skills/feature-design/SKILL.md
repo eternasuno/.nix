@@ -1,94 +1,33 @@
 ---
 name: feature-design
-description: Interactive pre-implementation design for major features. Clarify requirements, investigate unknowns, settle key technical decisions, and produce an implementation-ready design before architecture or coding begins.
+description: Clarify materially uncertain requirements and major tradeoffs for a feature before implementation. Use for design discussions or authorized feature work whose user-visible behavior, constraints, or acceptance remain unclear.
 ---
 
-Design major features with the user before implementation.
+# Feature Design
 
-The goal is to eliminate material uncertainty about:
-- what is being built
-- what constraints apply
-- which major technical choices are committed
+Resolve decisions that affect user-visible behavior, major constraints, and acceptance without turning local implementation choices into an approval process.
 
-Do not implement the feature.
+## Decision ownership
 
-## Principles
+- Investigate repository-answerable facts yourself: dependencies, existing behavior, conventions, and constraints.
+- Ask the user for product preferences, undefined business rules, and major tradeoffs that the request or project evidence does not settle. Do not invent product requirements.
+- Choose existing suitable dependencies, established conventions, and reversible local technical details from evidence. Record assumptions when they matter; local choices may remain with the implementer.
+- The parent agent owns the overall solution. Detailed module structure and contracts are structural design work, not additional product questions unless they change a major feature decision.
+- Reuse confirmed decisions; do not ask the user to confirm them again.
 
-- Investigate facts yourself; ask the user for decisions.
-- Never silently turn assumptions into requirements.
-- Recommend an option only when evidence or project context supports it.
-- Prefer existing project capabilities and conventions before introducing new dependencies.
-- Resolve only decisions that materially affect implementation.
-- Leave detailed domain decomposition, interfaces, module boundaries, and dependency direction to `architecture-design`.
+## Workflow
 
-## Decision tree
+1. Establish the goal, scope, known decisions, and observable acceptance from the request and repository.
+2. Identify only material unknowns. Investigate facts before asking questions.
+3. Ask independent questions together, with concise options and an evidence-based recommendation when available. Ask dependent questions in later rounds after their prerequisites are settled.
+4. Incorporate answers and stop when behavior, major constraints, and acceptance are clear. Do not expand every possible branch of a decision tree.
+5. Deliver a concise design covering relevant scope/non-goals, behavior and business rules, major technical choices, failures, compatibility/migration, acceptance, risks, and deferred details. Distinguish confirmed decisions from assumptions.
 
-Model unresolved requirements and technical choices as a decision tree.
+For a design-discussion task, delivery of the design completes the task; do not implement without authorization. For already authorized implementation, continue once material decisions are settled, without an extra template-driven confirmation. Ask only when new work exceeds the authorization or an unresolved user decision blocks progress.
 
-Typical areas include:
-- requirements and scope
-- business rules and edge cases
-- existing-system constraints
-- major technical strategy
-- dependencies and libraries
-- compatibility and migration
-- acceptance criteria
+## Conditional references
 
-See `decision-areas.md` for detailed guidance.
+- Read [Decision Areas](decision-areas.md) when a complex feature needs a checklist for material requirements, dependency, migration, or verification decisions; do not ask every listed question.
+- Read [Examples](examples.md) when question ownership, dependent rounds, or the final summary shape needs clarification.
 
-## Work in rounds
-
-The **frontier** is every unresolved decision whose prerequisites are already settled.
-
-For each round:
-
-1. investigate facts needed by the frontier
-2. ask all independent frontier decisions together
-3. provide a recommendation when justified
-4. wait for the user's decisions
-5. update the tree
-6. continue with newly unblocked decisions
-
-Do not ask a question whose answer depends on another unresolved question in the same round.
-
-## Questions
-
-Use concise numbered questions.
-
-When useful:
-
-```text
-❓ Q1 — <decision>
-
-<context>
-
-Options:
-- A: ...
-- B: ...
-
-➡️ Recommendation: <option and reason>
-```
-
-Omit the recommendation when there is no justified default.
-
-## Completion
-
-Finish only when no material unresolved decision would force the implementer to guess.
-
-The final design should cover, where relevant:
-
-- goal
-- scope and non-goals
-- observable behavior
-- business rules
-- constraints
-- major technical decisions
-- dependency decisions
-- failure and edge cases
-- compatibility or migration
-- acceptance criteria
-- risks and deferred decisions
-
-Produce a concise `Feature Design` summary containing the confirmed decisions.
-
-Ask the user to confirm it before implementation begins.
+Done when decisions affecting observable behavior, major constraints, and acceptance are explicit. Local implementation choices need not all be settled.

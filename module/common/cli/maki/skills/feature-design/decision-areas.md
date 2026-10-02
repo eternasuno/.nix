@@ -50,7 +50,7 @@ Resolve only implementation-shaping decisions, such as:
 - migration strategy
 - compatibility behavior
 
-Leave detailed structural modeling to `architecture-design` unless a structural choice is itself required to make a major feature decision.
+Detailed structural modeling belongs to system design, not the product-question checklist, unless the structural choice changes a major feature decision. Existing conventions and reversible local choices may be selected from evidence without user approval.
 
 ## Dependencies and Libraries
 
@@ -97,7 +97,7 @@ Acceptance criteria should describe observable behavior and be specific enough t
 
 ## Completion Check
 
-Before finishing, ensure there is no material unresolved decision that would force implementation to guess.
+Before finishing, ensure user-visible behavior, major constraints, and acceptance are clear. Local implementation details may remain open.
 
 Verify that the following are sufficiently clear where relevant:
 

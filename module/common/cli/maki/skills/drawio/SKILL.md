@@ -14,7 +14,7 @@ no other software involved.
 - Use when: the user requests draw.io XML, a `.drawio` file, or an
   app.diagrams.net editor URL.
 - Do NOT use for: live-canvas editing, iterative element-level refinement, or
-  PNG/SVG/PDF image delivery. Use Excalidraw for those workflows.
+  generic PNG/SVG/PDF image delivery without a draw.io source requirement. Those need a suitable rendering workflow, not this XML/URL workflow.
 
 ## Workflow
 
@@ -26,15 +26,12 @@ corporate, colorblind-safe, or a named preset), read
 
 ### Step 1 — Choose the diagram type
 
-Read `references/diagram-types.md`, pick the matching type (flowchart,
-ERD, UML class, sequence, C4, BPMN, SysML, network, mind-map, …), and use its
-style tables. Ask a clarifying question only if the type is genuinely
+For a specialized type (ERD, UML, sequence, C4, BPMN, SysML, network, or swimlane), read only the matching section of `references/diagram-types.md` and use its conventions. A simple flowchart does not require the full type catalog. Ask a clarifying question only if the type is genuinely
 ambiguous.
 
 ### Step 2 — Author the XML
 
-Read `references/xml-authoring.md` first, then write the `.drawio` file by
-hand. Use `references/shapes.md` for any specific shape — never guess an
+When authoring XML, read the relevant structure/edge sections of `references/xml-authoring.md`, then write the `.drawio` file by hand. Read `references/shapes.md` when selecting unfamiliar shapes or stencils — never guess an
 `mxgraph.*` stencil name (a wrong name renders as a blank box).
 
 **Non-negotiable rules** (violating any of these breaks the diagram):

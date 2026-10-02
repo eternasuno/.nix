@@ -39,6 +39,46 @@ xhigh    = { reasoning = { effort = "xhigh" } }
 max      = { reasoning = { effort = "max" } }
 adaptive = { reasoning = { effort = "medium" } }
 
+[cpa-commandcode]
+display_name = "CPA CommandCode"
+protocol = "openai"
+base_url = "https://cli-proxy-api.eternasuno.ddns.net/v1"
+api_key_env = "CPA_API_KEY"
+discover_models = false
+
+[[cpa-commandcode.models]]
+id = "google/gemini-3.8-flash"
+context_window = 1000000
+max_output_tokens = 65536
+supports_thinking = true
+requires_thinking = true
+
+[cpa-commandcode.models.thinking_fields]
+off      = { reasoning_effort = "low" }
+minimal  = { reasoning_effort = "low" }
+low      = { reasoning_effort = "low" }
+medium   = { reasoning_effort = "medium" }
+high     = { reasoning_effort = "high" }
+xhigh    = { reasoning_effort = "high" }
+max      = { reasoning_effort = "high" }
+adaptive = { reasoning_effort = "medium" }
+
+[[cpa-commandcode.models]]
+id = "deepseek/deepseek-v4.1-flash"
+context_window = 1000000
+max_output_tokens = 393216
+supports_thinking = true
+
+[cpa-commandcode.models.thinking_fields]
+off      = { reasoning_effort = "none" }
+minimal  = { reasoning_effort = "low" }
+low      = { reasoning_effort = "low" }
+medium   = { reasoning_effort = "high" }
+high     = { reasoning_effort = "high" }
+xhigh    = { reasoning_effort = "high" }
+max      = { reasoning_effort = "max" }
+adaptive = { reasoning_effort = "high" }
+
 [cpa-antigravity]
 display_name = "CPA Antigravity"
 protocol = "google"

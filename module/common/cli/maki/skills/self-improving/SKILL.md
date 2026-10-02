@@ -5,13 +5,13 @@ description: Capture reusable lessons after code commits, explicit user correcti
 
 # Self-Improving
 
-Turn trustworthy evidence from the current work into concise project memory and, when justified, a validated skill-improvement proposal. Learning is automatic; editing a skill requires the user's approval.
+Turn trustworthy evidence from the current work into concise project memory and, when justified, a validated skill-improvement proposal. Check learning signals without manufacturing lessons. Self-initiated skill edits need approval; specific edits already authorized by the user do not need repeated approval.
 
 ## Learning signals
 
 Process a signal when one of these occurs:
 
-- code changes are committed; summarize the completed change and capture only durable, reusable lessons;
+- code changes are committed; check for durable, reusable lessons, and record nothing when none exists (memory is not a commit summary);
 - the user explicitly corrects a factual claim, preference, or working method;
 - a tool, command, API, test, or implementation fails because of a mistaken reusable assumption;
 - a better workflow succeeds repeatedly;
@@ -45,39 +45,11 @@ Count: <number>
 Status: tentative | confirmed
 ```
 
-## Promotion gate
+## Conditional maintenance reference
 
-Propose a skill change only when at least one condition holds:
+Read [Skill maintenance](skill-maintenance.md) only when proposing or applying a skill change. Ordinary project-memory capture does not need it. Choose the narrowest useful home before promoting a lesson.
 
-- the user explicitly requests that the lesson become a skill;
-- the same reusable lesson has independent evidence at least three times;
-- direct evidence shows that an existing skill causes or omits the target behavior.
-
-Before proposing, decide whether project memory or project instructions are the narrower correct home. Do not create a skill for repository-specific commands, isolated preferences, or a single workaround.
-
-## Skill proposal
-
-Do not edit skill files yet. Present:
-
-```markdown
-Target: <existing or new skill>
-Evidence: <observed behavior and count>
-Change: <smallest behavior-changing edit>
-Expected effect: <observable improvement>
-Validation: <scenario that distinguishes old and new behavior>
-Risks: <scope, conflicts, or overfitting>
-```
-
-Ask for approval only when a concrete proposal is ready. Approval covers the described target and change, not unrelated edits.
-
-## Apply an approved change
-
-1. Read the target skill and directly linked references needed for the affected behavior.
-2. Establish a baseline with a scenario that exposes the observed failure when practical. For important changes, use a fresh subagent context.
-3. Make the smallest approved edit. Preserve one source of truth and avoid project-specific guidance in global skills.
-4. Repeat the scenario and inspect whether the target behavior changed without weakening security or unrelated behavior.
-5. Report changed paths, validation evidence, and remaining uncertainty. If validation fails, revert the ineffective change or ask before trying a materially different approach.
-6. Update the corresponding memory candidate to confirmed, rejected, or superseded.
+Done when a justified lesson has been merged into current memory, retained as tentative, or deliberately not saved. Facts, explicit preferences, and tentative inferences must remain distinguishable.
 
 ## Guardrails
 

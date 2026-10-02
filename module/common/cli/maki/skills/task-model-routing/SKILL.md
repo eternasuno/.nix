@@ -1,47 +1,42 @@
 ---
 name: task-model-routing
-description: Required for every non-trivial engineering request and before every task call. Use for codebase exploration, multi-file implementation, debugging, review, architecture, and research to select the model, subagent type, and delegation workflow.
+description: Use before delegation or a task call to select the model and subagent type, bound the task, and coordinate dependencies. Does not require delegation.
 ---
 
 # Task model routing
 
-## Delegation gate
+Use this skill after deciding that a task would be useful. Small local work may be done directly; do not manufacture delegation to satisfy a rule.
 
-For every non-trivial request, dispatch at least one meaningful subtask. Delegate codebase exploration, external research, multi-file implementation, debugging, review, and architecture assessment. Direct handling is reserved for conversational answers and localized, obvious operations requiring no investigation.
+## Responsibility and scope
 
-Each task performs one concrete, independently verifiable objective. A fix and its necessary regression test may share one task when they serve the same behavior. The parent agent owns decomposition, stage coordination, modification design, architecture decisions, integration, and final verification.
+- The parent agent owns overall requirements, primary design, architecture and solution selection, key tradeoffs, decomposition, integration, and final acceptance.
+- Subagents perform bounded fact-finding, local implementation of an established design, or independent review. They may make local implementation decisions and return options, risks, and recommendations. Changes to requirements, public contracts, overall architecture, or cross-task boundaries return to the parent for decision.
+- When facts are missing, investigation may precede design. The parent evaluates the evidence and forms the design before assigning implementation that depends on it.
+- Never assign complete requirements understanding, overall solution selection, all implementation, and overall acceptance to one subagent.
+- One task has one explicit, independently verifiable objective, enough inputs, bounded scope, and checkable acceptance. A fix and its necessary regression tests may share a task. Split multi-stage work, independent deliverables, or substantial overall design; avoid both vague catch-all tasks and fragments without independent value. Use semantic boundaries, not file or line counts.
 
-Select the exact model and subagent type according to the task:
+## Model and subagent type
 
-- **Research and code exploration**
-  - Model: `cpa-codex/gpt-6.1-sol`
-  - Type: `research`
-  - Use for documentation lookup, external research, codebase search, locating files or symbols, understanding existing code, and read-only investigation.
-  - Return evidence: relevant files or symbols, current behavior, control or data flow, constraints and conventions, tests, and unknowns, with source or file/line citations. Modification designs, implementation steps, target architectures, and option recommendations are outside this route and belong to the parent agent.
-- **Code changes**
-  - Model: `cpa-codex/gpt-6.1-sol`
-  - Type: `general`
-  - Use for well-defined implementation, bug fixes, refactoring, tests, configuration changes, and other non-visual code modifications.
-- **Review**
-  - Model: `cpa-codex/gpt-6.1-sol`
-  - Type: `research`
-  - Use for code review, security analysis, architecture assessment, difficult debugging, regression detection, and maintainability review. Report concrete findings with severity and file/line references. Do not modify files.
-- **UI design**
-  - Model: `cpa-antigravity/gemini-3.8-flash-high`
-  - Type: `general`
-  - Use for visual UI work, layout, styling, component design, design-system implementation, and other visual modifications.
+Pass the exact model through the `task` tool's `model` parameter.
 
-## Rules
+Default model: `cpa-codex/gpt-6.1-sol`.
 
-- Pass the selected model through the `task` tool's `model` parameter.
-- For an ordered model chain, try one model at a time and advance only when the `task` call fails because the model or provider is unavailable, rate-limited, or times out. Retry with the same prompt and subagent type; never launch fallback attempts in parallel. If every model fails, report the failure.
-- Include enough context, paths, constraints, and expected output because every task starts fresh. Do not paste unrelated conversation or repository content.
-- Before dispatching, check that the task has one objective, a bounded scope, all required inputs, explicit non-goals, a checkable acceptance criterion, and a defined return format. If it spans multiple concerns, stages, or independently verifiable deliverables, split it into focused tasks. Never assign an entire large, multi-stage request to one subagent.
-- Use this prompt structure: **Goal**, **Context**, **Scope**, **Constraints**, **Non-goals**, **Acceptance**, **Stop**, and **Return**. The task reports missing inputs, scope expansion, or user-owned changes instead of guessing or expanding its scope.
-- Use one `task` call per subtask and `batch` independent subtasks so multiple subagents can work concurrently.
-- Run dependent stages sequentially: research before implementation, and implementation before review. After research, the parent agent verifies decision-critical sources and synthesizes the modification design before dispatching implementation. Inspect each stage's results before dispatching work that depends on them.
-- Never run parallel write tasks that may modify overlapping files; give concurrent writers disjoint ownership or sequence them.
-- If several routes apply, split the work into meaningful stages and route each stage separately. Keep dependent stages sequential and independent stages parallel only when their write scopes do not overlap.
-- If no route clearly matches, use the closest route rather than silently skipping delegation.
-- Do not delegate token tasks merely to satisfy the gate; each subtask must produce useful research, implementation, or review output.
-- Inspect, reconcile, and verify subagent results before responding to the user.
+| Work | Type | Expected result |
+| --- | --- | --- |
+| Research and code exploration | `research` | Facts, relevant behavior, sources or file/line evidence, constraints, unknowns |
+| Non-visual implementation, fixes, refactoring, tests, configuration | `general` | Bounded changes, verification results, remaining risks |
+| Independent review, security analysis, architecture assessment, read-only debugging | `research` | Concrete findings with severity and file/line evidence; no writes |
+
+For visual UI implementation, layout, styling, and component design, use `cpa-antigravity/gemini-3.8-flash-high` with `general`, within the parent-selected requirements and design constraints.
+
+## Dispatch and integration
+
+1. Provide the **goal**, necessary **context**, **scope/constraints**, and **acceptance/return requirements**. These may be a short paragraph; no fixed set of headings is required. Each task starts fresh, so include relevant paths and decisions without copying unrelated context.
+2. Require reporting of missing inputs, scope expansion, permission failures, and conflicts with user-owned changes rather than guessing or silently expanding scope.
+3. Run dependent work in order and inspect prerequisite results before dispatching downstream work. Investigation, implementation, and review are optional stages, not a mandatory delegation chain.
+4. Batch independent tasks. Give concurrent writers disjoint file ownership or isolate their work; sequence shared-contract changes that are not independent.
+5. When independent features need separate branches/worktrees, read [Worktree workflow](worktree-workflow.md). Ordinary delegation and read-only tasks do not require worktrees.
+6. Report task/model failures and incomplete verification. Do not invent fallback candidates or treat failed work as complete.
+7. Evaluate and reconcile returned results. Verify decision-critical evidence and key behavior yourself; do not merely relay the report or mechanically repeat every investigation.
+
+Done when the delegated objective is checked, integration conflicts are resolved or disclosed, and the parent has evaluated acceptance and remaining uncertainty.

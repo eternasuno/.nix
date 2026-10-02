@@ -5,12 +5,12 @@ description: Live Excalidraw canvas creation and element-level editing. Use when
 
 # Excalidraw
 
-Use this skill for live-canvas Excalidraw work, iterative visual refinement, precise element editing, screenshots, image export, or `.excalidraw` round trips. Use drawio instead when the deliverable is draw.io XML or a diagrams.net editor URL.
+Use this skill for live-canvas Excalidraw work, iterative visual refinement, precise element editing, screenshots, image export, or `.excalidraw` round trips. Draw.io XML and diagrams.net editor links are outside this workflow.
 
 ## Choose an interface
 
 1. Prefer Excalidraw MCP tools when available.
-2. Otherwise use the bundled CLI: `npx -y mcp-excalidraw-server <command>`.
+2. Otherwise use an available compatible CLI. If none is installed, use `npx -y mcp-excalidraw-server <command>` only when network/package execution is permitted; do not silently install persistently.
 3. Use REST only as a last resort; see `references/cheatsheet.md`.
 
 Canvas-touching, screenshot, image-export, Mermaid, and viewport operations need an open browser tab. The CLI uses `http://127.0.0.1:3000` by default; see the cheatsheet for options and exit codes.
@@ -65,4 +65,6 @@ Do not proceed while labels are truncated, elements overlap, zones are mislabele
 
 ## Reference
 
-`references/cheatsheet.md` contains the complete CLI, MCP, REST, format, design, snapshot, export, and troubleshooting reference. Consult it for command syntax rather than duplicating the command table here.
+Read only the relevant sections of `references/cheatsheet.md` when choosing CLI/MCP syntax, using REST/raw formats, managing snapshots/server options, exporting, or troubleshooting. Check the active tool version; do not load every interface table by default.
+
+Done when the requested diagram/export is delivered, the final screenshot has been inspected, and unrelated canvas content and user work are preserved. Report unavailable browser/export verification.

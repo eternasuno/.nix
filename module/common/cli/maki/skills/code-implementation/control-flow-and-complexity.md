@@ -33,9 +33,7 @@ Extract a helper when it:
 - names an important local concept;
 - creates a real representation or validation boundary.
 
-Keep a helper inline when it:
-
-- is used once;
+Single use alone is not a reason to inline: a helper may name a clear business concept or isolate complexity. Prefer inlining when the helper adds no such value and it:
 - merely forwards arguments;
 - only renames an expression;
 - reconstructs unchanged state;

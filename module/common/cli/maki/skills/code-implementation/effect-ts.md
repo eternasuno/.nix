@@ -36,6 +36,10 @@ Use `Layer` to construct and provide service implementations when the architectu
 
 Do not introduce Layer machinery for dependencies that do not need to be modeled as services.
 
+Compose Layers according to their dependency graph, sharing, and resource lifetimes. Combine providers when it clarifies the graph without changing those semantics; separate provisions may be correct. Do not merge Layers merely for formal consistency.
+
+Follow project naming conventions for Layer values; a `Live` suffix is not a cross-project requirement. Verify all concrete APIs, including mocking and composition helpers, against the installed version.
+
 ## External effects
 
 Convert native throws, Promise rejection, callback behavior, and SDK failures at the point where they enter Effect.
@@ -48,7 +52,7 @@ Avoid unnecessary conversions such as:
 callback → Promise → Effect
 ```
 
-when `Effect.callback` can model the operation directly.
+when the installed version provides a suitable direct callback constructor (such as `Effect.callback` where supported).
 
 ## Errors
 
@@ -85,8 +89,8 @@ Keep business-oriented operation names independent of execution mechanism.
 
 Test project-owned behavior rather than capabilities provided by Effect or other dependencies. Delete a test when the source has no project-specific observable behavior worth asserting.
 
-Prefer production Layers in tests. When a substitute is necessary, use `Layer.mock` instead of casting an incomplete fake service or building an ad hoc fixture layer.
+Choose dependency composition for the test boundary: real deterministic local components, controlled fakes, or explicitly configured integration resources. Do not default to external networks, databases, or uncontrolled side effects. Production Layers are appropriate only when their dependencies and lifecycle match that boundary.
 
-Prefer direct Effect expressions over one-use `make*` wrappers, custom service types, and unnecessary Layer indirection. Introduce a helper or service only when it represents a meaningful reusable boundary. Name meaningful Layer values with a `Live` suffix.
+Use version-compatible Layer construction or mocking APIs and complete service contracts; do not require `Layer.mock` or cast an incomplete fake into correctness.
 
-Combine dependent Layers before providing them; avoid chaining multiple `Effect.provide` calls when a single merged Layer preserves service lifecycle behavior. Apply this to all Effect code, not only tests.
+Prefer direct Effect expressions over wrappers that add no meaning. A single-use helper may still name a business concept or isolate complexity; reuse count alone does not decide extraction. Test cleanup, interruption, and service acquisition/release where project behavior depends on them.

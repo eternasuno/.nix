@@ -1,4 +1,4 @@
-maki.pack.add({ "https://github.com/eternasuno/maki-kanban" })
+maki.pack.add({ "https://github.com/eternasuno/maki-kanban", "https://github.com/eternasuno/maki-code" })
 
 maki.setup({
   always_thinking = "adaptive",

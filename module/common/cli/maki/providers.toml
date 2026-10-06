@@ -41,7 +41,7 @@ adaptive = { reasoning = { effort = "medium" } }
 
 [[cpa-codex.models]]
 id = "gpt-6-astra"
-context_window = 1050000
+context_window = 272000
 max_output_tokens = 128000
 supports_thinking = true
 requires_thinking = true

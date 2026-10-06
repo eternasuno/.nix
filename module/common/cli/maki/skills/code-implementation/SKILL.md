@@ -1,81 +1,48 @@
 ---
 name: code-implementation
-description: Implement code clearly and directly once behavior and structure are understood. Use for implementation, refactoring, bug fixes, tests, and configuration changes, not general read-only review; prefer visible control flow, minimal indirection, idiomatic language features, and focused changes.
+description: Implement, refactor, fix, test, or configure code once behavior and structure are understood. Prefer the simplest readable final implementation, not the smallest diff. Not for general read-only review.
 ---
 
 # Code Implementation
 
-Implement required behavior with the smallest clear code that respects the established design.
+Implement only required behavior. Within the affected execution path, prefer simpler final code over a smaller diff; do not refactor unrelated code.
 
-Prefer direct control flow, visible data flow, semantic names, and idiomatic language or framework features over wrappers, indirection, dense expressions, and incidental abstraction.
+## Implementation rules
 
-## Core principles
+- Read the implementation, callers, and existing tests before changing behavior. Fix a shared cause rather than adding caller-specific patches when the callers share the same contract.
+- Add branches, options, helpers, abstractions, or dependencies only for a current requirement or an existing consumer. Remove code made unnecessary by the change; do not add extension points for hypothetical uses.
+- Keep operations in execution order. Use early returns to reduce nesting without changing cleanup or side-effect ordering. Do not replace simple conditionals with dispatch frameworks or callback machinery.
+- Name values and operations for their business meaning. Split expressions that mix distinct steps; introduce intermediate values only when their names explain intent or expose data flow.
+- Extract helpers for reuse, a named business step, or complex logic that obscures the caller. Inline helpers that only forward arguments or rename trivial expressions. A single caller alone is not a reason to inline.
+- Avoid conversions and copies when the consumer can use the original representation without violating ownership. Do not compress code at the expense of meaningful names or visible control flow.
+- Validate untrusted input at its entry boundary. Do not repeat checks or add fallbacks for guarantees already enforced on every relevant entry path. Type annotations alone do not validate external data.
+- Add tests only for required behavior or concrete regression risks not covered by existing tests. Do not add production interfaces, services, or public exports solely for mocking or testing.
+- Preserve security, accessibility, compatibility, data integrity, required error behavior, cancellation, cleanup, side-effect ordering, transactions, and performance constraints. Removing code must not remove a required guarantee.
+- Follow established architecture; do not add layers or capability abstractions during a local edit unless the requirement needs them. Resolve uncertain behavior or structural decisions before implementing that path.
+- Check existing dependencies before adding one. For authorized installation or upgrades, choose the newest release compatible with the project's runtime, framework, dependency constraints, and required behavior. A local edit does not authorize an upgrade.
+- Check version-matched documentation for unfamiliar or version-sensitive APIs; do not copy API examples without checking their contracts. Add comments only when permitted and when code cannot explain a constraint or decision; do not narrate visible behavior.
 
-- Understand the relevant execution path before editing.
-- Keep each function focused on one coherent responsibility.
-- Keep sequential work sequential.
-- Name meaningful stages when doing so improves comprehension.
-- Extract helpers for reuse, meaningful complexity, or a real local boundary.
-- Inline helpers that only rename an expression or reconstruct unchanged state.
-- Keep implementation details local.
-- Avoid speculative configurability, unused extension points, dead code, and scaffolding with no required behavior or concrete consumer.
-- Validate where input is untrusted or a required invariant becomes known. Do not add defensive checks or fallback branches for conditions already guaranteed by enforced types, upstream validation, or internal contracts unless a real failure path requires them. Type annotations alone do not validate external runtime data.
-- Add tests for project-owned observable behavior, relevant edge cases, and regression risks. Avoid redundant cases, meaningless assertions, and tests of dependency internals that add no distinct coverage.
-- Use comments primarily to explain why, not what.
-- Prefer deletion or simplification when it preserves required behavior.
+## Code layout — highest-priority formatting rules
 
-## Boundaries
-
-Respect the architecture already established by the codebase.
-
-Do not introduce new architectural layers, interfaces, services, or capability abstractions as a side effect of a local implementation unless the task actually requires a design change.
-
-## Readability
+These blank-line rules take precedence over other formatting preferences in this skill and repository style defaults. Higher-priority governing instructions and language syntax still apply. Do not change unrelated files or global formatter configuration to enforce them; report a formatter conflict rather than silently dropping the rules.
 
 - Separate top-level declarations with one blank line.
-- Use explicit block bodies where required by repository convention.
-- Leave one blank line after a complete control-flow block, such as `if`, `for`, `while`, `switch`, or `try`, when another statement follows in the same enclosing block. Do not insert a blank line before a connected `else`, `catch`, or `finally`, or before the enclosing closing brace.
-- Leave one blank line before `return` when another statement precedes it in the same block. Do not add a leading blank line when `return` is the first statement.
-- Keep related branches, handlers, and continuations together.
-- Prefer semantic intermediate names over dense nested expressions when the stages matter.
-- Avoid unnecessary representation conversions.
+- Leave one blank line after a complete control-flow block when another statement follows in the same enclosing block. Do not separate a connected `else`, `catch`, or `finally`, or add a blank line before the enclosing closing brace.
+- Leave one blank line before `return` when another statement precedes it in the same block; do not add one when `return` is the first statement.
+- Keep related branches, handlers, and continuations together. Use explicit block bodies where required by repository convention; follow repository conventions for other formatting choices.
 
-## Safety
+## Verification
 
-Do not simplify away:
-
-- required validation;
-- error handling;
-- security;
-- accessibility;
-- compatibility;
-- data protection;
-- cancellation;
-- resource cleanup;
-- side-effect ordering;
-- transaction semantics;
-- performance requirements;
-- meaningful test seams.
-
-## Workflow
-
-Before modifying code:
-
-1. Read the relevant implementation and trace the real call path.
-2. Identify the smallest change that satisfies the required behavior.
-3. Preserve pre-existing unrelated work, including Git index state. Inspect staging before rename operations; if they introduce staging, undo only those additions without disturbing pre-existing or partially staged changes. Do not broadly reset a previously populated index; stop rather than guess when its state is ambiguous.
-4. Fix shared root causes rather than isolated symptoms when practical.
-5. Keep the diff focused.
-6. Derive verification commands, targets, tool versions, and language dialects from the current repository and environment configuration. Use the declared development environment when available. Select formatter, lint, type, build, and test checks to match the affected behavior, change risk, and project practice; do not mechanically run every check for a tiny edit. Report existing warnings or formatting differences separately from regressions.
-7. Inspect the final diff against the requested behavior.
+1. Preserve unrelated user changes and the existing Git staging state.
+2. Derive commands and tool versions from repository configuration; use its declared development environment. Run checks proportional to affected behavior and risk, not every available check for every edit.
+3. Inspect the final diff for required behavior, unnecessary code, readability, and the blank-line rules. Distinguish existing failures or formatting differences from regressions.
+4. Report checks actually run, skipped checks, and unresolved risks.
 
 ## Conditional references
 
-- When modifying Effect code, read [Effect-TS](effect-ts.md).
-- When modifying TS/TSX or code governed by TypeScript tooling, read [TypeScript](typescript.md).
-- When writing or modifying tests or adjusting test boundaries, read [Testing](testing.md).
-- When adjusting complex control flow, helper extraction, or data flow, read [Control Flow and Complexity](control-flow-and-complexity.md) as needed.
+- For TS/TSX or JavaScript governed by TypeScript tooling, read [TypeScript](typescript.md).
+- For Effect code or tests, read [Effect](effect.md); all Effect-specific rules live there.
+- For writing or changing tests or test boundaries, read [Testing](testing.md).
+- For web markup, CSS, or UI interactions, including JSX/TSX, read [Web UI rules](web/ui-rules.md) and its matching framework reference.
 
-Multiple conditions may apply. Do not load all references by default.
-
-Done when the requested behavior is implemented, relevant checks and final-diff inspection support it, and skipped checks or remaining risks are disclosed.
+Load only matching references; more than one may apply. Done when required behavior is implemented, relevant checks support it, and the final diff meets these rules.

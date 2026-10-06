@@ -1,22 +1,31 @@
 ---
 name: self-improving
-description: Capture reusable lessons after code commits, explicit user corrections, mistaken assumptions behind tool or API failures, repeated successful workflows, and requests to create or improve agent skills. Use after each code commit, when feedback or execution evidence reveals a durable project lesson, or when accumulated evidence may justify a skill change.
+description: Capture reusable lessons only after successfully committing code changes in the current task or when the user explicitly invokes this skill by name. Corrections, failures, repeated successes, and general requests to improve other skills are review evidence, not independent triggers.
 ---
 
 # Self-Improving
 
 Turn trustworthy evidence from the current work into concise project memory and, when justified, a validated skill-improvement proposal. Check learning signals without manufacturing lessons. Self-initiated skill edits need approval; specific edits already authorized by the user do not need repeated approval.
 
+## Invocation gate
+
+Run this skill only:
+
+- after successfully committing code changes in the current task; review once per successful commit;
+- when the user explicitly invokes `self-improving` or asks to run this skill.
+
+Editing or staging code, passing tests, planning a commit, a failed commit, and inspecting existing commits do not satisfy the commit trigger. Corrections, tool failures, repeated successes, requests to remember something or improve another skill, and contradictions with existing guidance do not independently trigger this skill. Without either trigger, stop; do not run its capture or maintenance workflow.
+
 ## Learning signals
 
-Process a signal when one of these occurs:
+Once invoked, review available evidence for durable, reusable lessons:
 
-- code changes are committed; check for durable, reusable lessons, and record nothing when none exists (memory is not a commit summary);
-- the user explicitly corrects a factual claim, preference, or working method;
-- a tool, command, API, test, or implementation fails because of a mistaken reusable assumption;
-- a better workflow succeeds repeatedly;
-- the user asks to remember a lesson or create or improve a skill;
-- the current behavior contradicts an existing skill's intended behavior.
+- factual, preference, or working-method corrections explicitly made by the user;
+- tool, command, API, test, or implementation failures caused by a mistaken reusable assumption;
+- better workflows that succeed repeatedly;
+- direct evidence that behavior contradicts an existing skill's intended behavior.
+
+Record nothing when no justified lesson exists; memory is not a commit summary.
 
 Ignore silence, praise without a specific reason, hypothetical statements, one-time task instructions, and failures that reveal no reusable lesson.
 

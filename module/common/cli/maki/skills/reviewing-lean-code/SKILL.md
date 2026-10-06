@@ -38,8 +38,8 @@ Before reporting a finding:
 
 1. Identify the observable behavior and authoritative contract.
 2. Trace relevant callers, exports, registrations, reflection or dynamic loading, configuration, tests, compatibility roles, and side effects.
-3. Confirm that the proposed replacement preserves behavior and project conventions.
-4. Establish that the replacement is actually smaller, clearer, safer, or less costly.
+3. Confirm that the proposed replacement preserves required behavior, established architecture, and applicable governing instructions. Preserve project conventions unless an explicit applicable rule overrides them; do not report default-formatting differences alone as lean findings.
+4. Establish that the replacement is actually smaller, clearer, safer, or less costly. Prefer the simplest readable final implementation, not the fewest lines or smallest diff. Keep recommendations within the reviewed execution path rather than expanding them into unrelated refactoring.
 5. Validate claims with evidence proportional to the claim. Dependency removal or clearer imports do not automatically require bundle experiments. A concrete size delta, or a conclusion that depends on bundler behavior, requires a corresponding controlled comparison; otherwise disclose the missing evidence.
 
 For necessary build-size experiments, read [Isolated experiments](experiments.md). Do not modify the original worktree to perform them or extrapolate tree-shaking results across bundlers or from direct ESM loading.
@@ -47,10 +47,13 @@ For necessary build-size experiments, read [Isolated experiments](experiments.md
 Evaluate alternatives in this order:
 
 1. Language built-ins and the standard library.
-2. A suitable, trusted third-party dependency.
-3. A custom implementation only when neither safely satisfies the requirement.
+2. Suitable capabilities in existing trusted dependencies.
+3. A new trusted dependency only when it satisfies a current requirement and its total cost is justified.
+4. A custom implementation when those alternatives do not safely satisfy the requirement or cost more overall.
 
-Do not recommend a dependency that is less trustworthy or more costly than the code it replaces. Do not recommend compact code that obscures intent, merges unrelated responsibilities, removes meaningful names, or weakens a required boundary. Put unresolved candidates under `Unverified leads`; do not count them as findings.
+Check installed versions and version-matched contracts for unfamiliar or version-sensitive APIs. Compare dependency costs beyond source-line reduction, including maintenance, supply-chain risk, runtime compatibility, and deployment cost. A recommendation does not authorize installation or upgrades; a local change does not authorize an upgrade.
+
+Do not recommend compact code that obscures intent, merges unrelated responsibilities, removes meaningful names, or weakens a required boundary. Helpers may be justified by reuse, a named business step, or complex logic that obscures the caller; a single caller or implementation alone is not evidence of redundancy. Preserve required security, accessibility, compatibility, data integrity, error behavior, cancellation, cleanup, side-effect ordering, transactions, and performance constraints. Put unresolved candidates under `Unverified leads`; do not count them as findings.
 
 ## Finding categories
 
@@ -58,7 +61,7 @@ Do not recommend a dependency that is less trustworthy or more costly than the c
 - `builtin`: hand-written behavior replaceable by a language built-in or standard library.
 - `dependency`: custom behavior or infrastructure replaceable by a suitable trusted dependency.
 - `dedupe`: behaviorally equivalent logic that can share one authoritative implementation.
-- `yagni`: speculative abstraction, single-implementation indirection, wrapper, or unused configurability.
+- `yagni`: speculative abstraction, unused configurability, or indirection with no current consumer need, meaningful business role, complexity isolation, or required architectural boundary.
 - `clarify`: nesting, mixed responsibilities, control flow, or naming that materially impedes comprehension.
 - `shrink`: the same behavior with a demonstrably smaller and clearer implementation.
 
@@ -67,7 +70,7 @@ Do not recommend a dependency that is less trustworthy or more costly than the c
 The final response contains the report. Order findings by impact and confidence. Retain these fields; use multiple lines when evidence, limits, or explanation need room:
 
 ```text
-<severity>/<confidence> <tag> <path>:<line-range> — <problem>. <smallest replacement>. Evidence: <verified facts>.
+<severity>/<confidence> <tag> <path>:<line-range> — <problem>. <simplest readable replacement>. Evidence: <verified facts>.
 ```
 
 Severity is `high`, `medium`, or `low`; confidence is `high` or `medium`. Omit low-confidence claims from findings.

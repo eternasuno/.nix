@@ -1,63 +1,17 @@
 # TypeScript
 
-Apply these rules to TypeScript, TSX, and JavaScript governed by TypeScript tooling.
+Apply to TypeScript, TSX, and JavaScript governed by TypeScript tooling.
 
-## Types
+## Types and boundaries
 
-Use `type` aliases rather than `interface` or type-only classes for ordinary TypeScript type declarations. This rule governs type declarations, not classes that implement runtime behavior, such as error constructors.
+- Prefer `type` for ordinary declarations unless project conventions, declaration merging, or module augmentation require `interface`. Do not replace classes that provide runtime behavior with type aliases.
+- Use inference for obvious local types. Add annotations to define public contracts, constrain boundary values, prevent unwanted widening, or express a domain restriction; do not repeat an already clear inferred type.
+- Model mutually exclusive states with discriminated unions instead of unrelated optional properties that permit invalid combinations.
+- Treat untrusted external data as `unknown` until validated. Do not substitute an unchecked cast for validation.
+- Add generics only when actual callers need multiple types and the generic preserves a relationship between inputs and outputs.
+- Use readonly data when callers must not mutate it. Do not copy objects repeatedly without an ownership or representation change.
 
-Prefer inference when the inferred type is clear and stable.
+## Edits and modules
 
-Add explicit types when they:
-
-- define a public contract;
-- constrain a boundary;
-- improve error messages;
-- prevent accidental widening;
-- document a non-obvious domain requirement.
-
-Avoid redundant annotations that merely repeat obvious inference.
-
-For declaration rewrites involving nested TypeScript syntax, use syntax-aware edits or uniquely anchored exact replacements rather than broad regex substitution. Generic constraints can contain braces before the declaration body; parse-check representative nested cases before applying a rewrite broadly. Leave ambiguous or nonmatching declarations unchanged rather than guessing.
-
-## Domain states
-
-Use discriminated unions when modeling a closed set of meaningful states.
-
-Prefer representations that make invalid combinations difficult to construct.
-
-Avoid large collections of unrelated optional properties when distinct states are clearer.
-
-## Unknown external data
-
-Treat untrusted or external data as `unknown` until validated.
-
-Do not use unchecked casts to bypass missing validation.
-
-## Generics
-
-Introduce generics when the implementation genuinely works across types while preserving useful relationships between them.
-
-Do not introduce a generic abstraction for a single concrete use case.
-
-## Objects and mutation
-
-Prefer explicit ownership of mutation.
-
-Use readonly data when mutation is not part of the contract.
-
-Avoid copying objects repeatedly when no representation or ownership boundary requires it.
-
-## Imports and modules
-
-Follow repository conventions.
-
-Prefer direct imports and existing module boundaries over new barrel files, wrapper modules, or aliases that add no semantic value.
-
-## Errors
-
-Preserve useful error information.
-
-Do not catch an error merely to throw the same error again or replace it with a less useful generic message.
-
-Translate errors when crossing a real contract boundary.
+- For bulk rewrites of nested declarations, use syntax-aware tools or uniquely anchored exact replacements. Check nested examples; leave ambiguous matches unchanged rather than guessing.
+- Use existing module boundaries and direct imports. Do not add barrel files, wrapper modules, or aliases merely to forward existing exports.

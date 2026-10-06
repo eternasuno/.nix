@@ -8,7 +8,7 @@ Prefer tests that exercise the real composition of the unit or workflow under te
 
 Do not expose private implementation details solely to make them directly testable.
 
-For host integration, load and dispatch through the real host boundary; exercise observable behavior and cleanup rather than registration alone. Verify trusted loading separately from operation under declared permissions. Confirm that test setup uses the same ownership, module cache, and execution context as the behavior being claimed.
+For integration tests, exercise observable behavior through the real integration boundary rather than checking registration or configuration alone. Match the execution context and resource ownership needed for the behavior being claimed; verify cleanup.
 
 Isolate working directories, environment variables, and other process-wide state when tests run concurrently. Use a subprocess when the integration boundary requires different process state; preserve cleanup and failure diagnostics.
 

@@ -95,28 +95,3 @@ high     = { reasoning_effort = "high" }
 xhigh    = { reasoning_effort = "high" }
 max      = { reasoning_effort = "max" }
 adaptive = { reasoning_effort = "high" }
-
-[cpa-antigravity]
-display_name = "CPA Antigravity"
-protocol = "google"
-base_url = "https://cpa.eternasuno.ddns.net/v1beta"
-api_key_env = "CPA_API_KEY"
-discover_models = false
-
-[[cpa-antigravity.models]]
-id = "gemini-3.8-flash-high"
-context_window = 1048576
-max_output_tokens = 65536
-supports_thinking = true
-requires_thinking = true
-
-
-[cpa-antigravity.models.thinking_fields]
-off      = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
-minimal  = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
-low      = { generationConfig = { thinkingConfig = { thinkingLevel = "low" } } }
-medium   = { generationConfig = { thinkingConfig = { thinkingLevel = "medium" } } }
-high     = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
-xhigh    = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
-max      = { generationConfig = { thinkingConfig = { thinkingLevel = "high" } } }
-adaptive = { generationConfig = { thinkingConfig = { thinkingLevel = "medium" } } }

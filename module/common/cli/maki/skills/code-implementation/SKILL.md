@@ -30,8 +30,6 @@ Respect the architecture already established by the codebase.
 
 Do not introduce new architectural layers, interfaces, services, or capability abstractions as a side effect of a local implementation unless the task actually requires a design change.
 
-Follow the project's established structure. The parent agent must settle major structural changes before implementation depends on them; do not invent architecture as a side effect of a local edit.
-
 ## Readability
 
 - Separate top-level declarations clearly.
@@ -58,8 +56,6 @@ Do not simplify away:
 - performance requirements;
 - meaningful test seams.
 
-On a permission-denied failure, stop the blocked operation and report the operation, target path, and permission boundary. Continue only through an authorized resolution; do not switch tools, paths, or privileges to bypass the restriction.
-
 ## Workflow
 
 Before modifying code:
@@ -69,7 +65,7 @@ Before modifying code:
 3. Preserve pre-existing unrelated work.
 4. Fix shared root causes rather than isolated symptoms when practical.
 5. Keep the diff focused.
-6. Derive verification commands, targets, tool versions, and language dialects from the current repository and environment configuration. Use the declared development environment when available. Select formatter, lint, type, build, and test checks to match the affected behavior, change risk, and project practice; do not mechanically run every check for a tiny edit. Distinguish configuration loading from actual execution or attachment, and report existing warnings or formatting differences separately from regressions.
+6. Derive verification commands, targets, tool versions, and language dialects from the current repository and environment configuration. Use the declared development environment when available. Select formatter, lint, type, build, and test checks to match the affected behavior, change risk, and project practice; do not mechanically run every check for a tiny edit. Report existing warnings or formatting differences separately from regressions.
 7. Inspect the final diff against the requested behavior.
 
 ## Conditional references

@@ -10,7 +10,7 @@ For self-initiated edits, present the target, observable evidence, smallest chan
 
 ## Apply and validate
 
-1. Locate editable source. With Nix/Home Manager, inspect deployment configuration and symlink targets; edit repository-owned files, not generated configuration or Nix store contents.
+1. Locate the maintained instruction source. If the active copy is generated or deployed from elsewhere, trace it back and edit the source rather than the generated copy.
 2. Read current instructions and only relevant references. Preserve unrelated user work and stay within authorization.
 3. Identify a scenario exposing the failure. Establish a baseline/fresh-context comparison when useful, not for every edit mechanically.
 4. Apply focused changes without cross-skill prerequisites or shared rule layers merely to remove small repetition. Preserve safety, compatibility, resources, and user work.

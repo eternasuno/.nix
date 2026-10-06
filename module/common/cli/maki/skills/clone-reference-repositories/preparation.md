@@ -89,8 +89,6 @@ For an exact commit, use a full clone when a shallow clone cannot obtain the com
 
 Do not use Git submodules or Git subtree. The parent repository must not track the cloned source.
 
-Honor network, credential, disk-space, and approval restrictions of the current environment.
-
 ## Treat clones as read-only references
 
 Use cloned repositories to inspect:

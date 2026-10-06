@@ -19,7 +19,7 @@ Design the smallest structure that expresses real responsibilities and boundarie
 
 1. Identify the required behavior, existing structure, business decisions, external mechanisms, and ownership.
 2. Determine whether structural change is necessary. A local change may need none.
-3. Compare meaningful alternatives and select the smallest design that represents the actual boundaries; the parent agent owns overall choices and tradeoffs.
+3. Compare meaningful alternatives and select the smallest design that represents the actual boundaries.
 4. Define affected contracts, data/failure flow, dependency direction, and resource lifetimes. Distinguish runtime calls from static dependencies in diagrams.
 5. Check the proposed structure against concrete normal, failure, and cleanup paths. For implemented changes, inspect the actual dependency direction and public surface.
 

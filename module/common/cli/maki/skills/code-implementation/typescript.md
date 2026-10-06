@@ -4,6 +4,8 @@ Apply these rules to TypeScript, TSX, and JavaScript governed by TypeScript tool
 
 ## Types
 
+Use `type` aliases rather than `interface` or type-only classes for ordinary TypeScript type declarations. This rule governs type declarations, not classes that implement runtime behavior, such as error constructors.
+
 Prefer inference when the inferred type is clear and stable.
 
 Add explicit types when they:
@@ -15,6 +17,8 @@ Add explicit types when they:
 - document a non-obvious domain requirement.
 
 Avoid redundant annotations that merely repeat obvious inference.
+
+For declaration rewrites involving nested TypeScript syntax, use syntax-aware edits or uniquely anchored exact replacements rather than broad regex substitution. Generic constraints can contain braces before the declaration body; parse-check representative nested cases before applying a rewrite broadly. Leave ambiguous or nonmatching declarations unchanged rather than guessing.
 
 ## Domain states
 

@@ -32,9 +32,10 @@ Do not introduce new architectural layers, interfaces, services, or capability a
 
 ## Readability
 
-- Separate top-level declarations clearly.
+- Separate top-level declarations with one blank line.
 - Use explicit block bodies where required by repository convention.
-- Use whitespace to expose control-flow stages without adding visual noise.
+- Leave one blank line after a complete control-flow block, such as `if`, `for`, `while`, `switch`, or `try`, when another statement follows in the same enclosing block. Do not insert a blank line before a connected `else`, `catch`, or `finally`, or before the enclosing closing brace.
+- Leave one blank line before `return` when another statement precedes it in the same block. Do not add a leading blank line when `return` is the first statement.
 - Keep related branches, handlers, and continuations together.
 - Prefer semantic intermediate names over dense nested expressions when the stages matter.
 - Avoid unnecessary representation conversions.
@@ -62,7 +63,7 @@ Before modifying code:
 
 1. Read the relevant implementation and trace the real call path.
 2. Identify the smallest change that satisfies the required behavior.
-3. Preserve pre-existing unrelated work.
+3. Preserve pre-existing unrelated work, including Git index state. Inspect staging before rename operations; if they introduce staging, undo only those additions without disturbing pre-existing or partially staged changes. Do not broadly reset a previously populated index; stop rather than guess when its state is ambiguous.
 4. Fix shared root causes rather than isolated symptoms when practical.
 5. Keep the diff focused.
 6. Derive verification commands, targets, tool versions, and language dialects from the current repository and environment configuration. Use the declared development environment when available. Select formatter, lint, type, build, and test checks to match the affected behavior, change risk, and project practice; do not mechanically run every check for a tiny edit. Report existing warnings or formatting differences separately from regressions.

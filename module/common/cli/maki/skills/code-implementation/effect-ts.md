@@ -18,6 +18,8 @@ Do not wrap an existing Effect merely to make it look consistent with neighborin
 
 When architecture has established a capability as a service, follow the repository's service-definition convention.
 
+Keep Effect Service definitions in their framework-required class form.
+
 Do not create a service simply because a function returns an Effect.
 
 Plain functions and Effect-returning functions remain appropriate when no independent capability boundary exists.

@@ -4,14 +4,24 @@ Apply to web markup, styles, layout, and UI interactions, including framework te
 
 When the project uses daisyUI, or its adoption is authorized, read [daisyUI rules](daisyui-rules.md) for all HTML/JSX and Tailwind UI work. Do not load it for unrelated projects.
 
+When the project uses SolidJS, read [SolidJS rules](solidjs-rules.md) for components, reactivity, UI state, forms, and data flow. Do not load it for non-Solid projects.
+
 ## State and interaction
 
-- Preserve the existing UI stack and design system. Prefer native HTML and CSS when they meet the required semantics and browser targets; do not add JavaScript state or dependencies for behavior they already provide.
-- Keep one authoritative owner for each state. Do not mirror native open/checked state in framework state unless application integration requires it. Shared state, persistence, URL synchronization, and asynchronous workflows belong in application state.
+- Preserve the existing UI stack and design system. Prefer semantic HTML/native behavior, then CSS selectors/pseudo-classes, then DOM properties/native browser APIs, then JavaScript/framework application state. Move to the next layer only when the earlier layer cannot meet the actual requirement, including semantics, accessibility, interaction, and project browser targets.
+- Reuse browser-owned UI state rather than copying it into application state for styling. Consider `<details>`/`open`, `<dialog>`/`showModal()`/`close()`/`:open`, Popover API `popover`/`popovertarget`/`:popover-open`, checkbox/radio `:checked`, `:disabled`, `:focus-visible`, and native validity pseudo-classes when supported by project browser targets.
+- Keep one authoritative owner for each state; do not maintain bidirectional mirrors of DOM/native and framework state. Promote state only when business logic, cross-component coordination, persistence, URL synchronization, or asynchronous workflows require application ownership; merely reading or controlling native state through its API does not require a duplicate.
 - Choose elements by meaning: buttons for actions, anchors for navigation, native controls for input. A checkbox is not a modal; radio inputs and CSS visibility alone do not implement accessible tabs.
 - Preserve labels, accessible names, keyboard operation, visible focus, reading order, and form submission. Do not hide required interactive controls from keyboard or assistive-technology users.
 - Use JavaScript when required for focus management, keyboard navigation, or synchronized accessibility state. A styled component or ARIA role alone does not implement an interaction contract.
-- Keep client validation feedback associated with the field; do not show errors on untouched fields. Client validation does not replace server validation of untrusted input.
+
+## Forms and validation
+
+- Prefer native constraint validation for ordinary forms: `required`, appropriate types such as `email`/`url`, `min`/`max`, `minlength`/`maxlength`, `pattern`, and other applicable HTML constraints. Use `ValidityState` and `checkValidity()` instead of duplicating those constraints or their validation state in JavaScript; use `setCustomValidity()` for custom constraints and clear the custom error when resolved.
+- Use CSS `:invalid`/`:valid` and, when supported, `:user-invalid`/`:user-valid` for validation presentation. `:invalid` matches whenever a constraint fails, including an untouched empty required input; prefer `:user-invalid` to defer error UI until sufficient user interaction. Keep feedback associated with its field; do not show initial untouched-field errors.
+- When a submit attempt must reveal every invalid field, use one form-level submitted/attempted state or class with a selector such as `form.submitted :invalid`, alongside normal `:user-invalid` feedback. Do not create per-field touched/invalid state for behavior the browser already provides.
+- For custom error UI backed by the browser validation engine, use `<form novalidate>` to disable automatic constraint validation and native validation UI on submission, not input constraints, `ValidityState`, or validity pseudo-classes. In the submit handler, use `form.checkValidity()`; it returns validity and fires relevant `invalid` events without showing native validation popups. Prevent business submission on failure; read and submit data only after validation passes. Use `reportValidity()` only when browser-provided validation UI is explicitly wanted.
+- Client validation does not replace server validation of untrusted input.
 
 ## Styling and compatibility
 

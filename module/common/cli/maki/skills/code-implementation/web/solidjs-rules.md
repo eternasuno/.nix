@@ -9,6 +9,9 @@ Apply to components, reactivity, UI state, forms, and data flow targeting SolidJ
 
 ## Reactive state ownership
 
+- Prefer declarative code. Use signals or other appropriate Solid APIs when they make state, dependencies, and UI behavior more declarative than imperative listeners or DOM mutation. Do not reject an API merely because it adds reactive state; preserve clear state ownership, cleanup, correctness, and acceptable performance, and avoid redundant mirrors or abstractions that only appear declarative.
+- Do not mechanically avoid signals. Prefer a signal when it materially simplifies dependent fields, complex listeners, or imperative DOM coordination with acceptable performance cost. Judge the final implementation and state ownership, not signal count. A password signal driving an escaped confirmation pattern is appropriate without controlling every input or maintaining per-field validity signals.
+
 - Use each signal for a genuinely independent reactive/application state boundary. Independently changing application state consumed by other reactive computations or UI belongs in signals; do not copy browser-owned or DOM state into the Solid reactive graph merely for styling or submission.
 - Derive values from existing reactive state with a plain derived accessor, or `createMemo` when caching has value. Do not maintain derivable duplicate state through synchronized signals or effects. Use function-form `createSignal` only when a writable derived value is actually required.
 - Minimize duplicate state and unnecessary reactive dependencies, not signal count. Do not combine unrelated state into one large object signal to reduce the count; use stores for structured data needing property-level updates.
@@ -22,6 +25,7 @@ Apply to components, reactivity, UI state, forms, and data flow targeting SolidJ
 - Prefer `<Show>` for conditional subtrees and `<Switch>`/`<Match>` for multiple branches. Simple inline conditions are valid; do not rewrite them mechanically or claim they are inherently non-reactive.
 - Prefer `<For>` for dynamic lists whose item identities should be preserved; its item is a value and its index is an accessor. Use `<For keyed={false}>` when positions are stable but their values change; its item is an accessor and its index is a stable number. Do not default to `.map()` for reactive list rendering.
 - Provide context through the context component, such as `<Theme value={value}>`. Use the object/array form of `class` for conditional classes and `ref` callbacks or factories for imperative element integration; compose callbacks with ref arrays when needed.
+- Define complex business forms explicitly and compose simple controls and field-group components. Do not generate fixed business forms from configuration arrays or build a parameter-switched universal form; dynamic rendering remains appropriate for actual dynamic data.
 - Keep components focused and follow existing naming, typing, and module conventions. Do not mandate per-component directories, barrel exports, renderless components, or new state libraries without a concrete need.
 
 ## Effects, updates, and lifecycle

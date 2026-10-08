@@ -22,6 +22,17 @@ Implement only required behavior. Within the affected execution path, prefer sim
 - Check existing dependencies before adding one. For authorized installation or upgrades, choose the newest release compatible with the project's runtime, framework, dependency constraints, and required behavior. A local edit does not authorize an upgrade.
 - Check version-matched documentation for unfamiliar or version-sensitive APIs; do not copy API examples without checking their contracts. Add comments only when permitted and when code cannot explain a constraint or decision; do not narrate visible behavior.
 
+## Function composition and workflow design
+
+These rules apply to all code, not only web development.
+
+- Prefer function composition: define a distinct named function for each business workflow, select the appropriate workflow at the entry point, and call small reusable step functions in execution order. Keep selection at the entry boundary rather than spreading mode checks throughout the workflow.
+- Do not consolidate similar workflows into a giant function that switches behavior through parameters, flags, option bags, or injected callbacks. Similar structure alone does not establish a shared contract; prefer separate workflow functions when business details differ, and extract only coherent steps that actually share a contract.
+- Keep parameters simple and concrete. Avoid nested function types, unnecessary generics, and configuration objects that hide the operation. Preserve standard library types and meaningful validation; do not replace explicit contracts with unchecked values merely to shorten a signature.
+- Avoid application-defined callback workflow wrappers that scatter business logic. Framework event handlers, lifecycle callbacks, subscriptions, and established library callback contracts remain appropriate; do not replace them with custom machinery to satisfy this preference.
+- For genuinely large modules and capability boundaries, prefer mature dependency-injection mechanisms such as Effect Services and Layers. Do not build a custom DI framework or add service layers to a small workflow.
+- Keep structure-specific assumptions in their owning module. Do not expose general-purpose helpers that silently depend on particular DOM field names, object layouts, or caller sequencing.
+
 ## Code layout — highest-priority formatting rules
 
 These blank-line rules take precedence over other formatting preferences in this skill and repository style defaults. Higher-priority governing instructions and language syntax still apply. Do not change unrelated files or global formatter configuration to enforce them; report a formatter conflict rather than silently dropping the rules.

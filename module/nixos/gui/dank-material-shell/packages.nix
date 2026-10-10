@@ -9,5 +9,11 @@ in {
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [slurp jq satty dgop];
+    xdg.configFile."satty/config.toml".text = ''
+      [font]
+      family = "Maple Mono NL NF CN"
+      style = "Regular"
+      fallback = ["Maple Mono NL NF CN"]
+    '';
   };
 }

@@ -1,0 +1,5 @@
+template
+.gitignore
+opencode.json
+.opencode
+/flake.lock

@@ -10,7 +10,7 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Require only services used by the operation, not the caller's entire environment. Acquire them inside the Effect that uses them.
 - Compose Layers without changing dependency order, sharing, or resource lifetime. Do not merge providers merely for uniformity or require a cross-project naming suffix.
 - Prefer a framework-provided Layer when it expresses the required behavior directly. Provide independent dependencies at the composition root; retain nesting for actual dependency ordering, not one-use category groups.
-- Before writing a provider Service, check version-matched official adapters and compose their Layers when the protocol matches. Separate application policies (endpoint shape, timeout, credentials, redirects, tracing propagation and response lifetime) from provider protocol logic; decorate only the missing policy, not the whole client. Test actual outgoing headers under an active span for browser CORS regressions.
+- Before writing a provider Service, check version-matched official adapters and compose their Layers when the protocol matches. Separate application policies (endpoint shape, timeout, credentials, redirects, tracing propagation and response lifetime) from provider protocol logic; decorate only the missing policy, not the whole client.
 - Use the direct supported adapter for external callbacks, throws, or Promise rejections. Do not add intermediate Promise conversions when a direct adapter satisfies cancellation and cleanup requirements.
 
 ## Failures and resources

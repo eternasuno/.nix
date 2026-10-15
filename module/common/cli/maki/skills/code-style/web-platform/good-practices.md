@@ -2,10 +2,6 @@
 
 Apply to web markup, styles, layout, and UI interactions, including framework templates and JSX/TSX.
 
-When the project uses daisyUI, or its adoption is authorized, read [daisyUI rules](daisyui-rules.md) for all HTML/JSX and Tailwind UI work. Do not load it for unrelated projects.
-
-When the project uses SolidJS, read [SolidJS rules](solidjs-rules.md) for components, reactivity, UI state, forms, and data flow. Do not load it for non-Solid projects.
-
 ## State and interaction
 
 - Preserve the existing UI stack and design system. Prefer semantic HTML/native behavior, then CSS selectors/pseudo-classes, then DOM properties/native browser APIs, then JavaScript/framework application state. Choose the simplest implementation meeting semantics, accessibility, interaction, and project browser targets. Use framework state when it materially simplifies complex listeners or DOM coordination without significant performance cost; this preference order is not a prohibition on signals.

@@ -1,0 +1,14 @@
+# Architecture Code Smells
+
+Apply when reviewing responsibilities, workflows, boundaries, contracts, dependencies, or ownership. Trace normal, failure, and cleanup paths before proposing restructuring.
+
+- **Business policy in transport or adapters:** follow decisions and representations from entries through workflows and external mechanisms. Move policy only when a meaningful business responsibility is mixed with protocol translation; do not force every call through every logical role.
+- **Giant mode-switched workflow:** compare actual business variants. Keep distinct workflows separate and share coherent operations only where contracts match.
+- **Ceremonial layers or interfaces:** identify the responsibility, coupling removed, invariant, capability, lifetime, or current consumer. Collapse layers whose only purpose is moving code, speculative replacement, or mocking. Small programs may keep several roles in one file.
+- **Mechanism-shaped domain boundaries:** inspect SDK types, database rows, transport payloads, and external error types leaking through business contracts. Translate at a useful boundary unless the representation is intentionally part of the contract; avoid gratuitous copies of genuinely identical representations.
+- **Dependency direction contradicts ownership:** inspect static imports separately from runtime calls. Business code can depend on capability contracts; adapters implement those contracts. Do not infer reversed static dependencies merely from callback or injected runtime execution.
+- **Unclear data or resource ownership:** identify who owns mutation, normalization, persistence, retries, initialization, cleanup, and error translation. Fix duplicated application initialization, accidental global lifetimes, or shared mutable state with concrete affected paths.
+- **Lost or misclassified failures:** trace domain failures, infrastructure failures, defects, and cancellation through boundaries. Preserve information until an intentional translation point and retain required recovery or compensation.
+- **Redundant or missing validation:** distinguish transport parsing, representation checks, domain invariants, and capability failures. Verify all entry paths before deleting repeated checks, and do not treat types as runtime enforcement.
+- **Physical layout imposed as architecture:** require an ownership, comprehension, evolution, deployment, technology, reuse, or testing benefit before splitting folders, packages, services, or modules. Do not impose this model on a different suitable existing architecture.
+- **Custom infrastructure without a current need:** compare platform and existing dependency capabilities before introducing protocol, concurrency, persistence, parsing, or DI machinery. Do not add a dependency merely to replace a few clear lines of domain logic.

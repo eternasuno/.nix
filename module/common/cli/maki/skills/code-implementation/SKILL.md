@@ -10,7 +10,7 @@ Implement only required behavior. Within the affected execution path, prefer sim
 ## Implementation rules
 
 - Read the implementation, callers, and existing tests before changing behavior. Fix a shared cause rather than adding caller-specific patches when the callers share the same contract.
-- Add branches, options, helpers, abstractions, or dependencies only for a current requirement or an existing consumer. Remove code made unnecessary by the change; do not add extension points for hypothetical uses.
+- Add branches, options, helpers, abstractions, or dependencies only for a current requirement or an existing consumer. Remove code made unnecessary by the change; do not add extension points for hypothetical uses. Before adding environment guards or filesystem prechecks, verify whether the underlying API already handles absent resources; do not justify branches with unsupported hypothetical deployment states.
 - Keep operations in execution order. Use early returns to reduce nesting without changing cleanup or side-effect ordering. Do not replace simple conditionals with dispatch frameworks or callback machinery.
 - Name values and operations for their business meaning. Split expressions that mix distinct steps; introduce intermediate values only when their names explain intent or expose data flow.
 - Extract helpers for reuse, a named business step, or complex logic that obscures the caller. Inline helpers that only forward arguments or rename trivial expressions. A single caller alone is not a reason to inline.

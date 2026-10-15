@@ -14,4 +14,5 @@ Apply to TypeScript, TSX, and JavaScript governed by TypeScript tooling.
 ## Edits and modules
 
 - For bulk rewrites of nested declarations, use syntax-aware tools or uniquely anchored exact replacements. Check nested examples; leave ambiguous matches unchanged rather than guessing.
+- Distinguish TypeScript file selection, workspace package linking/injection, bundler externalization, and deploy packaging. Source-exporting packages must be compiled/bundled or supported by the actual runtime; `tsconfig.exclude` does not control externalization. Check the pinned package-manager and bundler contracts before adding legacy flags, injection, or `noExternal`, and verify emitted runtime imports.
 - Use existing module boundaries and direct imports. Do not add barrel files, wrapper modules, or aliases merely to forward existing exports.

@@ -16,7 +16,8 @@ maki.setup({
   provider = {
     allowed_models = {
       "openai/gpt-6*",
-      "commandcode/*",
+      "commandcode-anthropic/*",
+      "commandcode-openai/*",
       "openrouter/openrouter/free",
     },
   },

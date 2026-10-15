@@ -34,7 +34,7 @@ Pass the exact model through the `task` tool's `model` parameter and the tool-ac
   - Return concrete findings and suggested corrections, with severity, rationale, and source or file/line evidence. Review only; never modify code or apply fixes.
 
 - **UI designer**
-  - Model: `commandcode/google/gemini-3.8-flash`.
+  - Model: `commandcode-anthropic/anthropic/claude-haiku-5-5`.
   - `subagent_type`: `research`.
   - Use when an interface needs a detailed visual or interaction design within the main agent's requirements and constraints.
   - Return a detailed design covering relevant layout, component hierarchy, styling, responsive behavior, interaction states, and accessibility so implementation can follow it. Do not modify code or implement the UI.
@@ -53,6 +53,7 @@ Pass the exact model through the `task` tool's `model` parameter and the tool-ac
 3. Batch independent tasks. Give concurrent writers disjoint file ownership or isolate their work; sequence shared-contract changes that are not independent.
 4. When independent implementation tasks need separate branches/worktrees, read [Worktree workflow](worktree-workflow.md). Ordinary delegation and read-only tasks do not require worktrees.
 5. Report task/model failures and incomplete verification. Do not invent fallback candidates or treat failed work as complete.
-6. Evaluate and reconcile returned results before integration. Verify decision-critical evidence and key behavior yourself; do not merely relay reports or mechanically repeat every investigation.
+6. Require verification against the final integrated implementation; tests passing against the old implementation do not validate a pending migration. Never restore dirty files from HEAD to recover a failed edit; report the conflict and preserve current work.
+7. Evaluate and reconcile returned results before integration. Verify decision-critical evidence and key behavior yourself; do not merely relay reports or mechanically repeat every investigation.
 
 Done when all assigned tasks have a checked outcome, their results have been combined within the authorized scope, integration conflicts are resolved or disclosed, and the main agent has evaluated acceptance and remaining uncertainty.

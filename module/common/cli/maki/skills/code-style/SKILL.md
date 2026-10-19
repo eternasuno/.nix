@@ -37,7 +37,8 @@ References are additive. For example, a Solid form can need general, web-platfor
 | Testing: tests, coverage, fakes, or test boundaries | [Good practices](testing/good-practices.md) | [Code smells](testing/code-smells.md) |
 | Web platform: HTML, CSS, DOM, forms, browser behavior, or accessibility | [Good practices](web-platform/good-practices.md) | [Code smells](web-platform/code-smells.md) |
 | SolidJS: Solid 1 components, reactivity, lifecycle, or framework data flow; verify target version | [Good practices](solidjs/good-practices.md) | [Code smells](solidjs/code-smells.md) |
-| daisyUI: markup, themes, or Tailwind UI in a daisyUI project, or authorized adoption | [Good practices](daisyui/good-practices.md) | [Code smells](daisyui/code-smells.md) |
+| Tailwind CSS: utility classes, responsive variants, or configuration, with or without a component library | [Good practices](tailwindcss/good-practices.md) | [Review rules](tailwindcss/good-practices.md) |
+| daisyUI: component markup, themes, or configuration in a daisyUI project, or authorized adoption | [Good practices](daisyui/good-practices.md) | [Code smells](daisyui/code-smells.md) |
 
 ## Review scope and evidence
 

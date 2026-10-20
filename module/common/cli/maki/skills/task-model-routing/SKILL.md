@@ -34,7 +34,7 @@ Pass the exact model through the `task` tool's `model` parameter and the tool-ac
   - Return concrete findings and suggested corrections, with severity, rationale, and source or file/line evidence. Review only; never modify code or apply fixes.
 
 - **UI designer**
-  - Model: `commandcode-anthropic/anthropic/claude-haiku-5-5`.
+  - Model: `commandcode-anthropic/claude-haiku-5-5`.
   - `subagent_type`: `research`.
   - Use when an interface needs a detailed visual or interaction design within the main agent's requirements and constraints.
   - Return a detailed design covering relevant layout, component hierarchy, styling, responsive behavior, interaction states, and accessibility so implementation can follow it. Do not modify code or implement the UI.

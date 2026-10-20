@@ -21,7 +21,7 @@ Use subagents for bounded contributions to a task the main agent has understood 
 Pass the exact model through the `task` tool's `model` parameter and the tool-access type through `subagent_type`. The following are task roles, not additional tool-access types.
 
 - **Research and code exploration**
-  - Model: `openai/gpt-6-luna`.
+  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash`.
   - `subagent_type`: `research`.
   - Use when one specific aspect needs investigation, such as an execution path, dependency API, existing convention, or observed behavior. Split unrelated investigation aspects into separate tasks.
   - Inspect only the assigned aspect and return objective facts, relevant source or file/line evidence, constraints, and explicit unknowns. Do not modify files.
@@ -40,7 +40,7 @@ Pass the exact model through the `task` tool's `model` parameter and the tool-ac
   - Return a detailed design covering relevant layout, component hierarchy, styling, responsive behavior, interaction states, and accessibility so implementation can follow it. Do not modify code or implement the UI.
 
 - **Implementation**
-  - Model: `openai/gpt-6-luna`.
+  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash`.
   - `subagent_type`: `general`.
   - Use to modify code for one small, precisely specified functional module in one or a few files, including its necessary tests or configuration.
   - Follow the established solution, contracts, and UI design where applicable. Return changed paths, verification results, and remaining risks; report missing decisions or scope expansion rather than redesigning the overall solution.

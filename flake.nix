@@ -6,6 +6,7 @@
     hostConfigs = [
       (import ./hosts/framework inputs)
       (import ./hosts/MacBook-Air inputs)
+      (import ./hosts/nixos inputs)
     ];
   in
     lib.foldl lib.recursiveUpdate {} hostConfigs;

@@ -7,7 +7,7 @@ discover_models = false
 
 [[commandcode-anthropic.models]]
 id = "claude-haiku-5-5"
-context_window = 100000
+context_window = 1000000
 max_output_tokens = 65536
 supports_thinking = true
 requires_thinking = true

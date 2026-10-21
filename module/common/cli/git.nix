@@ -5,7 +5,7 @@ in {
     programs.git = {
       enable = true;
       settings.user = {
-        name = "${username}";
+        name = "eternasuno";
         email = "${email}";
       };
     };

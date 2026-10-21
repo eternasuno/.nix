@@ -2,7 +2,7 @@
 
 Read installation preparation only when the executable is unavailable; read command examples only for the relevant operation. Verify syntax against the active version.
 
-If the command works, use the installed executable. Otherwise, prefer temporary task-local use; do not install persistently or modify PATH without explicit user confirmation:
+If unavailable, use a task-local release binary:
 
 1. Detect the operating system and architecture (`uname -s` and `uname -m`, or the Windows equivalents).
 2. Select a specific release tag and matching archive from trusted release metadata; record the tag and asset instead of using an unpinned latest-download URL. Prefer the normal rendering archive; select `-stealth` only when explicitly requested, and `-no-render` only when rendering is unnecessary.
@@ -10,8 +10,6 @@ If the command works, use the installed executable. Otherwise, prefer temporary 
 4. Keep both `obscura` and `obscura-worker` together; `scrape` may require the worker.
 5. Run the temporary executable by absolute path and verify `--version` and `--help`. Clean up the temporary directory after the task.
 6. Install persistently only after explicit confirmation. Do not silently overwrite an existing executable or modify PATH/shell profiles; report every path changed.
-
-Use release binaries only; no source-build instructions are needed.
 
 ## Command-line usage
 
@@ -43,3 +41,13 @@ obscura mcp --http --port 3000  # bind to loopback only
 - Use `--wait N` for a fixed delay in seconds and `--timeout N` to bound navigation.
 
 For any option not shown here, rely on the downloaded version's `--help` output rather than assuming flags.
+
+## CJK and other non-Latin text
+
+Obscura's native renderer embeds only Latin fonts (Liberation Sans/Serif/Mono and DejaVu Sans) and never loads OS fonts. Confirmed on 0.2.2 and still present upstream in 0.2.5: Chinese, Japanese, Korean, and other non-Latin text renders as tofu boxes (□) in `--screenshot`, PDFs, screencasts, and MCP screenshots. Text dumps are unaffected because they are plain UTF-8.
+
+OS font installation and fontconfig settings do not affect this renderer.
+
+The recorded webfont issue also skips CJK-only `unicode-range` subsets; only faces with an absent range or a range overlapping ASCII are considered.
+
+Await the upstream fix. After upgrading, record the version and inspect representative CJK output before marking the issue resolved.

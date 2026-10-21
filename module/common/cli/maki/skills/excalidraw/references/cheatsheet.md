@@ -5,11 +5,12 @@
 - Canvas base URL: `EXPRESS_SERVER_URL` (default `http://127.0.0.1:3000`); CLI also accepts `--url <canvasUrl>`
 - Canvas health: `GET /health` or `npx -y mcp-excalidraw-server status`
 - Auto-start: any canvas-touching CLI command starts the server if it's down (opt out with `EXCALIDRAW_NO_AUTOSTART=1`)
+- Before work, run `status` and record pre-existing services/tabs plus any this task starts. `stop` terminates the canvas server, so use it only when this task started it; never stop user-owned resources or close their tabs.
 
 ## CLI Reference
 
 `npx -y mcp-excalidraw-server <command>` (or `excalidraw-canvas <command>` after `npm i -g`).
-JSON results on stdout — except `describe` (plain text) and raw-content output when `--out` is omitted (`export` scene JSON, `screenshot --format svg`). Diagnostics on stderr. Exit codes: 0 ok, 1 error, 2 usage, 3 canvas unreachable, 4 browser tab required. Explicit `start` overrides `EXCALIDRAW_NO_AUTOSTART=1`.
+JSON results on stdout — except `describe` (plain text) and raw-content output when `--out` is omitted (`export` scene JSON, `screenshot --format svg`). Diagnostics on stderr. Exit codes: 0 ok, 1 error, 2 usage, 3 canvas unreachable, 4 browser tab required (visual verification blocked — report it and do not claim complete success). Explicit `start` overrides `EXCALIDRAW_NO_AUTOSTART=1`.
 
 ### Server
 
@@ -36,10 +37,10 @@ JSON results on stdout — except `describe` (plain text) and raw-content output
 |---------|-------------|
 | `describe` | AI-readable scene summary (ids, positions, labels, connections) — plain text |
 | `screenshot` | PNG/SVG capture; `--out f.png`, `--format png\|svg`, `--no-background`; PNG without `--out` → temp file path in JSON, SVG without `--out` → raw SVG (**browser tab required**) |
-| `export [--out f.excalidraw]` | Scene as .excalidraw JSON (stdout without `--out`) |
+| `export [--out f.excalidraw]` | Local scene export as .excalidraw JSON (stdout without `--out`); does not upload |
 | `import [file\|-] [--replace]` | Import .excalidraw JSON (merge by default) |
 | `mermaid [file\|-]` | Render Mermaid onto the canvas (**browser tab required**) |
-| `share` | Encrypted upload → shareable excalidraw.com URL |
+| `share` | Encrypted external upload → shareable excalidraw.com URL; use only on explicit user request with an authorized content scope |
 | `clear --yes` | Wipe the canvas |
 | `snapshot save\|list\|restore [name]` | Named canvas snapshots |
 
@@ -100,7 +101,7 @@ JSON results on stdout — except `describe` (plain text) and raw-content output
 | `export_scene` | Export to .excalidraw JSON | (optional) `filePath` |
 | `import_scene` | Import from .excalidraw JSON | `mode` ("replace"\|"merge"), `filePath` or `data` |
 | `export_to_image` | Export to PNG/SVG (needs browser) | `format` ("png"\|"svg"), (optional) `filePath`, `background` |
-| `export_to_excalidraw_url` | Upload & get shareable excalidraw.com URL | (none) |
+| `export_to_excalidraw_url` | Upload & get shareable excalidraw.com URL (external upload; explicit user request only) | (none) |
 
 ### State Management
 

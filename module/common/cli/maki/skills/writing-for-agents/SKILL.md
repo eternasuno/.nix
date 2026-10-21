@@ -13,7 +13,7 @@ Write actionable instructions with clear triggers and checkable outcomes. Preser
 2. Separate responsibilities from neighboring skills or documents. Avoid mandatory cross-skill loading chains; a few necessary repeated rules are cheaper than a shared routing layer.
 3. Write the smallest useful workflow and checkable completion criteria. Keep core scope, safety rules, execution steps, and completion in the main file.
 4. Put low-frequency branches, long examples, theory, and command tables in internal references. Give each reference an explicit reading condition; multiple conditions may match, but do not default to loading everything.
-5. Remove duplicates, stale constraints, directly queryable environment facts, and rules with no useful behavioral effect. Preserve compatibility, security, user work, and resource lifecycle boundaries.
+5. Remove duplicates, stale constraints, directly queryable environment facts, and prohibitions without a plausible failure mode or useful behavioral effect. Preserve compatibility, security, user work, and resource lifecycle boundaries.
 6. Validate representative matching and non-matching scenarios, including a risky or ambiguous branch. Check links and contradictions; report what was actually tested and what remains uncertain.
 
 Use precise steps for fragile or irreversible actions and principles for judgment-heavy work. Small useful repetition is acceptable; do not pursue a fixed word count or compression ratio.

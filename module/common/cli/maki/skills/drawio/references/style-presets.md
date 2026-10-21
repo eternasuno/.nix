@@ -2,9 +2,7 @@
 
 A **style preset** is a named JSON file capturing visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in conventions in SKILL.md's color/shape/edge tables.
 
-Read this file when:
-- The user asks for a specific look ("dark", "hand-drawn", "corporate", "colorblind-safe", or a preset name)
-- You've resolved an active preset in Step 0 and need the application rules
+Read this file when generating a new diagram, including the default look. Existing diagrams retain their styling unless re-theming is requested.
 
 ## Locations and lookup order
 
@@ -20,6 +18,8 @@ Read this file when:
 | `colorblind-safe` | Okabe-Ito palette, distinguishable under color-vision deficiency, thicker strokes |
 
 A user preset shadows a built-in of the same name. Only user presets can have `"default": true`.
+
+An explicit user-selected look takes precedence. Otherwise inspect user preset JSON files, when the directory exists, for `"default": true`: select the sole marked preset, ask the user to choose if multiple are marked, or resolve the name `default` through the lookup order when none is marked. Read and validate the selected JSON before applying it; do not load every built-in preset. Report malformed user JSON instead of silently ignoring a possible default.
 
 **Name normalisation:** always lowercase a preset name before looking up files.
 

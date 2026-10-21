@@ -5,23 +5,25 @@ description: Design structure, implement, refactor, fix, test, or configure code
 
 # Code Style
 
-Use one set of standards for structural design, implementation, and review. Prefer the simplest readable structure and final code that satisfy actual requirements, not the fewest lines or smallest diff. Stay within the affected execution path; do not refactor unrelated code.
+Use one set of standards for structural design, implementation, and review. Prefer the simplest readable structure and final code that satisfy actual requirements, not the fewest lines or smallest diff. Stay within the affected execution path.
 
 ## Modes and authority
 
-- Design and implementation: resolve relevant responsibilities, contracts, and lifetimes as part of coding. Compare meaningful alternatives when a structural decision is needed; do not impose a separate architecture phase on local edits. A design-only request does not authorize implementation.
-- Review: inspect and report, read-only by default. A request to review does not authorize fixes, dependency changes, or configuration changes.
-- Review and fix: implement verified improvements within the user's authorized scope, then validate them. Do not request approval again for already authorized changes.
+- Design and implementation: resolve relevant responsibilities, contracts, and lifetimes as part of coding. Compare meaningful alternatives for structural decisions without adding a separate architecture phase to local edits. A design-only request does not authorize implementation.
+- Review: inspect and report only; a review request does not authorize fixes, dependency changes, or configuration changes.
+- Review and fix: implement verified improvements within the user's authorized scope, then validate them.
+
+Apply all rules as written, including their conditions and exceptions; `prefer` specifies the required choice order. Rewrite every discovered violation when editing is authorized, regardless of existing conventions or whether the code otherwise needed changing. In read-only review, report the required rewrite.
 
 Investigate repository-answerable facts. Resolve material product uncertainty with the user rather than inventing requirements; choose reversible local technical details from evidence.
 
 ## Workflow
 
 1. Establish scope and mode. Read affected code, callers, tests, manifests, installed versions, and governing instructions. Preserve unrelated user changes and the Git staging state.
-2. Load the matching references below. For implementation or design, read good practices; for review, read code smells. When fixing a finding or needing its intended replacement, read the corresponding good practices. Do not load every domain by default.
+2. Load the matching references below: good practices for design or implementation, code smells for review. The general code smells contain the complete mandatory blank-line rules. When fixing a finding or needing its intended replacement, read the corresponding good practices. Load only applicable domains.
 3. Trace relevant behavior, dependencies, data flow, failures, and resource ownership. Reuse suitable existing structure. Introduce abstractions only for current responsibilities, contracts, or consumers.
 4. Implement authorized changes or verify review candidates. Preserve security, accessibility, compatibility, data integrity, required error behavior, cancellation, cleanup, side-effect ordering, transactions, and performance constraints.
-5. Derive commands and tool versions from repository configuration and use its declared development environment. Run checks proportional to affected behavior and risk. Inspect the final diff, including the mandatory blank-line rules in general practices; distinguish existing failures from regressions.
+5. Derive commands and tool versions from repository configuration and use its declared development environment. Run checks proportional to affected behavior and risk. Inspect the final diff, including the blank-line rules in the loaded general reference; distinguish existing failures from regressions.
 6. Report actual checks, skipped checks, unresolved risks, and scope limits. Do not describe static inspection as runtime, browser, performance, or security verification.
 
 ## Conditional references
@@ -31,7 +33,7 @@ References are additive. For example, a Solid form can need general, web-platfor
 | Domain and reading condition | Design and implementation | Review |
 | --- | --- | --- |
 | General: all code tasks | [Good practices](general/good-practices.md) | [Code smells](general/code-smells.md) |
-| Architecture: responsibilities, workflows, contracts, representations, dependencies, or resource ownership | [Good practices](architecture/good-practices.md) | [Code smells](architecture/code-smells.md) |
+| Architecture: currently changing or evaluating a responsibility, contract (including dependency direction), representation, or lifecycle/ownership boundary | [Good practices](architecture/good-practices.md) | [Code smells](architecture/code-smells.md) |
 | TypeScript: TS/TSX or JavaScript governed by TypeScript tooling | [Good practices](typescript/good-practices.md) | [Code smells](typescript/code-smells.md) |
 | Effect: code or tests using `effect` | [Good practices](effect/good-practices.md) | [Code smells](effect/code-smells.md) |
 | Testing: tests, coverage, fakes, or test boundaries | [Good practices](testing/good-practices.md) | [Code smells](testing/code-smells.md) |

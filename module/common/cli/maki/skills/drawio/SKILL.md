@@ -6,8 +6,7 @@ description: Draw.io XML authoring and diagrams.net editor URLs. Use when the re
 # Drawio — XML & URL generation
 
 Produce draw.io diagrams as `.drawio` XML and as `app.diagrams.net` editor
-URLs. Everything is done with hand-written XML plus the bundled Node script —
-no other software involved.
+URLs. The bundled Python encoder validates XML and generates URLs using only the standard library.
 
 ## When to use / when not
 
@@ -20,9 +19,7 @@ no other software involved.
 
 ### Step 0 — Resolve the style preset
 
-Default is `default`. If the user asks for a look (dark, hand-drawn,
-corporate, colorblind-safe, or a named preset), read
-`references/style-presets.md` and apply its rules for the whole diagram.
+For every new diagram, read `references/style-presets.md`, resolve explicit selection or the user default before the built-in default, and read the selected JSON. Apply its rules for the whole diagram. Preserve existing styling unless re-theming is requested.
 
 ### Step 1 — Choose the diagram type
 
@@ -34,7 +31,7 @@ ambiguous.
 When authoring XML, read the relevant structure/edge sections of `references/xml-authoring.md`, then write the `.drawio` file by hand. Read `references/shapes.md` when selecting unfamiliar shapes or stencils — never guess an
 `mxgraph.*` stencil name (a wrong name renders as a blank box).
 
-**Non-negotiable rules** (violating any of these breaks the diagram):
+**XML rules:**
 
 - `<mxCell id="0" />` and `<mxCell id="1" parent="0" />` are required root
   cells — user shapes start at `id="2"` with `parent="1"` and increment
@@ -52,24 +49,21 @@ When authoring XML, read the relevant structure/edge sections of `references/xml
 ### Step 3 — Convert to a URL
 
 ```bash
-node <this-skill-dir>/scripts/encode_url.mjs diagram.drawio
+python3 <this-skill-dir>/scripts/encode_url.py diagram.drawio
 ```
 
-- Prints the editor URL (`https://app.diagrams.net/?grid=0&pv=0&border=10&edit=_blank#create=…`) to stdout; sanity warnings go to stderr and do not block output
-- Also accepts XML on stdin: `node <this-skill-dir>/scripts/encode_url.mjs < diagram.drawio`
-- Do NOT open the URL yourself. Hand the URL to the user verbatim (never
-  pass it through a shell that could truncate the `#` fragment)
+- Parses XML and checks graph roots, unique cell IDs, parent/source/target references, parent cycles, and geometry on every edge. Invalid or unsupported XML exits nonzero without a URL. Accepts uncompressed `mxGraphModel` or `mxfile` pages.
+- Prints the editor URL (`https://app.diagrams.net/?grid=0&pv=0&border=10&edit=_blank#create=…`) to stdout only after structural checks pass.
+- Also accepts XML on stdin: `python3 <this-skill-dir>/scripts/encode_url.py < diagram.drawio`
+- Deliver the URL verbatim for the user to open.
 
 ### Step 4 — Deliver
 
 Give the user: the URL (as a plain, unmodified string) and the local
-`.drawio` file path. If anything looks off, read
-`references/troubleshooting.md`. The diagrams.net editor is the final
-validator — if a diagram renders wrong, fix the XML and regenerate the URL.
+`.drawio` file path. State that structural checks passed and rendering is unverified. If the user reports rendering problems, read `references/troubleshooting.md`, fix the XML, and regenerate the URL.
 
 ## URL size limit
 
-URLs are capped at roughly 8 KB. If the encoded diagram exceeds that (the
-script will print an extremely long line — no hard failure), deliver the
+For URLs over 8 KB, deliver the
 `.drawio` file alone and tell the user to open it in the diagrams.net editor
 (File → Open, or drag into the editor page).

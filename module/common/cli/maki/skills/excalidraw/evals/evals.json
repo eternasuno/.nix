@@ -21,8 +21,14 @@
     },
     {
       "id": 3,
-      "prompt": "Without using any MCP tools (assume none are configured), use only the CLI (`npx -y mcp-excalidraw-server <command>`) to: (1) build a three-tier diagram with boxes 'Frontend', 'API', and 'Postgres' connected by arrows, (2) query for all rectangles and confirm the count is 3, (3) save a snapshot named 'v1', (4) export the scene to /tmp/three-tier.excalidraw, and (5) report the canvas status including how many browser tabs are connected.",
-      "expected_output": "All five steps completed via CLI commands only: elements created with bound arrows (the canvas server auto-starts), a query result showing 3 rectangles, a saved snapshot 'v1', a valid .excalidraw file at /tmp/three-tier.excalidraw, and a status report with element and browser-client counts.",
+      "prompt": "Without using any MCP tools (assume none are configured), use only the CLI (`npx -y mcp-excalidraw-server <command>`) to: (1) build a three-tier diagram with boxes 'Frontend', 'API', and 'Postgres' connected by arrows, (2) query for all rectangles and confirm the count is 3, (3) save a snapshot named 'v1', (4) take a PNG screenshot and actually view it for final visual acceptance (an image-viewing tool is allowed), (5) export the scene to /tmp/three-tier.excalidraw only after visual acceptance, and (6) report the canvas status including how many browser tabs are connected and whether the server was pre-existing or started by this task.",
+      "expected_output": "All canvas operations completed via CLI, with an image-viewing tool used for actual screenshot inspection: elements created with bound arrows, a query result showing 3 rectangles, a saved snapshot 'v1', a valid .excalidraw file at /tmp/three-tier.excalidraw, a screenshot actually inspected with all labels visible and no overlaps, and a status report with element and browser-client counts plus whether the server was pre-existing or task-started. No pre-existing user resources are stopped.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Use only the CLI for canvas operations. The server is reachable but no browser tab is connected (status reports 0 browser clients), and opening one is unavailable. Attempt to create one rectangle labeled 'No Browser' and request a PNG screenshot for visual verification. Report the outcome honestly.",
+      "expected_output": "Any canvas operation requiring a browser reports the browser-tab prerequisite rather than fabricating success; the PNG screenshot fails with exit code 4 / browser tab required. Report whether rectangle creation succeeded or was also blocked. The response explicitly states that visual verification is blocked and does not claim complete success; it also does not stop the pre-existing server.",
       "files": []
     }
   ]

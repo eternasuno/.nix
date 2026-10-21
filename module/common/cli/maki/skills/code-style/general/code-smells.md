@@ -14,4 +14,10 @@ Apply the evidence gate in the main skill. These are investigation prompts, not 
 - **Deep nesting or hidden execution order:** trace cleanup and side effects before introducing early returns or sequential composition. Do not exchange clear branches for dispatch machinery.
 - **Unnecessary custom infrastructure:** compare built-ins, existing dependencies, and trusted alternatives with installed-version contracts and total ownership cost. Fewer source lines alone do not justify a new dependency.
 - **Broken public or runtime compatibility:** inspect callers, supported versions, configuration, packaging, and migration behavior. Identify the affected consumer rather than assuming internal changes are harmless.
-- **Blank-line violations:** check top-level declaration separation, spacing after complete control-flow blocks, and spacing before a noninitial `return` against [the mandatory rules](good-practices.md#mandatory-blank-line-rules). Keep connected continuations together and do not add space before closing braces. Report as style, not a behavioral defect; do not broaden the fix to unrelated code or formatter configuration.
+- **Blank-line violations:** These complete mandatory rules override repository formatting defaults and other formatting preferences; higher-priority governing instructions and language syntax still apply.
+  - Separate top-level declarations with one blank line, and leave one blank line after a complete control-flow block when another statement follows in the same enclosing block.
+  - Keep connected `else`, `catch`, and `finally` attached, and leave no blank line before the enclosing closing brace.
+  - Leave one blank line before a noninitial `return` in the same block; keep related branches, handlers, and continuations together.
+  - Use explicit block bodies where repository convention requires them; follow repository conventions for other formatting choices.
+
+  Report violations as style, not behavioral defects. When writing is authorized, fix every violation in the inspected scope; in read-only review, report the required rewrite. Change only noncompliant formatting; leave global formatter configuration unchanged.

@@ -15,6 +15,8 @@ Use this skill for live-canvas Excalidraw work, iterative visual refinement, pre
 
 Canvas-touching, screenshot, image-export, Mermaid, and viewport operations need an open browser tab. The CLI uses `http://127.0.0.1:3000` by default; see the cheatsheet for options and exit codes.
 
+Record existing services/tabs and resources started by this task. Preserve user-owned resources and unrelated canvas content. Clean up task-created resources unless delivery needs them; disclose retained resources.
+
 ## Choose a creation mode
 
 - Use Mermaid when the input is already Mermaid or maps cleanly to a standard flowchart, sequence, or ER diagram.
@@ -22,11 +24,11 @@ Canvas-touching, screenshot, image-export, Mermaid, and viewport operations need
 
 ## Required workflow
 
-1. Inspect or plan the coordinate grid before creating elements.
+1. Check the available service/browser state and inspect or plan the coordinate grid before creating elements.
 2. Create shapes with stable IDs, then create arrows bound to those IDs. For complex diagrams, create in meaningful batches.
 3. After each meaningful batch, take a screenshot and actually view it.
 4. Check the quality gate below. If any issue appears, stop, fix it, and re-screenshot before continuing.
-5. Export or share only after the final screenshot passes.
+5. Export locally by default. Upload externally (`share` / `export_to_excalidraw_url`) only when the user explicitly requests it and the authorized content scope is clear. Export or share only after the final screenshot passes.
 
 For an existing diagram, run `describe` first; locate elements by stable ID or label, never by coordinates alone. Update, then screenshot again. Bound arrows reroute when their endpoints move or resize. Save a snapshot before risky changes.
 
@@ -55,16 +57,10 @@ Use intermediate points when a straight arrow would cross an unrelated element. 
 
 ## Visual refinement
 
-The essential loop is:
-
-```text
-plan or describe → create/update → screenshot → inspect → fix → re-screenshot
-```
-
-Do not proceed while labels are truncated, elements overlap, zones are mislabeled, or arrows collide with content. For duplicate bound text, inspect text elements with `containerId`; avoid labels on background zones and allow canvas auto-sync to settle before cleanup.
+For duplicate bound text, inspect text elements with `containerId`; avoid labels on background zones and allow canvas auto-sync to settle before cleanup.
 
 ## Reference
 
-Read only the relevant sections of `references/cheatsheet.md` when choosing CLI/MCP syntax, using REST/raw formats, managing snapshots/server options, exporting, or troubleshooting. Check the active tool version; do not load every interface table by default.
+Read only the relevant sections of `references/cheatsheet.md` when choosing CLI/MCP syntax, using REST/raw formats, managing snapshots/server options, exporting, or troubleshooting. Check the active tool version.
 
-Done when the requested diagram/export is delivered, the final screenshot has been inspected, and unrelated canvas content and user work are preserved. Report unavailable browser/export verification.
+Done when the requested diagram/export is delivered, the final screenshot has been inspected, and unrelated canvas content and user work are preserved. If no browser tab is available, visual verification is blocked: report it as unverified and do not claim complete success.

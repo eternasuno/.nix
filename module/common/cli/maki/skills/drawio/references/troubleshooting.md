@@ -16,7 +16,7 @@ Read this when something looks wrong in the output (rendering, layout, edges, UR
 | Shape renders as a blank box | A guessed `shape=mxgraph.*` name doesn't exist — replace with a cheatsheet shape from `shapes.md` |
 | Browser URL opens a blank/empty diagram | The `#create=…` fragment was lost (shell stripped it at `#`/`&`). Never pass the URL through a shell that truncates fragments; give it to the user verbatim |
 | URL is extremely long | URLs are capped (~8 KB); if the diagram is large, deliver the `.drawio` file instead and let the user open it in the diagrams.net editor |
-| CJK/emoji labels throw "URI malformed" | The script handles encoding — if a hand-built URL fails, regenerate it with `scripts/encode_url.mjs` |
+| CJK/emoji labels throw "URI malformed" | The script handles encoding — if a hand-built URL fails, regenerate it with `scripts/encode_url.py` |
 | Label text shows entities raw | `html=1` is missing from the cell style — all text-bearing cells need it |
 
 If a URL still fails after the fixes above: drop it, deliver the `.drawio`

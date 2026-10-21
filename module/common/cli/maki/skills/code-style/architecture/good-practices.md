@@ -1,6 +1,6 @@
 # Architecture Good Practices
 
-Apply when assigning responsibilities, composing workflows, or changing contracts, representations, dependencies, or ownership. Use logical roles, not mandatory physical layers, and retain a different suitable existing architecture.
+Apply when currently changing or evaluating a responsibility, contract (including dependency direction), representation, or lifecycle/ownership boundary. Use logical roles, not mandatory physical layers, and retain a different suitable existing architecture.
 
 ## Design from execution paths
 

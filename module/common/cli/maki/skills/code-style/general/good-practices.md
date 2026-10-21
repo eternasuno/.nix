@@ -28,7 +28,7 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 
 ## Mandatory blank-line rules
 
-These rules override repository formatting defaults and other formatting preferences in this skill; higher-priority governing instructions and language syntax still apply. Do not change unrelated files or global formatter configuration to enforce them. Report formatter conflicts rather than silently dropping these rules.
+These rules override repository formatting defaults and other formatting preferences in this skill; higher-priority governing instructions and language syntax still apply. Do not change files that contain no violation, and do not change global formatter configuration, merely to enforce these rules. Report formatter conflicts rather than silently dropping these rules.
 
 - Separate top-level declarations with one blank line.
 - Leave one blank line after a complete control-flow block when another statement follows in the same enclosing block. Do not separate a connected `else`, `catch`, or `finally`, or add a blank line before the enclosing closing brace.

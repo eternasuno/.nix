@@ -1,6 +1,6 @@
 # Architecture Code Smells
 
-Apply when reviewing responsibilities, workflows, boundaries, contracts, dependencies, or ownership. Trace normal, failure, and cleanup paths before proposing restructuring.
+Apply when reviewing a responsibility, contract (including dependency direction), representation, or lifecycle/ownership boundary. Trace normal, failure, and cleanup paths before proposing restructuring.
 
 - **Business policy in transport or adapters:** follow decisions and representations from entries through workflows and external mechanisms. Move policy only when a meaningful business responsibility is mixed with protocol translation; do not force every call through every logical role.
 - **Giant mode-switched workflow:** compare actual business variants. Keep distinct workflows separate and share coherent operations only where contracts match.

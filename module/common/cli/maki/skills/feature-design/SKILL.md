@@ -13,14 +13,14 @@ Resolve decisions that affect user-visible behavior, major constraints, and acce
 - Ask the user for product preferences, undefined business rules, and major tradeoffs that the request or project evidence does not settle. Do not invent product requirements.
 - Choose existing suitable dependencies, established conventions, and reversible local technical details from evidence. Record assumptions when they matter; local choices may remain with the implementer.
 - Detailed module structure and contracts are structural design work, not additional product questions unless they change a major feature decision.
-- Reuse confirmed decisions; do not ask the user to confirm them again.
+- Reuse confirmed decisions.
 
 ## Workflow
 
 1. Establish the goal, scope, known decisions, and observable acceptance from the request and repository.
 2. Identify only material unknowns. Investigate facts before asking questions.
 3. Ask independent questions together, with concise options and an evidence-based recommendation when available. Ask dependent questions in later rounds after their prerequisites are settled.
-4. Incorporate answers and stop when behavior, major constraints, and acceptance are clear. Do not expand every possible branch of a decision tree.
+4. Incorporate answers and stop when behavior, major constraints, and acceptance are clear.
 5. Deliver a concise design covering relevant scope/non-goals, behavior and business rules, major technical choices, failures, compatibility/migration, acceptance, risks, and deferred details. Distinguish confirmed decisions from assumptions.
 
 For a design-discussion task, delivery of the design completes the task; do not implement without authorization. For already authorized implementation, continue once material decisions are settled, without an extra template-driven confirmation. Ask only when new work exceeds the authorization or an unresolved user decision blocks progress.

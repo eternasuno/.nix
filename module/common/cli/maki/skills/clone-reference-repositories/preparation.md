@@ -22,7 +22,7 @@ Use this directory structure:
         └── <framework-name>/
 ```
 
-Use `.slim/repositories/` for cloned third-party source repositories. Before any write, verify the target is inside the repository root, is not a symlink or tracked path, and is ignored by the parent repository. Create directories only in explicit preparation mode. Prefer adding `/.slim/` to `.git/info/exclude`; changing the shared root `.gitignore` requires explicit confirmation:
+Use `.slim/repositories/` for cloned third-party source repositories. Before any write, verify the target is inside the repository root, is not a symlink or tracked path, and is ignored by the parent repository. Create directories only in explicit preparation mode. Prefer adding `/.slim/` to the exclude file resolved by `git rev-parse --git-path info/exclude` from the application root; do not assume `.git` is a directory in a linked worktree. Resolve relative output against that root and inspect the destination before writing. This exclude file can be shared by linked worktrees, so verify that the ignore rule is appropriate for all affected worktrees. Changing the shared root `.gitignore` requires explicit confirmation:
 
 ```gitignore
 /.slim/

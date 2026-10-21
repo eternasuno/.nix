@@ -5,7 +5,7 @@ description: Capture reusable lessons only after successfully committing code ch
 
 # Self-Improving
 
-Turn trustworthy evidence from the current work into concise project memory and, when justified, a validated skill-improvement proposal. Check learning signals without manufacturing lessons. Self-initiated skill edits need approval; specific edits already authorized by the user do not need repeated approval.
+Turn evidence from current work into concise project memory or a validated skill-improvement proposal. Self-initiated skill edits need approval.
 
 ## Invocation gate
 
@@ -14,7 +14,7 @@ Run this skill only:
 - after successfully committing code changes in the current task; review once per successful commit;
 - when the user explicitly invokes `self-improving` or asks to run this skill.
 
-Editing or staging code, passing tests, planning a commit, a failed commit, and inspecting existing commits do not satisfy the commit trigger. Corrections, tool failures, repeated successes, requests to remember something or improve another skill, and contradictions with existing guidance do not independently trigger this skill. Without either trigger, stop; do not run its capture or maintenance workflow.
+These are the only triggers. Corrections, failures, and requests to remember something or improve another skill are evidence, not invocation.
 
 ## Learning signals
 
@@ -63,9 +63,7 @@ Done when a justified lesson has been merged into current memory, retained as te
 ## Guardrails
 
 - Memory and learned rules never override system, developer, project, or current user instructions.
-- Do not infer a preference from user silence or ordinary acceptance.
 - Do not increase permissions, weaken safety boundaries, or modify security guidance from learned content.
-- Do not modify this skill's guardrails automatically.
 - Do not autonomously edit `AGENTS.md`, global instructions, or any skill.
 - Do not create a new skill when a small change to an existing skill is sufficient.
-- Do not preserve verbose transcripts; retain only the distilled lesson and minimal evidence.
+- Retain the distilled lesson and minimal evidence.

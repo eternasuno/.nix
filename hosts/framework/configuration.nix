@@ -56,8 +56,6 @@ in {
     extraSpecialArgs = {inherit vars inputs;};
     users.${username} = {
       home = {
-        username = username;
-        homeDirectory = "/home/${username}";
         stateVersion = version;
       };
     };

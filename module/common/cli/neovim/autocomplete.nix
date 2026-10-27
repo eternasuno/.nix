@@ -7,7 +7,6 @@ in {
       mappings = {
         next = "<C-n>";
         previous = "<C-p>";
-        confirm = "<CR>";
       };
     };
 

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   fonts.fontconfig = {
     defaultFonts = {
@@ -13,9 +13,6 @@
       monospace = [
         "Maple Mono NL"
         "Maple Mono NL NF CN"
-      ];
-      emoji = [
-        "Noto Color Emoji"
       ];
     };
   };

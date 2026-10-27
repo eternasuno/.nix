@@ -23,7 +23,6 @@
         # NixOS checks this hook before applying package-specific options.
         override = _: pkg;
       };
-    xwayland.enable = true;
     withUWSM = true;
   };
 }

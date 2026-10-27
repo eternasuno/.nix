@@ -10,11 +10,7 @@
     rtkit.enable = true;
 
     pam.services = {
-      greetd.fprintAuth = true;
       greetd.enableGnomeKeyring = true;
-      polkit-1.fprintAuth = true;
-      sudo.fprintAuth = true;
-      login.fprintAuth = true;
     };
   };
 

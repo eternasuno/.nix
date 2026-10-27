@@ -1,13 +1,12 @@
 {
   vars,
-  pkgs,
   ...
 }: let
   inherit (vars) username;
 in {
   programs.dconf.enable = true;
 
-  services.displayManager.dms-greeter = {
+  services.displayManager.dux-greeter = {
     enable = true;
     compositor = {
       name = "hyprland";
@@ -23,6 +22,5 @@ in {
       '';
     };
     configHome = "/home/${username}";
-    quickshell.package = pkgs.quickshell;
   };
 }

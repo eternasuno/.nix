@@ -15,8 +15,6 @@ in {
   home-manager.users.${username} = {
     services.udiskie = {
       enable = true;
-      automount = true;
-      notify = true;
       settings.program_options.file_manager = "${pkgs.xdg-utils}/bin/xdg-open";
     };
   };

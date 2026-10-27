@@ -4,8 +4,6 @@ in {
   home-manager.users.${username} = {
     programs.starship = {
       enable = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
       settings = {
         add_newline = true;
         scan_timeout = 10;

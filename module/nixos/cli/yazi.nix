@@ -17,7 +17,6 @@ in {
       comment = "Blazing fast terminal file manager";
       icon = "yazi";
       exec = "${pkgs.kitty}/bin/kitty yazi %U";
-      terminal = false;
       categories = ["System" "FileManager" "FileTools" "ConsoleOnly"];
       mimeType = ["inode/directory" "inode/mount-point"];
     };

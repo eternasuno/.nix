@@ -12,7 +12,7 @@
     keyboardLayout = "us";
     resumeDevice = "/dev/disk/by-uuid/ba50d7d6-da94-4d40-af3e-bd1e6879fa64";
     timeZone = "Asia/Tokyo";
-    version = "26.05";
+    version = "26.11";
   };
 in {
   nixosConfigurations.${vars.host} = nixpkgs.lib.nixosSystem {

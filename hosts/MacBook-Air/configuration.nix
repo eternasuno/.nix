@@ -34,8 +34,6 @@ in {
     useUserPackages = true;
     extraSpecialArgs = {inherit vars inputs;};
     users.${username}.home = {
-      username = username;
-      homeDirectory = "/Users/${username}";
       stateVersion = version;
     };
   };

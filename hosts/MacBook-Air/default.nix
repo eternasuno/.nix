@@ -9,7 +9,7 @@
     email = "22316214+eternasuno@users.noreply.github.com";
     flakePath = "/Users/eternasuno/.nix";
     timeZone = "Asia/Tokyo";
-    version = "26.05";
+    version = "26.11";
     darwinStateVersion = 7;
   };
 in {

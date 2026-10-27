@@ -14,15 +14,6 @@ in {
   home-manager.users.${username} = {
     programs.yazi = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
-      shellWrapperName = "yy";
-    };
-
-    home.shellAliases = {
-      y = "yazi";
     };
 
     home.packages = with pkgs; [

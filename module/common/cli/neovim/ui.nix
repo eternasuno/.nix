@@ -31,7 +31,6 @@ in {
         setupOpts = {
           indent.highlight = "IblIndent";
           scope = {
-            enabled = true;
             highlight = "IblScope";
           };
         };

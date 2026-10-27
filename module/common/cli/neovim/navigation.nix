@@ -9,10 +9,7 @@ in {
     binds.whichKey.enable = true;
     git = {
       enable = true;
-      gitsigns = {
-        enable = true;
-        codeActions.enable = true;
-      };
+      gitsigns.codeActions.enable = true;
     };
     telescope = {
       enable = true;

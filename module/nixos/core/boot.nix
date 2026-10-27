@@ -32,10 +32,6 @@
       "udev.log_priority=3"
       "boot.shell_on_fail"
     ];
-    initrd = {
-      verbose = false;
-      systemd.enable = true;
-    };
     consoleLogLevel = 0;
     plymouth = {
       enable = true;

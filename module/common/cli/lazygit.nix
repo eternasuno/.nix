@@ -8,9 +8,6 @@ in {
   home-manager.users.${username} = {
     programs.lazygit = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
       settings = {
         disableStartupPopups = true;
         notARepository = "skip";

@@ -19,22 +19,26 @@ Use subagents only for bounded parts of a task the main agent has understood and
 Pass the exact model via the `task` tool's `model` parameter and the tool access via `subagent_type`. These are task roles, not additional tool-access types.
 
 - **Research and code exploration**
-  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash`; `subagent_type`: `research`; `thinking`: `medium`.
+  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash` 
+  - subagent_type: `research` 
   - Use for one specific aspect such as an execution path, dependency API, existing convention, or observed behavior; split unrelated aspects into separate tasks.
   - Read-only: return objective facts, file/line evidence, constraints, and explicit unknowns. Do not modify files or propose solutions, architecture, or implementation plans; the main agent derives those.
 
 - **Independent review**
-  - Model: `commandcode-openai/gpt-6-luna`; `subagent_type`: `research`.
+  - Model: `openai/gpt-6.1-sol` 
+  - subagent_type: `research`
   - Use for a bounded change, design, contract, or security concern.
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 
 - **UI designer**
-  - Model: `commandcode-anthropic/claude-haiku-5-5`; `subagent_type`: `research`.
+  - Model: `commandcode-anthropic/claude-haiku-5-5`
+  - subagent_type: `research`
   - Use for a detailed visual or interaction design within the main agent's requirements and constraints.
   - Return layout, component hierarchy, styling, responsive behavior, interaction states, and accessibility precise enough to implement. Do not modify code.
 
 - **Implementation**
-  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash`; `subagent_type`: `general`; `thinking`: `high`.
+  - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash`
+  - subagent_type: `general`
   - Use for one small, precisely specified functional module in one or a few files, including its necessary tests or configuration.
   - Follow the established solution, contracts, and UI design. Return changed paths, verification results, and remaining risks; report missing decisions or scope expansion rather than redesigning.
   - Split large or complex changes into several small tasks dispatched with disjoint file ownership or isolated worktrees. A small file count alone does not make a complex task appropriately bounded.

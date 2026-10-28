@@ -1,6 +1,6 @@
 ---
 name: clone-reference-repositories
-description: Inspect version-matched local upstream source, tests, and examples when documentation or installed types are insufficient. Use for complex/version-sensitive APIs or upstream behavior investigation; prepare or update clones only when needed and authorized.
+description: Before investigating complex or version-sensitive APIs or upstream behavior, or when documentation and installed types are insufficient, load this skill. It covers inspecting version-matched upstream source, tests, and examples, and preparing or updating clones with authorization.
 ---
 
 # Clone Reference Repositories

@@ -1,6 +1,6 @@
 ---
 name: feature-design
-description: Clarify materially uncertain requirements and major tradeoffs for a feature before implementation. Use for design discussions or authorized feature work whose user-visible behavior, constraints, or acceptance remain unclear.
+description: Before implementing a feature whose user-visible behavior, constraints, or acceptance criteria are materially uncertain, load this skill. It clarifies requirements and major tradeoffs for design discussions and authorized feature work.
 ---
 
 # Feature Design

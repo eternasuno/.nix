@@ -1,6 +1,6 @@
 ---
 name: task-model-routing
-description: Use before delegating bounded parts of a complex task to Research and code exploration, Independent review, UI designer, or Implementation subagents. Delegate when focused fact-finding, independent review, detailed UI design, or parallel implementation of small modules helps; do simple tasks directly and never forward the whole request to one subagent.
+description: Before starting work that splits into parts which can be searched, reviewed, designed, or implemented independently, including a focused lookup across several files, load this skill. It chooses the subagent role and model for each bounded part.
 ---
 
 # Task model routing
@@ -24,7 +24,7 @@ Pass the exact model via the `task` tool's `model` parameter and the tool access
   - Read-only: return objective facts, file/line evidence, constraints, and explicit unknowns. Do not modify files or propose solutions, architecture, or implementation plans; the main agent derives those.
 
 - **Independent review**
-  - Model: `commandcode-openai/meta/muse-spark-1.3-contributor`; `subagent_type`: `research`.
+  - Model: `commandcode-openai/openai/gpt-6-luna`; `subagent_type`: `research`.
   - Use for a bounded change, design, contract, or security concern.
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 

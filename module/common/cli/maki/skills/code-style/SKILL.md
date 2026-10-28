@@ -1,6 +1,6 @@
 ---
 name: code-style
-description: Design structure, implement, refactor, fix, test, or configure code, and review code for correctness, security, performance, compatibility, maintainability, and explicit style rules. Use for architecture decisions, coding, and read-only or authorized fix-up reviews.
+description: Before writing, modifying, refactoring, fixing, testing, or reviewing code, load this skill. It defines the required structure, style, and review rules for architecture decisions, implementation, and read-only or authorized fix-up reviews.
 ---
 
 # Code Style

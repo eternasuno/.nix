@@ -1,6 +1,6 @@
 ---
 name: writing-for-agents
-description: Write or revise instructions agents consume, including skills, AGENTS.md, CLAUDE.md, and conditional reference pointers. Use to clarify scope, workflow, completion criteria, and behavior validation.
+description: Before writing or revising instructions agents consume, including skills, AGENTS.md, CLAUDE.md, and conditional reference pointers, load this skill. It clarifies scope, workflow, completion criteria, and behavior validation.
 ---
 
 # Writing for Agents

@@ -1,6 +1,6 @@
 ---
 name: self-improving
-description: Capture reusable lessons only after successfully committing code changes in the current task or when the user explicitly invokes this skill by name. Corrections, failures, repeated successes, and general requests to improve other skills are review evidence, not independent triggers.
+description: After successfully committing code changes in the current task, or when the user explicitly names this skill, load it to capture reusable lessons. Corrections, failures, and repeated successes serve as review evidence; the commit or explicit invocation is the trigger.
 ---
 
 # Self-Improving

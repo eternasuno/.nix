@@ -1,6 +1,6 @@
 ---
 name: obscura
-description: Use Obscura CLI or its browser server for page loading, extraction, screenshots, CDP automation, or browser MCP operations when the task specifically needs Obscura.
+description: Before page loading, extraction, screenshots, CDP automation, or browser MCP operations that specifically need Obscura, load this skill. It covers the Obscura CLI and browser server workflows.
 ---
 
 # Obscura

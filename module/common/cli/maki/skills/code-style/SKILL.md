@@ -36,7 +36,7 @@ References are additive. For example, a Solid form can need general, web-platfor
 | Architecture: currently changing or evaluating a responsibility, contract (including dependency direction), representation, or lifecycle/ownership boundary | [Good practices](architecture/good-practices.md) | [Code smells](architecture/code-smells.md) |
 | TypeScript: TS/TSX or JavaScript governed by TypeScript tooling | [Good practices](typescript/good-practices.md) | [Code smells](typescript/code-smells.md) |
 | Effect: code or tests using `effect` | [Good practices](effect/good-practices.md) | [Code smells](effect/code-smells.md) |
-| Testing: tests, coverage, fakes, or test boundaries | [Good practices](testing/good-practices.md) | [Code smells](testing/code-smells.md) |
+| Testing: tests, coverage, fakes, test-first, or behavior-preserving refactors | [Good practices](testing/good-practices.md) | [Code smells](testing/code-smells.md) |
 | Web platform: HTML, CSS, DOM, forms, browser behavior, or accessibility | [Good practices](web-platform/good-practices.md) | [Code smells](web-platform/code-smells.md) |
 | SolidJS: Solid 1 components, reactivity, lifecycle, or framework data flow; verify target version | [Good practices](solidjs/good-practices.md) | [Code smells](solidjs/code-smells.md) |
 | Tailwind CSS: utility classes, responsive variants, or configuration, with or without a component library | [Good practices](tailwindcss/good-practices.md) | [Review rules](tailwindcss/good-practices.md) |

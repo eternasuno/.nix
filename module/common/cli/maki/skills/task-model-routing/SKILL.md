@@ -1,6 +1,6 @@
 ---
 name: task-model-routing
-description: Before starting work that splits into parts which can be searched, reviewed, designed, or implemented independently, including a focused lookup across several files, load this skill. It chooses the subagent role and model for each bounded part.
+description: Required before starting a complex task that splits into parts which can be searched, designed, implemented, or reviewed independently, including a focused lookup across several files, load this skill. It assigns the subagent role and model for each bounded part.
 ---
 
 # Task model routing
@@ -24,7 +24,7 @@ Pass the exact model via the `task` tool's `model` parameter and the tool access
   - Read-only: return objective facts, file/line evidence, constraints, and explicit unknowns. Do not modify files or propose solutions, architecture, or implementation plans; the main agent derives those.
 
 - **Independent review**
-  - Model: `commandcode-openai/openai/gpt-6-luna`; `subagent_type`: `research`.
+  - Model: `commandcode-openai/gpt-6-luna`; `subagent_type`: `research`.
   - Use for a bounded change, design, contract, or security concern.
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 

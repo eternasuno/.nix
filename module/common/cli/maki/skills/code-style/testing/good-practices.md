@@ -1,6 +1,11 @@
 # Testing
 
-Apply when writing or modifying tests or their boundaries.
+Apply when writing or modifying tests, their boundaries, or behavior-preserving refactors.
+
+## Test-first
+
+- When changing observable behavior and an honest test is practical, write the failing test before changing the code, confirm it fails for the expected reason, then make the smallest change that passes.
+- Start the next case only after the current one passes. If an honest test is impractical, do not write a misleading one; state the behavior as unverified.
 
 ## Coverage
 
@@ -17,3 +22,8 @@ Apply when writing or modifying tests or their boundaries.
 - Isolate directories, environment variables, and process-wide state in concurrent tests. Use subprocesses when distinct process state is required, preserving cleanup and failure diagnostics.
 - Use real networks or databases only in explicit integration tests with controlled dependencies and resource cleanup.
 - Distinguish expected failures from defects and cancellation when their observable semantics differ.
+
+## Refactoring
+
+- Pin the current observable behavior with tests before changing structure. Change the structure without changing behavior, then re-run the pinned tests and report that behavior is unchanged.
+- If no honest test can pin the behavior, treat the refactor as unverified and say so rather than claiming equivalence.

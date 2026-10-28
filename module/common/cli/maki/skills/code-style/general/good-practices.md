@@ -5,7 +5,8 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 ## Implementation
 
 - Read implementation, callers, and tests before changing behavior. Fix a shared cause when callers share the same contract rather than adding caller-specific patches.
-- Add branches, options, helpers, abstractions, or dependencies only for a current requirement or existing consumer. Remove code made unnecessary by the change. Check whether APIs already handle absent resources before adding filesystem prechecks or environment guards; unsupported hypothetical deployment states do not justify branches.
+- When two fixes built on the same premise fail the same check, stop and state the premise in one sentence. Remove the assumption or the code enforcing it before attempting another fix on that premise.
+- Add branches, options, helpers, abstractions, or dependencies only for a current requirement or existing consumer. Before adding structure, subtract: remove code the change makes unnecessary and recheck whether the addition is still needed. Check whether APIs already handle absent resources before adding filesystem prechecks or environment guards; unsupported hypothetical deployment states do not justify branches.
 - Keep operations in execution order. Use early returns to reduce nesting without changing cleanup or side-effect ordering. Do not replace simple conditionals with dispatch frameworks or callback machinery.
 - Name values and operations for their business meaning. Split expressions mixing distinct steps; introduce intermediate values when their names explain intent or data flow.
 - Extract helpers for reuse, a named business step, or complex logic obscuring the caller. Inline trivial forwarding helpers with no meaningful role. A single caller alone is not a reason to inline.

@@ -6,6 +6,7 @@ Apply when currently changing or evaluating a responsibility, contract (includin
 
 - Trace actual execution and data flow before choosing structure. Identify business decisions, external mechanisms, normal and failure paths, and cleanup responsibilities.
 - Determine whether structural change is needed. Compare meaningful alternatives and choose the smallest design expressing real boundaries; local edits may require none.
+- When a new requirement conflicts with the current structure, consider the design you would choose knowing it from the start. If the result differs materially, migrate in verifiable pieces instead of bolting the requirement onto the old design.
 - Validate affected contracts, dependency direction, public surface, and resource lifetime against concrete paths. Preserve transactions, compensation, recovery, side-effect ordering, and performance constraints where required.
 
 ## Entries, workflows, and domain operations
@@ -46,6 +47,7 @@ entry → workflow → domain operations
 - Validate where the relevant invariant becomes known. Distinguish transport validation, representation parsing, domain validation, and external capability failure; do not repeat the same check across layers without a real reason.
 - Translate external HTTP payloads, database rows, SDK objects, CLI arguments, and serialized messages before their details spread through business code. Keep domain representations independent unless the representations are intentionally identical.
 - Make ownership of mutation, persistence, normalization, lifecycle, retries, cleanup, and error translation explicit. Avoid shared mutable state with unclear ownership.
+- For operations that may be retried, replayed, or resumed after a partial failure, make the effect idempotent: running twice or resuming reaches the same state. Use explicit keys, upserts, or state transitions rather than assuming a single attempt.
 - Preserve useful failure information until a boundary intentionally reduces it. Distinguish expected domain/capability failures, defects, programmer errors, cancellation, and infrastructure failures when behavior depends on that distinction.
 - Translate external failure types at the adapter boundary rather than leaking SDK-specific failures into business logic.
 - Prefer explicit data flow over hidden globals, implicit mutation, and ambient configuration. Pass only data and capabilities the consumer actually requires.

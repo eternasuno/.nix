@@ -34,7 +34,7 @@ in {
     ../../module/nixos/core/security.nix
     ../../module/nixos/core/time.nix
     ../../module/nixos/core/users.nix
-    ../../module/nixos/gui/dank-material-shell
+    ../../module/nixos/gui/dux-shell
     ../../module/nixos/gui/fcitx5.nix
     ../../module/nixos/gui/firefox.nix
     ../../module/nixos/gui/gtk.nix

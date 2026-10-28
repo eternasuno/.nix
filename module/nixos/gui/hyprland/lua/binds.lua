@@ -114,9 +114,6 @@ hl.gesture({
 -- Scrolling layout column width presets
 hl.bind(mod .. " + R", hl.dsp.layout("colresize +conf"))
 
--- Screen capture toolbar
-hl.bind("Print", hl.dsp.exec_cmd("dms ipc call screenCaptureToolbar toggle"))
-
 -- DMS modals
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("dms ipc call notifications toggle"))
 hl.bind(mod .. " + P", hl.dsp.exec_cmd("dms ipc call notepad toggle"))

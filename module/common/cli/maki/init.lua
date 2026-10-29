@@ -1,7 +1,7 @@
 maki.pack.add({ "https://github.com/eternasuno/maki-kanban", "https://github.com/eternasuno/maki-code" })
 
 maki.setup({
-  always_thinking = "adaptive",
+  always_thinking = "high",
   plugins = {
     task = {
       allow_model = true,

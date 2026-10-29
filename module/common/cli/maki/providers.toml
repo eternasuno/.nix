@@ -33,5 +33,5 @@ medium   = { reasoning_effort = "high" }
 high     = { reasoning_effort = "high" }
 xhigh    = { reasoning_effort = "high" }
 max      = { reasoning_effort = "max" }
-adaptive = { reasoning_effort = "max" }
+adaptive = { reasoning_effort = "high" }
 

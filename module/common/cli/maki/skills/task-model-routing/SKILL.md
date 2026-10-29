@@ -25,7 +25,7 @@ Pass the exact model via the `task` tool's `model` parameter and the tool access
   - Read-only: return objective facts, file/line evidence, constraints, and explicit unknowns. Do not modify files or propose solutions, architecture, or implementation plans; the main agent derives those.
 
 - **Independent review**
-  - Model: `openai/gpt-6.1-sol` 
+  - Model: `openai/gpt-6-astra` 
   - subagent_type: `research`
   - Use for a bounded change, design, contract, or security concern.
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.

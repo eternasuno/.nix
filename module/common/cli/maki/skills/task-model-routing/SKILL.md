@@ -16,7 +16,7 @@ Use subagents only for bounded parts of a task the main agent has understood and
 
 ## Subagents
 
-Pass the exact model via the `task` tool's `model` parameter and the tool access via `subagent_type`. These are task roles, not additional tool-access types.
+Pass the exact model via the `task` tool's `model` parameter, the reasoning effort via `thinking`, and the tool access via `subagent_type`. These are task roles, not additional tool-access types.
 
 - **Research and code exploration**
   - Model: `commandcode-openai/deepseek/deepseek-v4.1-flash` 
@@ -26,6 +26,7 @@ Pass the exact model via the `task` tool's `model` parameter and the tool access
 
 - **Independent review**
   - Model: `openai/gpt-6-astra` 
+  - Thinking: `medium`
   - subagent_type: `research`
   - Use for a bounded change, design, contract, or security concern.
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.

@@ -15,7 +15,7 @@ in {
         displayTitles = false;
         displayUrlbarIcons = true;
         extraConfig = ''
-          #taskbar-tabs-button {
+          #vertical-spacer {
             display: none;
           }
         '';

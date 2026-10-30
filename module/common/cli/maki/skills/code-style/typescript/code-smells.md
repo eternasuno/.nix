@@ -2,6 +2,7 @@
 
 Apply to TS/TSX and JavaScript governed by TypeScript tooling. Check runtime behavior as well as static types.
 
+- **HTTP transport and Promise chains:** flag application HTTP requests outside fetch/Effect HttpClient and Promise `.then`/`.catch`/`.finally` callbacks, including tests and embedded scripts. Rewrite with await and boundary-level error/cleanup handling or Effect, preserving cancellation and security policies. Do not flag fetch-backed official clients, native event callbacks, or Effect error combinators. Check detached async work for rejection ownership; `void` alone is not handling.
 - **Unchecked external values:** trace casts, `any`, and assertions from external input. Validate runtime data rather than hiding uncertainty with a cast; type annotations are not validation.
 - **Invalid state combinations:** examine optional fields and boolean flags permitting contradictory states. Use a discriminated union when it expresses actual mutually exclusive states without obscuring the contract.
 - **Unnecessary type machinery:** identify callers needing generics and the input/output relationship they preserve. Remove speculative generics or redundant local annotations, but retain public contracts, domain restrictions, and widening controls.

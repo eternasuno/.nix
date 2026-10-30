@@ -2,6 +2,7 @@
 
 Check the installed Effect version, actual service contracts, cancellation, and resource ownership before changing composition.
 
+- **HTTP transport or Promise-chain bypass:** flag HTTP requests bypassing fetch/Effect HttpClient and Promise `.then`/`.catch`/`.finally` chains around Effect execution or adapters. Use FetchHttpClient and direct Promise adapters with Effect composition, preserving security, cancellation, error channels, and cleanup. Effect.catch/catchTag/ensuring are valid Effect composition.
 - **Service or Layer ceremony:** identify a separately provided capability or real lifecycle boundary. Returning an Effect, being effectful, or needing a fake does not alone justify a Service or Layer.
 - **Overbroad environment:** compare required services with actual use. Acquire only needed services inside the Effect using them; preserve provider sharing, dependency order, and lifetime.
 - **Reimplemented provider protocol:** inspect version-matched official adapters first. Compose supported Layers and decorate missing application policy instead of wrapping an entire client. Verify endpoint, timeout, credentials, redirects, tracing, and response lifetime.

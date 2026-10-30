@@ -13,6 +13,11 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Before writing a provider Service, check version-matched official adapters and compose their Layers when the protocol matches. Separate application policies (endpoint shape, timeout, credentials, redirects, tracing propagation and response lifetime) from provider protocol logic; decorate only the missing policy, not the whole client.
 - Use the direct supported adapter for external callbacks, throws, or Promise rejections. Do not add intermediate Promise conversions when a direct adapter satisfies cancellation and cleanup requirements.
 
+## HTTP and Promise boundaries
+
+- Use Effect `HttpClient` with `FetchHttpClient` for HTTP requests. Compose application policies without weakening URL validation, credentials, redirect checks, timeouts, bounded response reads, cancellation, or resource cleanup.
+- Adapt Promise APIs with the supported Effect Promise adapters; do not use Promise `.then()`, `.catch()`, or `.finally()` chains before or after adaptation. Keep sequencing, failures, and cleanup in Effect, or use await with boundary-level try/catch/finally where a Promise boundary is required. Effect error and cleanup combinators remain valid.
+
 ## Failures and resources
 
 - Keep expected failures in the typed error channel; keep defects and interruption distinct. Do not catch an error just to rewrap it or discard information before a boundary requires translation.

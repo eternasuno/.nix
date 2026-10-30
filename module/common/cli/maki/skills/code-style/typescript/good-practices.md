@@ -11,6 +11,13 @@ Apply to TypeScript, TSX, and JavaScript governed by TypeScript tooling.
 - Add generics only when actual callers need multiple types and the generic preserves a relationship between inputs and outputs.
 - Use readonly data when callers must not mutate it. Do not copy objects repeatedly without an ownership or representation change.
 
+## HTTP and asynchronous operations
+
+- Use `fetch` or Effect `HttpClient` for application HTTP requests. In Effect code use `FetchHttpClient` as the transport. Preserve URL validation, credentials, redirect policy, timeouts, body limits, cancellation, and resource cleanup; keep official clients already backed by fetch.
+- Do not use Promise `.then()`, `.catch()`, or `.finally()` callbacks, including in tests and embedded scripts. Use `async`/`await` with `try`/`catch`/`finally` at the error and cleanup boundary, or convert the operation to Effect. Awaited helpers may propagate failures to an existing owning boundary; do not add empty catches or catch-and-rethrow boilerplate.
+- Handle detached async work at its owning boundary. `void` only marks a Promise as intentionally unawaited; it does not handle rejection. For Effect `promiseExit` APIs, inspect the returned `Exit` rather than duplicating handling of typed failures with `try`/`catch`.
+- Native event callbacks, required callback APIs, and Effect combinators such as `Effect.catch`, `Effect.catchTag`, and `Effect.ensuring` remain valid; they are not Promise callback chains.
+
 ## Edits and modules
 
 - For bulk rewrites of nested declarations, use syntax-aware tools or uniquely anchored exact replacements. Check nested examples; leave ambiguous matches unchanged rather than guessing.

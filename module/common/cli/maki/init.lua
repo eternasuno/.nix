@@ -13,12 +13,4 @@ maki.setup({
       max_file_size_mb = 4,
     },
   },
-  provider = {
-    allowed_models = {
-      "openai/gpt-6*",
-      "commandcode-anthropic/*",
-      "commandcode-openai/*",
-      "openrouter/openrouter/free",
-    },
-  },
 })

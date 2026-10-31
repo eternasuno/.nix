@@ -23,6 +23,11 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 - Use real networks or databases only in explicit integration tests with controlled dependencies and resource cleanup.
 - Distinguish expected failures from defects and cancellation when their observable semantics differ.
 
+## Browser verification
+
+- After changing the browser viewport, check `window.innerWidth`, `window.innerHeight`, and the relevant media query before claiming responsive coverage. A tool's success response alone does not establish the rendered viewport.
+- Verify saved settings after reloading or reopening the page. For unsaved changes, verify the confirmation and that canceling preserves both the current view and draft; distinguish observing the native prompt from replacing it with a test stub.
+
 ## Refactoring
 
 - Pin the current observable behavior with tests before changing structure. Change the structure without changing behavior, then re-run the pinned tests and report that behavior is unchanged.

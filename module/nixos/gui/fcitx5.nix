@@ -5,6 +5,8 @@
 }: let
   inherit (vars) username;
 in {
+  nixpkgs.config.problems.handlers."gtk+".broken = "warn";
+
   home-manager.users.${username} = {
     i18n.inputMethod = {
       type = "fcitx5";

@@ -2,7 +2,7 @@
   inherit (vars) username;
 in {
   imports = [
-    ./programs.nix
+    ./greeter.nix
   ];
 
   home-manager.users.${username} = {

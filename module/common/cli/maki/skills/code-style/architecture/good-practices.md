@@ -44,6 +44,8 @@ entry → workflow → domain operations
 ## Contracts, data, and failures
 
 - Express clear inputs, outputs, failure contracts, and ownership at module and capability boundaries. Prefer domain terms over transport and infrastructure representations.
+- Separate distinct business scopes into named operations. For optional collection filters, distinguish an absent restriction from an explicitly empty selection; keep query and mutation semantics consistent, and never let an empty selection silently broaden a write.
+- When consumers need several related aggregates together, consider one grouped query and one response. Migrate callers and failure handling together; retaining separate requests can repeat the same combined query.
 - Validate where the relevant invariant becomes known. Distinguish transport validation, representation parsing, domain validation, and external capability failure; do not repeat the same check across layers without a real reason.
 - Translate external HTTP payloads, database rows, SDK objects, CLI arguments, and serialized messages before their details spread through business code. Keep domain representations independent unless the representations are intentionally identical.
 - Make ownership of mutation, persistence, normalization, lifecycle, retries, cleanup, and error translation explicit. Avoid shared mutable state with unclear ownership.

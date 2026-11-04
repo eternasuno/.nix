@@ -10,6 +10,7 @@ Apply to TypeScript, TSX, and JavaScript governed by TypeScript tooling.
 - Treat untrusted external data as `unknown` until validated. Do not substitute an unchecked cast for validation.
 - Add generics only when actual callers need multiple types and the generic preserves a relationship between inputs and outputs.
 - Use readonly data when callers must not mutate it. Do not copy objects repeatedly without an ownership or representation change.
+- Write array types as `ReadonlyArray<T>` or `Array<T>` instead of `readonly T[]` or `T[]`; preserve mutability when changing syntax. Keep tuple types such as `readonly [string, number]`, including inside `ReadonlyArray<readonly [string, number]>`, and leave array literals unchanged.
 
 ## HTTP and asynchronous operations
 

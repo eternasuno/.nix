@@ -13,6 +13,11 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Before writing a provider Service, check version-matched official adapters and compose their Layers when the protocol matches. Separate application policies (endpoint shape, timeout, credentials, redirects, tracing propagation and response lifetime) from provider protocol logic; decorate only the missing policy, not the whole client.
 - Use the direct supported adapter for external callbacks, throws, or Promise rejections. Do not add intermediate Promise conversions when a direct adapter satisfies cancellation and cleanup requirements.
 
+## Partial update contracts
+
+- Derive patch schemas from the entity by selecting writable fields and applying `Schema.optionalKey`. Exclude identity and ownership fields; omission preserves a value, while an optional value expressed as `Option.none()` clears it and `Option.some(value)` sets it. Preserve these distinctions in persistence bindings and HTTP encoding.
+- For batch mutations, define empty-selection behavior and return matched identifiers when callers need to detect deletion during asynchronous work; do not substitute input identifiers for verified persisted matches.
+
 ## HTTP and Promise boundaries
 
 - Use Effect `HttpClient` with `FetchHttpClient` for HTTP requests. Compose application policies without weakening URL validation, credentials, redirect checks, timeouts, bounded response reads, cancellation, or resource cleanup.

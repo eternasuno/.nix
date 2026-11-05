@@ -72,6 +72,28 @@ pricing_output = 0.5
 pricing_cache_write = 0.125
 pricing_cache_read = 0.01
 
+[[magpie-anthropic.models]]
+id = "antigravity/claude-opus-5-5"
+context_window = 1000000
+max_output_tokens = 128000
+supports_thinking = true
+supports_vision = true
+pricing_input = 4.0
+pricing_output = 20.0
+pricing_cache_write = 5.0
+pricing_cache_read = 0.2
+
+[[magpie-anthropic.models]]
+id = "antigravity/claude-sonnet-5-5"
+context_window = 1000000
+max_output_tokens = 128000
+supports_thinking = true
+supports_vision = true
+pricing_input = 2.0
+pricing_output = 10.0
+pricing_cache_write = 2.5
+pricing_cache_read = 0.1
+
 [magpie-openai]
 display_name = "Magpie (Chat Completions)"
 protocol = "openai"
@@ -94,4 +116,44 @@ medium   = { reasoning_effort = "high" }
 high     = { reasoning_effort = "high" }
 xhigh    = { reasoning_effort = "high" }
 max      = { reasoning_effort = "max" }
+adaptive = { reasoning_effort = "high" }
+
+[[magpie-openai.models]]
+id = "group/gemini-3.8-flash"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 0.75
+pricing_output = 3.75
+pricing_cache_read = 0.075
+
+[magpie-openai.models.thinking_fields]
+off      = { reasoning_effort = "low" }
+minimal  = { reasoning_effort = "low" }
+low      = { reasoning_effort = "low" }
+medium   = { reasoning_effort = "medium" }
+high     = { reasoning_effort = "high" }
+xhigh    = { reasoning_effort = "high" }
+max      = { reasoning_effort = "high" }
+adaptive = { reasoning_effort = "high" }
+
+[[magpie-openai.models]]
+id = "group/gemini-4-argon"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 2.0
+pricing_output = 10.0
+pricing_cache_read = 0.1
+
+[magpie-openai.models.thinking_fields]
+off      = { reasoning_effort = "low" }
+minimal  = { reasoning_effort = "low" }
+low      = { reasoning_effort = "low" }
+medium   = { reasoning_effort = "medium" }
+high     = { reasoning_effort = "high" }
+xhigh    = { reasoning_effort = "high" }
+max      = { reasoning_effort = "high" }
 adaptive = { reasoning_effort = "high" }

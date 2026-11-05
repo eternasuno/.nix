@@ -32,7 +32,7 @@ Pass the exact model via the `task` tool's `model` parameter, the reasoning effo
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 
 - **UI designer**
-  - Model: `magpie-anthropic/commandcode-plan/claude-haiku-5-5`
+  - Model: `magpie-anthropic/antigravity/claude-sonnet-5-5`
   - subagent_type: `research`
   - Use for a detailed visual or interaction design within the main agent's requirements and constraints.
   - Return layout, component hierarchy, styling, responsive behavior, interaction states, and accessibility precise enough to implement. Do not modify code.

@@ -44,6 +44,8 @@ entry → workflow → domain operations
 ## Contracts, data, and failures
 
 - Express clear inputs, outputs, failure contracts, and ownership at module and capability boundaries. Prefer domain terms over transport and infrastructure representations.
+- Reuse existing entities as data types when their contract fits the consumer. Do not create input, repository-value, or response variants merely because data crosses a layer, then map identical fields between them. Derive genuinely different contracts, such as writable partial patches, from entity fields; keep transport-specific projections at the transport boundary.
+- Do not add a post-write read solely to reconstruct a returned entity: it adds a failure point after a successful mutation and can observe unrelated concurrent changes. Prefer the mutation result or the known entity and applied patch when those satisfy the contract.
 - Separate distinct business scopes into named operations. For optional collection filters, distinguish an absent restriction from an explicitly empty selection; keep query and mutation semantics consistent, and never let an empty selection silently broaden a write.
 - When consumers need several related aggregates together, consider one grouped query and one response. Migrate callers and failure handling together; retaining separate requests can repeat the same combined query.
 - Validate where the relevant invariant becomes known. Distinguish transport validation, representation parsing, domain validation, and external capability failure; do not repeat the same check across layers without a real reason.
@@ -56,4 +58,4 @@ entry → workflow → domain operations
 
 ## Physical structure
 
-Logical roles do not require separate folders, packages, services, or files. A small program may keep several roles in one file. Split only for concrete ownership, comprehension, reuse, independent evolution, deployment, technology separation, or testing at a real boundary.
+Logical roles do not require separate folders, packages, services, or files. A small program may keep several roles in one file. Keep closely related entity schemas, types, and helpers in their existing owning module; a new type or helper alone does not justify a new file. Split only for concrete ownership, comprehension, reuse, independent evolution, deployment, technology separation, or testing at a real boundary.

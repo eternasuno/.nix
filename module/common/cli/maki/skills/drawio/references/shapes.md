@@ -11,7 +11,7 @@ are addressed by stencil names like `shape=mxgraph.aws4.lambda`. A guessed
 name that doesn't exist **silently renders as a blank box** — the diagram
 looks fine in XML and broken in the editor.
 
-- Only hand-write styles from the **cheatsheet below** (stable built-ins).
+- Only hand-write styles from the **cheatsheet below** or the type tables in `diagram-types.md` (vetted).
 - For anything branded/vendor-specific that is not in the cheatsheet, use a
   **generic cheatsheet shape** instead (database → `shape=cylinder3;`, cloud →
   `cloud;`, actor → `shape=umlActor;`, …) — a correct generic shape beats a
@@ -65,7 +65,7 @@ These are stable enough to write by hand. Combine with `whiteSpace=wrap;html=1;`
 | Required interface | `shape=requires;direction=north;` |
 | Component | `shape=component;` |
 
-### Containers (parent-child; children use relative coords)
+### Containers (children use `parent="<container id>"` and relative coords)
 
 | Type | style | When |
 |---|---|---|

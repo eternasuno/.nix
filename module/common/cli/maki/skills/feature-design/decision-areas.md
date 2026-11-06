@@ -1,6 +1,6 @@
 # Decision Areas
 
-Use this file as a reference when expanding the feature-design decision tree. Do not ask every question mechanically; only expand branches that materially affect the feature.
+Checklist for expanding the decision tree. Expand only branches that materially affect the feature; do not ask every question.
 
 ## Requirements
 
@@ -97,19 +97,4 @@ Acceptance criteria should describe observable behavior and be specific enough t
 
 ## Completion Check
 
-Before finishing, ensure user-visible behavior, major constraints, and acceptance are clear. Local implementation details may remain open.
-
-Verify that the following are sufficiently clear where relevant:
-
-- feature goal
-- scope and non-goals
-- observable behavior
-- business rules
-- edge and failure cases
-- existing-system constraints
-- major technical strategy
-- dependency and library decisions
-- compatibility or migration requirements
-- acceptance criteria
-- material risks
-- deferred decisions
+Done when user-visible behavior, major constraints, and acceptance are clear; local implementation details may remain open. Where relevant, also confirm the existing-system constraints, dependency decisions, compatibility or migration needs, material risks, and deferred decisions are recorded.

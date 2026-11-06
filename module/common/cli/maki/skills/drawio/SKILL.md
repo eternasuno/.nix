@@ -5,15 +5,13 @@ description: Draw.io XML authoring and diagrams.net editor URLs. Use when the re
 
 # Drawio — XML & URL generation
 
-Produce draw.io diagrams as `.drawio` XML and as `app.diagrams.net` editor
-URLs. The bundled Python encoder validates XML and generates URLs using only the standard library.
+Produce draw.io diagrams as `.drawio` XML and `app.diagrams.net` editor URLs. The bundled Python encoder validates the XML and generates URLs using only the standard library.
 
 ## When to use / when not
 
 - Use when: the user requests draw.io XML, a `.drawio` file, or an
   app.diagrams.net editor URL.
-- Do NOT use for: live-canvas editing, iterative element-level refinement, or
-  generic PNG/SVG/PDF image delivery without a draw.io source requirement. Those need a suitable rendering workflow, not this XML/URL workflow.
+- Do NOT use for live-canvas editing, iterative element-level refinement, or PNG/SVG/PDF delivery without a draw.io source requirement.
 
 ## Workflow
 
@@ -23,13 +21,11 @@ For every new diagram, read `references/style-presets.md`, resolve explicit sele
 
 ### Step 1 — Choose the diagram type
 
-For a specialized type (ERD, UML, sequence, C4, BPMN, SysML, network, or swimlane), read only the matching section of `references/diagram-types.md` and use its conventions. A simple flowchart does not require the full type catalog. Ask a clarifying question only if the type is genuinely
-ambiguous.
+For a specialized type (ERD, UML, sequence, C4, BPMN, SysML, network, or swimlane), read only the matching section of `references/diagram-types.md` and use its conventions. A simple flowchart does not need the type catalog. Ask only if the type is genuinely ambiguous.
 
 ### Step 2 — Author the XML
 
-When authoring XML, read the relevant structure/edge sections of `references/xml-authoring.md`, then write the `.drawio` file by hand. Read `references/shapes.md` when selecting unfamiliar shapes or stencils — never guess an
-`mxgraph.*` stencil name (a wrong name renders as a blank box).
+When authoring XML, read the relevant structure/edge sections of `references/xml-authoring.md`, then write the `.drawio` file by hand. Read `references/shapes.md` when selecting unfamiliar shapes or stencils; never guess an `mxgraph.*` stencil name (a wrong name renders as a blank box).
 
 **XML rules:**
 
@@ -43,8 +39,7 @@ When authoring XML, read the relevant structure/edge sections of `references/xml
 - All text-bearing cells use `html=1` in style
 - Escape special characters in attributes: `&amp;` `&lt;` `&gt;` `&quot;`
 - Line breaks inside `value` use `&#xa;`, never literal `\n`
-- Save the file to disk (e.g. `./diagram.drawio`) — it is the persistent
-  local copy the user can re-open and re-edit
+- Save the file to disk (e.g. `./diagram.drawio`) as the persistent copy the user can re-open and edit
 
 ### Step 3 — Convert to a URL
 
@@ -52,10 +47,9 @@ When authoring XML, read the relevant structure/edge sections of `references/xml
 python3 <this-skill-dir>/scripts/encode_url.py diagram.drawio
 ```
 
-- Parses XML and checks graph roots, unique cell IDs, parent/source/target references, parent cycles, and geometry on every edge. Invalid or unsupported XML exits nonzero without a URL. Accepts uncompressed `mxGraphModel` or `mxfile` pages.
-- Prints the editor URL (`https://app.diagrams.net/?grid=0&pv=0&border=10&edit=_blank#create=…`) to stdout only after structural checks pass.
-- Also accepts XML on stdin: `python3 <this-skill-dir>/scripts/encode_url.py < diagram.drawio`
-- Deliver the URL verbatim for the user to open.
+- Checks graph roots, unique cell IDs, parent/source/target references, parent cycles, and edge geometry, then prints the editor URL (`https://app.diagrams.net/?grid=0&pv=0&border=10&edit=_blank#create=…`) to stdout. Invalid or unsupported XML exits nonzero without a URL. Accepts uncompressed `mxGraphModel` or `mxfile` input.
+- XML may also come from stdin: `python3 <this-skill-dir>/scripts/encode_url.py < diagram.drawio`
+- Deliver the URL verbatim.
 
 ### Step 4 — Deliver
 
@@ -64,6 +58,4 @@ Give the user: the URL (as a plain, unmodified string) and the local
 
 ## URL size limit
 
-For URLs over 8 KB, deliver the
-`.drawio` file alone and tell the user to open it in the diagrams.net editor
-(File → Open, or drag into the editor page).
+The script does not enforce a length limit, but URLs over about 8 KB are often truncated by browsers, shells, and chat clients. In that case deliver the `.drawio` file alone and tell the user to open it in the diagrams.net editor (File → Open, or drag into the page).

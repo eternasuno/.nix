@@ -24,23 +24,12 @@ Read this **before hand-writing any `.drawio` XML** (workflow step 2).
 - User shapes start at `id="2"` and increment sequentially
 - All shapes have `parent="1"` (unless inside a container — then use container's id)
 - All text uses `html=1` in style for proper rendering
-- **Never use `--` inside XML comments** — it's illegal per XML spec and causes parse errors
 - Escape special characters in attribute values: `&amp;`, `&lt;`, `&gt;`, `&quot;`
 - **Multi-line text in labels:** use `&#xa;` for line breaks inside `value` attributes (not literal `\n`). Example: `value="Line 1&#xa;Line 2"`
 
 ### Shape types (vertex)
 
-| Style keyword | Use for |
-|--------------|---------|
-| `rounded=0` | plain rectangle (default) |
-| `rounded=1` | rounded rectangle — services, modules |
-| `ellipse;` | circles/ovals — start/end, databases |
-| `rhombus;` | diamond — decision points |
-| `shape=mxgraph.aws4.resourceIcon;` | AWS icons |
-| `shape=cylinder3;` | cylinder — databases |
-| `swimlane;` | group/container with title bar |
-
-For **vendor/branded icons** (AWS/Azure/GCP/Cisco/Kubernetes) and any non-trivial shape, don't guess the `shape=mxgraph.*` name — a wrong name renders as a blank box. Use only the hand-writable styles in `references/shapes.md`; for anything not listed there, a generic cheatsheet shape beats a guessed vendor icon.
+Use `rounded=1` for services/modules, `ellipse;` for start/end, `rhombus;` for decisions, `shape=cylinder3;` for databases, and `swimlane;` for titled containers. For any other shape, including vendor icons (AWS/Azure/GCP/Cisco/Kubernetes), use only the styles in `references/shapes.md`; a guessed `shape=mxgraph.*` name renders as a blank box.
 
 ### Required properties
 
@@ -62,15 +51,10 @@ For **vendor/branded icons** (AWS/Azure/GCP/Cisco/Kubernetes) and any non-trivia
 
 For architecture diagrams with nested elements, use draw.io's parent-child containment — do **not** just place shapes on top of larger shapes.
 
-| Type | Style | When to use |
-|------|-------|-------------|
-| **Group** (invisible) | `group;pointerEvents=0;` | No visual border needed, container has no connections |
-| **Swimlane** (titled) | `swimlane;startSize=30;` | Container needs a visible title bar, or container itself has connections |
-| **Custom container** | Add `container=1;pointerEvents=0;` to any shape | Any shape acting as a container without its own connections |
+Container styles (invisible group, titled swimlane, any shape with `container=1`) are listed in `references/shapes.md`.
 
-**Key rules:**
-- Add `pointerEvents=0;` to container styles that should not capture connections between children
-- Children set `parent="containerId"` and use coordinates **relative to the container**
+- Add `pointerEvents=0;` to container styles that should not capture connections between children.
+- Children set `parent="containerId"` and use coordinates **relative to the container**.
 
 ```xml
 <mxCell id="svc1" value="User Service" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
@@ -112,7 +96,6 @@ For architecture diagrams with nested elements, use draw.io's parent-child conta
 - Pin `exitX/exitY/entryX/entryY` on every edge when a node has 2+ connections — distributes lines across the shape perimeter: pick the side facing each peer and spread that side's edges over even slots, so they don't stack or cross at the boundary
 - Add `<Array as="points">` waypoints when an edge must detour around an intermediate shape
 - **Leave room for arrowheads:** the final straight segment between the last bend and the target shape must be ≥20px long. If too short, the arrowhead overlaps the bend and looks broken. Fix by increasing node spacing or adding explicit waypoints
-- **Routing:** edges auto-route in the editor. Keep the orthogonal rules above; if a dense diagram still has crossings, increase node spacing and add explicit waypoints
 
 ### Distributing connections on a shape
 

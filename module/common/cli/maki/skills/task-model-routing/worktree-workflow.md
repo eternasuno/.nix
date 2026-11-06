@@ -1,6 +1,6 @@
 # Worktree workflow
 
-Use only when small, independent implementation tasks need separate branches/worktrees for concurrent development. Worktree isolation does not make an oversized or dependent task suitable for delegation; ordinary delegation, read-only parallel work, and dependent changes use the current working tree.
+Use only when small, independent implementation tasks need separate branches/worktrees for concurrent development. Isolation does not make an oversized or dependent task delegable; all other delegation uses the current working tree.
 
 ## Prepare
 
@@ -11,7 +11,7 @@ Use only when small, independent implementation tasks need separate branches/wor
 ## Develop
 
 - Give each task its absolute worktree path, branch, module scope, allowed files, test commands, and explicit commit/integration permissions. Writes stay in that worktree.
-- Separate worktrees do not prevent integration conflicts: independent tasks may edit the same repository-relative file. Identify shared behavior and interfaces before dispatch, keep overlapping edits focused, record integration risks, and sequence tasks that need each other's changes or incompatible shared-interface decisions.
+- Separate worktrees do not prevent integration conflicts when tasks edit the same repository-relative file. Identify shared behavior and interfaces before dispatch, keep overlapping edits focused, record integration risks, and sequence tasks that depend on each other's changes or shared-interface decisions.
 - Validate each module in its own worktree, review its diff, preserve unrelated changes, and commit on its task branch only when authorized. Report branch, commit or uncommitted state, test results, and remaining risks.
 
 ## Integrate only when authorized

@@ -61,7 +61,7 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-anthropic.models]]
-id = "commandcode-plan/claude-haiku-5-5"
+id = "claude/claude-haiku-5-5"
 context_window = 100000
 max_output_tokens = 128000
 supports_thinking = true
@@ -73,7 +73,7 @@ pricing_cache_write = 0.125
 pricing_cache_read = 0.01
 
 [[magpie-anthropic.models]]
-id = "antigravity/claude-opus-5-5"
+id = "claude/claude-opus-5-5"
 context_window = 1000000
 max_output_tokens = 128000
 supports_thinking = true
@@ -84,7 +84,7 @@ pricing_cache_write = 5.0
 pricing_cache_read = 0.2
 
 [[magpie-anthropic.models]]
-id = "antigravity/claude-sonnet-5-5"
+id = "claude/claude-sonnet-5-5"
 context_window = 1000000
 max_output_tokens = 128000
 supports_thinking = true
@@ -107,39 +107,25 @@ context_window = 1000000
 max_output_tokens = 200000
 supports_thinking = true
 supports_vision = true
+pricing_input = 0.15
+pricing_output = 0.6
+pricing_cache_read = 0.003
 
 [magpie-openai.models.thinking_fields]
 off      = { reasoning_effort = "none" }
-minimal  = { reasoning_effort = "low" }
 low      = { reasoning_effort = "low" }
-medium   = { reasoning_effort = "high" }
 high     = { reasoning_effort = "high" }
-xhigh    = { reasoning_effort = "high" }
 max      = { reasoning_effort = "max" }
-adaptive = { reasoning_effort = "high" }
 
-[[magpie-openai.models]]
-id = "group/gemini-3.8-flash"
-context_window = 1048576
-max_output_tokens = 65536
-supports_thinking = true
-supports_vision = true
-pricing_input = 0.75
-pricing_output = 3.75
-pricing_cache_read = 0.075
+[magpie-google]
+display_name = "Magpie (Google)"
+protocol = "google"
+base_url = "https://gateway.eternasuno.ddns.net/v1beta"
+api_key_env = "MAGPIE_API_KEY"
+discover_models = false
 
-[magpie-openai.models.thinking_fields]
-off      = { reasoning_effort = "low" }
-minimal  = { reasoning_effort = "low" }
-low      = { reasoning_effort = "low" }
-medium   = { reasoning_effort = "medium" }
-high     = { reasoning_effort = "high" }
-xhigh    = { reasoning_effort = "high" }
-max      = { reasoning_effort = "high" }
-adaptive = { reasoning_effort = "high" }
-
-[[magpie-openai.models]]
-id = "group/gemini-4-argon"
+[[magpie-google.models]]
+id = "antigravity/gemini-4-argon"
 context_window = 1048576
 max_output_tokens = 65536
 supports_thinking = true
@@ -148,12 +134,12 @@ pricing_input = 2.0
 pricing_output = 10.0
 pricing_cache_read = 0.1
 
-[magpie-openai.models.thinking_fields]
-off      = { reasoning_effort = "low" }
-minimal  = { reasoning_effort = "low" }
-low      = { reasoning_effort = "low" }
-medium   = { reasoning_effort = "medium" }
-high     = { reasoning_effort = "high" }
-xhigh    = { reasoning_effort = "high" }
-max      = { reasoning_effort = "high" }
-adaptive = { reasoning_effort = "high" }
+[[magpie-google.models]]
+id = "antigravity/gemini-3.8-flash"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 0.75
+pricing_output = 3.75
+pricing_cache_read = 0.075

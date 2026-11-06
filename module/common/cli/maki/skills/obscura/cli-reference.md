@@ -20,27 +20,29 @@ obscura --help
 obscura <subcommand> --help
 ```
 
-Common operations:
+Common operations (verified against 0.2.2):
 
 ```bash
 obscura fetch https://example.com --dump text
 obscura fetch https://example.com --eval "document.title"
 obscura fetch https://example.com --screenshot page.png
 obscura --stealth fetch https://example.com --screenshot page.png
-obscura scrape urls.txt
-obscura serve --port 9222  # bind to loopback only
+obscura scrape https://example.com/a https://example.com/b
+obscura serve --port 9222
 obscura mcp
-obscura mcp --http --port 3000  # bind to loopback only
+obscura mcp --http --port 3000
 ```
 
-- `fetch` loads one URL and can dump content, evaluate JavaScript, or capture a screenshot.
-- `scrape` processes multiple URLs.
-- `serve` exposes a Chrome DevTools Protocol endpoint for clients such as Puppeteer or Playwright; keep it on loopback because it can control the browser and read page data.
-- `mcp` starts the MCP browser server over stdio; `--http` exposes it over HTTP and must remain loopback-only unless the user explicitly authorizes authenticated remote access.
+- `fetch` loads one URL. `--dump` accepts `html|text|links|markdown|original|assets|cookies`; `--eval` runs JavaScript; `--screenshot` needs a build with the `render` feature. `--file <list>` switches to raw batch mode.
+- `scrape` takes URLs as arguments and renders each one (`--eval`, `--format`, `--concurrency`).
+- `serve` exposes a Chrome DevTools Protocol endpoint for Puppeteer or Playwright clients. It can control the browser and read page data.
+- `mcp` starts the MCP browser server over stdio; `--http` serves it over HTTP.
+- `serve` and `mcp --http` bind `127.0.0.1` by default. Do not pass a non-loopback `--host` unless the user explicitly authorizes authenticated remote access.
+- Loopback, RFC1918, and link-local targets are blocked by default. Use `--allow-private-network` only for user-requested local targets.
 - `--stealth` requires a stealth release archive and must not be used to bypass access controls, CAPTCHAs, account limits, or site authorization.
-- Use `--wait N` for a fixed delay in seconds and `--timeout N` to bound navigation.
+- `--wait N` adds a fixed delay in seconds, `--wait-until` selects the readiness event, and `--timeout N` bounds navigation.
 
-For any option not shown here, rely on the downloaded version's `--help` output rather than assuming flags.
+For any option not shown here, rely on the installed `--help` rather than assuming flags.
 
 ## CJK and other non-Latin text
 

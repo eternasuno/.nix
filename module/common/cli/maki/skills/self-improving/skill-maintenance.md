@@ -1,6 +1,6 @@
 # Skill maintenance
 
-Read only after the main skill's invocation gate is satisfied and a skill-change proposal or authorized skill edit needs this workflow, not for routine memory updates. The evidence and approval conditions below do not independently trigger `self-improving`.
+Read only when a skill-change proposal or authorized skill edit is needed, after the main skill's invocation gate is satisfied. Not for routine memory updates; the conditions below do not trigger `self-improving` by themselves.
 
 ## Proposal gate
 

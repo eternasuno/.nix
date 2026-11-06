@@ -40,7 +40,7 @@ Read this file when:
 | Sync message | `html=1;verticalAlign=bottom;endArrow=block;` | Solid line, filled arrowhead |
 | Async message | `html=1;verticalAlign=bottom;endArrow=open;dashed=1;` | Dashed line, open arrowhead |
 | Return message | `html=1;verticalAlign=bottom;endArrow=open;dashed=1;strokeColor=#999999;` | Grey dashed |
-| Activation box | `shape=umlFrame;whiteSpace=wrap;` on the lifeline | Narrow rectangle on lifeline |
+| Activation box | `html=1;points=[];perimeter=orthogonalPerimeter;` ~10px wide, `parent` = lifeline | Narrow rectangle on the lifeline |
 | Layout | LR, lifelines spaced 200px apart | Time flows top to bottom |
 
 ## C4 Model (System Context / Container / Component)
@@ -68,7 +68,7 @@ Read this file when:
 | Service | `rounded=1;whiteSpace=wrap;html=1;` + tier color | Use color palette by tier |
 | Database | `shape=cylinder3;whiteSpace=wrap;html=1;` | Green palette |
 | Queue/Bus | `rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;` | Yellow — place centrally for hub pattern |
-| Gateway/LB | `shape=mxgraph.aws4.resourceIcon;` or `rounded=1;` with orange | Orange palette |
+| Gateway/LB | `rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;` | Orange palette |
 | External | `rounded=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;` | Dashed border for external systems |
 | Layout | TB or LR by tier count; ≥4 tiers → TB | Hub nodes centered |
 

@@ -21,6 +21,4 @@ Record guidance versions, inputs, observations, and limitations. A static scenar
 
 ## Writing hypotheses
 
-Concrete triggers, nearby definitions, short workflows, and checkable completion can improve usability, but effects depend on model and context. Claims that leading words always improve reliability, prohibitions inherently backfire, or hidden later steps necessarily prevent premature completion are hypotheses, not runtime facts. Keep precise prohibitions that protect authorization, security, or user work, and pair them with safe actions where useful.
-
-Retain constraints according to evidence and risk. Remove unsupported theory rather than presenting it as universal explanation.
+Concrete triggers, nearby definitions, short workflows, and checkable completion can improve usability, but effects depend on model and context. Claims that leading words always improve reliability, prohibitions inherently backfire, or hidden later steps prevent premature completion are hypotheses, not runtime facts. Keep precise prohibitions that protect authorization, security, or user work, and pair them with a safe action where useful. Retain constraints according to evidence and risk; drop unsupported theory.

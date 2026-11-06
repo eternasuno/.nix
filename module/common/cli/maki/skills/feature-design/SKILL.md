@@ -13,7 +13,7 @@ Resolve decisions that affect user-visible behavior, major constraints, and acce
 - Ask the user for product preferences, undefined business rules, and major tradeoffs that the request or project evidence does not settle. Do not invent product requirements.
 - Choose existing suitable dependencies, established conventions, and reversible local technical details from evidence. Record assumptions when they matter; local choices may remain with the implementer.
 - Detailed module structure and contracts are structural design work, not additional product questions unless they change a major feature decision.
-- Reuse confirmed decisions.
+- Reuse decisions already confirmed in the conversation.
 
 ## Workflow
 

@@ -1,12 +1,12 @@
 # Style Presets — Apply
 
-A **style preset** is a named JSON file capturing visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in conventions in SKILL.md's color/shape/edge tables.
+A **style preset** is a named JSON file capturing visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in color/shape/edge conventions in `xml-authoring.md` and `diagram-types.md`.
 
 Read this file when generating a new diagram, including the default look. Existing diagrams retain their styling unless re-theming is requested.
 
 ## Locations and lookup order
 
-1. `~/.drawio-skill/styles/<name>.json` — user presets, if the user has any (survive updates).
+1. `~/.drawio-skill/styles/<name>.json` — optional user presets (the directory may not exist).
 2. `<this-skill-dir>/styles/built-in/<name>.json` — built-ins shipped with the skill:
 
 | Preset | When |
@@ -27,7 +27,7 @@ An explicit user-selected look takes precedence. Otherwise inspect user preset J
 
 These rules apply at generation time (existing `.drawio` files are not re-themed).
 
-When SKILL.md's Step 0 identified a preset, it fully replaces the built-in palette, shape keywords, edge defaults, and font for this diagram — do not mix values from the built-in color table.
+The preset selected in SKILL.md Step 0 replaces the built-in palette, shape keywords, edge defaults, and font for this diagram; do not mix in values from the built-in color table.
 
 **Color lookup.** For each role a shape plays (service / database / queue / gateway / error / external / security), resolve `preset.roles[role]` to a slot name, then `preset.palette[<slot>]` to the `(fillColor, strokeColor)` pair. If `roles[role]` is unset or the resolved slot is `null`, follow this fallback ladder:
 
@@ -41,7 +41,7 @@ When SKILL.md's Step 0 identified a preset, it fully replaces the built-in palet
 
 **Shape keywords.** Use `preset.shapes[role]` as the **prefix** of the vertex style string (before `whiteSpace=wrap;html=1;...`). Example: for a database role, if `preset.shapes.database = "shape=cylinder3"`, the vertex style starts `shape=cylinder3;whiteSpace=wrap;html=1;fillColor=...`. The six named shape keys are `service`, `database`, `queue`, `decision`, `external`, `container`. Roles `gateway`, `error`, and `security` reuse `preset.shapes.service` unless the preset explicitly populates a key with their name.
 
-**Edges.** Use `preset.edges.style` as the base edge style string. Append `preset.edges.arrow`. Per-edge routing keys (`exitX/exitY/entryX/entryY/...`) are still added by the usual routing rules in SKILL.md. If the flow between two shapes matches a token from `preset.edges.dashedFor` (either because the user's prompt used that word, or because one end of the edge plays a role whose typical relation is "optional"), append `;dashed=1` to the edge style.
+**Edges.** Use `preset.edges.style` as the base edge style string. Append `preset.edges.arrow`. Per-edge routing keys (`exitX/exitY/entryX/entryY/...`) are still added by the routing rules in `xml-authoring.md`. If the flow between two shapes matches a token from `preset.edges.dashedFor` (either because the user's prompt used that word, or because one end of the edge plays a role whose typical relation is "optional"), append `;dashed=1` to the edge style.
 
 **Fonts.** Append `fontFamily=<preset.font.fontFamily>;fontSize=<preset.font.fontSize>` to every vertex style. Container headers and swimlane titles additionally get `fontSize=<preset.font.titleFontSize>;fontStyle=1` when `preset.font.titleBold` is `true`.
 

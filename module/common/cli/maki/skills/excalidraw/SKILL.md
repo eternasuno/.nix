@@ -5,7 +5,7 @@ description: Live Excalidraw canvas creation and element-level editing. Use when
 
 # Excalidraw
 
-Use this skill for live-canvas Excalidraw work, iterative visual refinement, precise element editing, screenshots, image export, or `.excalidraw` round trips. Draw.io XML and diagrams.net editor links are outside this workflow.
+Use for live-canvas Excalidraw work: iterative visual refinement, precise element editing, screenshots, image export, and `.excalidraw` round trips. Draw.io XML and diagrams.net links belong to the `drawio` skill.
 
 ## Choose an interface
 
@@ -47,17 +47,15 @@ Check every batch and the final result:
 ## Layout baseline
 
 - Coordinates use `(0, 0)` at the upper-left; x increases right and y increases down.
-- Shape width: `max(160, labelCharCount * 12)`; single-line height about 60px, two-line height about 80px.
+- Shape width: `max(160, labelCharCount * 12)`; height about 60px for one line, 80px for two.
 - Use solid fills for crisp shapes and dashed strokes for zones or asynchronous flows.
 - Use `text` on shapes and `startElementId` / `endElementId` on arrows in CLI/MCP input. Raw REST uses the stricter formats documented in the cheatsheet.
 
 ## Arrow routing
 
-Use intermediate points when a straight arrow would cross an unrelated element. Use curved routes for fan-out or gentle detours and elbowed routes for cross-lane or right-angle paths. Keep routing outside other zones when possible.
+When a straight arrow would cross an unrelated element, add intermediate points: curved routes for fan-out or gentle detours, elbowed routes for cross-lane or right-angle paths. Keep routes outside other zones when possible.
 
-## Visual refinement
-
-For duplicate bound text, inspect text elements with `containerId`; avoid labels on background zones and allow canvas auto-sync to settle before cleanup.
+If bound text appears duplicated, inspect text elements with `containerId`, and let canvas auto-sync settle before cleaning up.
 
 ## Reference
 

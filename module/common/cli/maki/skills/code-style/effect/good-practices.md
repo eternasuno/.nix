@@ -7,6 +7,7 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Keep workflows readable as sequential operations; use generator composition when it makes that sequence clearer. Do not wrap an existing Effect merely for visual consistency.
 - A function returning an Effect does not need a Service or Layer. Introduce neither unless the architecture requires a separately provided capability.
 - Follow existing service definitions, including classes required by the installed API; a TypeScript preference for type aliases does not override runtime requirements.
+- When a service's shape is declared as a named type, use `interface` (conventionally `I<Service>`, next to its `Context.Service` class) rather than a `type` alias, and keep all such shapes consistent. This is an exception to the TypeScript preference for `type`; do not convert existing service interfaces to type aliases.
 - Require only services used by the operation, not the caller's entire environment. Acquire them inside the Effect that uses them.
 - Compose Layers without changing dependency order, sharing, or resource lifetime. Do not merge providers merely for uniformity or require a cross-project naming suffix.
 - Prefer a framework-provided Layer when it expresses the required behavior directly. Provide independent dependencies at the composition root; retain nesting for actual dependency ordering, not one-use category groups.

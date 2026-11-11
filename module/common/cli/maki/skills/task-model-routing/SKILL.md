@@ -1,6 +1,6 @@
 ---
 name: task-model-routing
-description: Before starting any task beyond a single-file lookup or small edit, and before calling the task tool, load this skill. Dispatch subagents actively: delegate non-trivial exploration, implementation, and review by default, run independent work in parallel, and keep only trivial work in the main agent.
+description: Before starting any task beyond a single-file lookup or small edit, and before calling the task tool, load this skill. It defines the model, thinking, and subagent_type for every subagent role, and makes delegation the default, so non-trivial exploration, implementation, and review go to subagents, independent work runs in parallel, and only trivial work stays in the main agent.
 ---
 
 # Task model routing

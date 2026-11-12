@@ -11,9 +11,10 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 
 - Test observable behavior through the smallest public boundary that exercises the claimed contract. Do not expose private implementation details solely for tests.
 - Before adding a case, identify the behavior or regression risk missing from existing coverage. Before removing or merging cases, compare contracts, boundaries, and failure paths; similar code or test count does not establish redundancy.
-- Assert returned, persisted, or emitted results and contractually required failures or interactions. Assert ordering, cancellation, and cleanup only where they are part of the behavior being tested.
-- Do not test dependency internals or repeat language/framework guarantees without project-owned behavior. Reject assertions that can pass when the claimed behavior is broken.
+- Assert returned, persisted, or emitted results and contractually required failures or interactions. Assert ordering, cancellation, and cleanup only where they are part of the behavior being tested. For generated values such as ids and tokens, assert what their contract guarantees (uniqueness, and order only for generators that promise it), never exact values.
+- Do not test dependency internals or repeat language/framework guarantees without project-owned behavior. Reject assertions that can pass when the claimed behavior is broken. Do not test constants or limits the code does not have; assert each rule at the layer that owns it rather than again at every layer above.
 - Integration tests must exercise the actual integration boundary, not registration or configuration alone. Use the execution context and resource ownership required by that boundary.
+- Give each repository or storage port one contract suite, written against the port and run by every implementation, including in-memory test doubles, so a double cannot drift from the real store.
 
 ## Setup and isolation
 

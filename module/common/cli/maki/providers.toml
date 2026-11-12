@@ -61,6 +61,17 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-anthropic.models]]
+id = "claude/claude-fable-5-1"
+context_window = 1000000
+max_output_tokens = 128000
+supports_thinking = true
+supports_vision = true
+pricing_input = 10.0
+pricing_output = 50.0
+pricing_cache_write = 12.5
+pricing_cache_read = 0.25
+
+[[magpie-anthropic.models]]
 id = "claude/claude-haiku-5-5"
 context_window = 100000
 max_output_tokens = 128000
@@ -102,14 +113,14 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-openai.models]]
-id = "commandcode-plan/deepseek/deepseek-v4.1-flash"
+id = "commandcode-plan/deepseek/deepseek-v4.1-flash-fast"
 context_window = 1000000
-max_output_tokens = 200000
+max_output_tokens = 32768
 supports_thinking = true
 supports_vision = true
-pricing_input = 0.15
-pricing_output = 0.6
-pricing_cache_read = 0.003
+pricing_input = 0.16
+pricing_output = 0.58
+pricing_cache_read = 0.016
 
 [magpie-openai.models.thinking_fields]
 off      = { reasoning_effort = "none" }

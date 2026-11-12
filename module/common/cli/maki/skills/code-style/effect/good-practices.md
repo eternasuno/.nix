@@ -11,6 +11,7 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Require only services used by the operation, not the caller's entire environment. Acquire them inside the Effect that uses them.
 - Compose Layers without changing dependency order, sharing, or resource lifetime. Do not merge providers merely for uniformity or require a cross-project naming suffix.
 - Prefer a framework-provided Layer when it expresses the required behavior directly. Provide independent dependencies at the composition root; retain nesting for actual dependency ordering, not one-use category groups.
+- Use a service Effect already provides, such as `HttpClient`, directly in business code instead of defining an application port over it; the application provides the implementation, such as `FetchHttpClient.layer`.
 - Before writing a provider Service, check version-matched official adapters and compose their Layers when the protocol matches. Separate application policies (endpoint shape, timeout, credentials, redirects, tracing propagation and response lifetime) from provider protocol logic; decorate only the missing policy, not the whole client.
 - Use the direct supported adapter for external callbacks, throws, or Promise rejections. Do not add intermediate Promise conversions when a direct adapter satisfies cancellation and cleanup requirements.
 
@@ -19,9 +20,13 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 - Derive patch schemas from the entity by selecting writable fields and applying `Schema.optionalKey`. Exclude identity and ownership fields; omission preserves a value, while an optional value expressed as `Option.none()` clears it and `Option.some(value)` sets it. Preserve these distinctions in persistence bindings and HTTP encoding.
 - For batch mutations, define empty-selection behavior and return matched identifiers when callers need to detect deletion during asynchronous work; do not substitute input identifiers for verified persisted matches.
 
+## Schema value types
+
+- Define a value type as one linear pipe: normalize (for example `Schema.Trim`), then checks, then `Schema.brand`, then a wrapper such as `Schema.RedactedFromValue`. Do not name intermediate schemas only to compose them.
+
 ## HTTP and Promise boundaries
 
-- Use Effect `HttpClient` with `FetchHttpClient` for HTTP requests. Compose application policies without weakening URL validation, credentials, redirect checks, timeouts, bounded response reads, cancellation, or resource cleanup.
+- Use Effect `HttpClient` with `FetchHttpClient` for HTTP requests. Compose application policies without weakening existing URL validation, credentials, redirect checks, timeouts, bounded response reads, cancellation, or resource cleanup; do not add such policies without a requirement.
 - Adapt Promise APIs with the supported Effect Promise adapters; do not use Promise `.then()`, `.catch()`, or `.finally()` chains before or after adaptation. Keep sequencing, failures, and cleanup in Effect, or use await with boundary-level try/catch/finally where a Promise boundary is required. Effect error and cleanup combinators remain valid.
 
 ## Failures and resources

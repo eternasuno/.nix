@@ -9,7 +9,7 @@ Resolve decisions that affect user-visible behavior, major constraints, and acce
 
 ## Decision ownership
 
-- Investigate repository-answerable facts yourself: dependencies, existing behavior, conventions, and constraints.
+- Investigate repository-answerable facts yourself: dependencies, existing behavior, conventions, constraints, and decision records when present (ADRs, PRDs or specs, `CONTEXT.md`, `DESIGN.md`, `PRODUCT.md`). Do not re-propose an option a current decision record rejected unless there is new evidence or the user asks to reconsider; if the request conflicts with one, point out the conflict.
 - Ask the user for product preferences, undefined business rules, and major tradeoffs that the request or project evidence does not settle. Do not invent product requirements.
 - Choose existing suitable dependencies, established conventions, and reversible local technical details from evidence. Record assumptions when they matter; local choices may remain with the implementer.
 - Detailed module structure and contracts are structural design work, not additional product questions unless they change a major feature decision.

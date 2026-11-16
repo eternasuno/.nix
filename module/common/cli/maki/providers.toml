@@ -61,17 +61,6 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-anthropic.models]]
-id = "claude/claude-fable-5-1"
-context_window = 1000000
-max_output_tokens = 128000
-supports_thinking = true
-supports_vision = true
-pricing_input = 10.0
-pricing_output = 50.0
-pricing_cache_write = 12.5
-pricing_cache_read = 0.25
-
-[[magpie-anthropic.models]]
 id = "claude/claude-haiku-5-5"
 context_window = 100000
 max_output_tokens = 128000
@@ -146,11 +135,11 @@ pricing_output = 10.0
 pricing_cache_read = 0.1
 
 [[magpie-google.models]]
-id = "antigravity/gemini-3.8-flash"
+id = "antigravity/gemini-4-hydrogen"
 context_window = 1048576
-max_output_tokens = 65536
+max_output_tokens = 262144
 supports_thinking = true
 supports_vision = true
-pricing_input = 0.75
-pricing_output = 3.75
+pricing_input = 1.5
+pricing_output = 7.5
 pricing_cache_read = 0.075

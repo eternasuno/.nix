@@ -23,6 +23,8 @@ Apply when code or tests use the `effect` package. Check installed versions and 
 ## Schema value types
 
 - Define a value type as one linear pipe: normalize (for example `Schema.Trim`), then checks, then `Schema.brand`, then a wrapper such as `Schema.RedactedFromValue`. Do not name intermediate schemas only to compose them.
+- Model a discriminated input or value that selects a workflow branch, such as a list scope passed to a use case, as `Schema.TaggedUnion` with `_tag` cases. Build cases with its constructors and dispatch with its `match` (or `Match.valueTags`) so a new case fails typechecking until every branch handles it; do not hand-roll a `kind` field with `if` chains.
+- Do not name a tagged error's payload field `name`: it shadows `Error.name`, and the Effect language service reports `errorPayloadShadowsName`. Use a specific key such as `folderName`.
 
 ## HTTP and Promise boundaries
 

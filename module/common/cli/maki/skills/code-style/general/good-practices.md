@@ -9,7 +9,9 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 - Add branches, options, helpers, abstractions, or dependencies only for a current requirement or existing consumer. Before adding structure, subtract: remove code the change makes unnecessary and recheck whether the addition is still needed. Check whether APIs already handle absent resources before adding filesystem prechecks or environment guards; unsupported hypothetical deployment states do not justify branches.
 - Keep operations in execution order. Use early returns to reduce nesting without changing cleanup or side-effect ordering. Do not replace simple conditionals with dispatch frameworks or callback machinery.
 - Name values and operations for their business meaning. Split expressions mixing distinct steps; introduce intermediate values when their names explain intent or data flow.
-- Extract helpers for substantial reuse, a named business step, or complex logic obscuring the caller. Inline trivial forwarding helpers with no meaningful role, and repeat a few lines shared by two callers rather than extracting them. Keep a function that only one caller uses in the caller's module instead of a module or entry point of its own; a single caller alone is not a reason to inline it into the caller's body.
+- Extract helpers for substantial reuse or complex logic obscuring the caller. Inline trivial forwarding helpers, thin wrappers around a single library call, and short single-caller steps that read clearly in place; repeat a few lines shared by two callers rather than extracting them. Keep a function that only one caller uses in the caller's module instead of a module or entry point of its own.
+- Extract a compound multi-clause condition into a named predicate (a type guard when it narrows) instead of an inline chain of `||`/`&&` checks.
+- Do not let the existing implementation bound a rewrite: check the dependency's API for the most direct call (for example, one that accepts a path instead of a precompiled object) and drop intermediate steps it makes unnecessary, verifying the behavior with a probe.
 - Avoid conversions and copies when consumers can use the original representation without violating ownership. Do not trade meaningful names or visible control flow for compactness.
 - Validate untrusted input at its entry boundary. Do not repeat enforced guarantees or use unchecked casts as validation. Preserve domain-specific checks when their invariants differ from transport validation.
 - Handle empty and boundary cases, errors, async ordering, and concurrent updates according to the actual contract. Make cancellation, cleanup, transaction boundaries, and resource growth explicit where relevant.
@@ -28,6 +30,8 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 - Framework handlers, subscriptions, lifecycle callbacks, and established library callback contracts are appropriate. Avoid application-defined callback workflow wrappers that scatter business logic.
 - For genuinely large modules and capability boundaries, prefer mature DI mechanisms, such as Effect Services and Layers when already appropriate to the stack. Do not invent a DI framework or add service layers to small workflows.
 - Keep structure-specific assumptions in their owning module; a general-purpose helper must not silently depend on particular DOM fields, object layouts, or caller sequencing.
+- Keep functions flat at module top level. Pass dependencies as parameters instead of defining workflow closures inside factories, plugin bodies, or other functions; a factory body only creates and wires dependencies.
+- Keep a module to its own responsibility; declarations it does not own (such as unrelated global configuration or type augmentations) belong in a dedicated module.
 
 ## Mandatory blank-line rules
 

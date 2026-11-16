@@ -125,7 +125,7 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-google.models]]
-id = "antigravity/gemini-4-argon"
+id = "agy-cli/gemini-4-argon"
 context_window = 1048576
 max_output_tokens = 65536
 supports_thinking = true
@@ -135,7 +135,7 @@ pricing_output = 10.0
 pricing_cache_read = 0.1
 
 [[magpie-google.models]]
-id = "antigravity/gemini-4-hydrogen"
+id = "agy-cli/gemini-4-hydrogen"
 context_window = 1048576
 max_output_tokens = 262144
 supports_thinking = true

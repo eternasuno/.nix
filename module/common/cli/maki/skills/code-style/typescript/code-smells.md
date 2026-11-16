@@ -6,6 +6,8 @@ Apply to TS/TSX and JavaScript governed by TypeScript tooling. Check runtime beh
 - **Unchecked external values:** trace casts, `any`, and assertions from external input. Validate runtime data rather than hiding uncertainty with a cast; type annotations are not validation.
 - **Invalid state combinations:** examine optional fields and boolean flags permitting contradictory states. Use a discriminated union when it expresses actual mutually exclusive states without obscuring the contract.
 - **Unnecessary type machinery:** identify callers needing generics and the input/output relationship they preserve. Remove speculative generics or redundant local annotations, but retain public contracts, domain restrictions, and widening controls.
+- **Redeclared library types and stray augmentations:** flag local structural types that duplicate a library's exported types (derive them instead), and `declare global` blocks living in unrelated feature modules (move them to a dedicated declaration file).
+- **Function expressions:** flag `function` expressions, anonymous `function` callbacks, and method shorthand where an arrow function works; keep `function` only where `this` binding is unavoidable.
 - **Declaration-style churn:** prefer ordinary type aliases, but do not remove declaration merging, augmentation, or runtime classes. Existing interface syntax alone is not a correctness finding.
 - **Ownership hidden by mutation or copies:** verify who may mutate data. Use readonly contracts where needed; remove copies only when ownership and representation remain safe.
 - **Forwarding module layers:** trace barrels, wrapper modules, and aliases for actual public API or boundary responsibilities before replacing them with direct imports.

@@ -28,7 +28,7 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 - Do not consolidate similar workflows into a giant parameter-, flag-, option-, or callback-switched function. Similar structure does not establish a shared contract; extract only steps that genuinely share one.
 - Keep parameters concrete and simple. Avoid unnecessary generics, nested function types, and option bags that hide the operation. Preserve meaningful validation and standard library contracts.
 - Framework handlers, subscriptions, lifecycle callbacks, and established library callback contracts are appropriate. Avoid application-defined callback workflow wrappers that scatter business logic.
-- For genuinely large modules and capability boundaries, prefer mature DI mechanisms, such as Effect Services and Layers when already appropriate to the stack. Do not invent a DI framework or add service layers to small workflows.
+- For genuinely large modules and capability boundaries, prefer mature DI mechanisms already appropriate to the stack. Do not invent a DI framework.
 - Keep structure-specific assumptions in their owning module; a general-purpose helper must not silently depend on particular DOM fields, object layouts, or caller sequencing.
 - Keep functions flat at module top level. Pass dependencies as parameters instead of defining workflow closures inside factories, plugin bodies, or other functions; a factory body only creates and wires dependencies.
 - Keep a module to its own responsibility; declarations it does not own (such as unrelated global configuration or type augmentations) belong in a dedicated module.

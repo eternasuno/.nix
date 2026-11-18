@@ -2,7 +2,7 @@
 
 A **style preset** is a named JSON file capturing visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in color/shape/edge conventions in `xml-authoring.md` and `diagram-types.md`.
 
-Read this file when generating a new diagram, including the default look. Existing diagrams retain their styling unless re-theming is requested.
+Read this file when the user selects a style preset or when `~/.drawio-skill/styles/` exists. Existing diagrams retain their styling unless re-theming is requested.
 
 ## Locations and lookup order
 

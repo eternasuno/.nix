@@ -4,97 +4,30 @@ Checklist for expanding the decision tree. Expand only branches that materially 
 
 ## Requirements
 
-Determine as relevant:
-
-- problem being solved
-- desired outcome
-- scope and non-goals
-- users or actors
-- primary scenarios
-- externally observable behavior
-- business rules
-- invariants
-- important edge cases
-- failure behavior
+Determine as relevant: problem and desired outcome; scope and non-goals; actors and primary scenarios; externally observable behavior; business rules and invariants; important edge and failure cases.
 
 ## Existing System
 
-Investigate before asking the user:
-
-- relevant modules
-- existing abstractions
-- current data flows
-- established patterns
-- dependency boundaries
-- existing APIs
-- storage and infrastructure already in use
-- compatibility constraints
-
-Prefer existing design when it already solves the problem adequately.
+Investigate in the repository before asking the user: relevant modules, abstractions, and APIs; current data flows and dependency boundaries; storage and infrastructure already in use; established patterns and compatibility constraints. Prefer the existing design when it solves the problem adequately.
 
 ## Technical Decisions
 
-Resolve only implementation-shaping decisions, such as:
+Resolve only implementation-shaping decisions: state model, data ownership, and persistence strategy; communication mechanism, concurrency model, synchronization, and consistency guarantees; retry/failure semantics and caching; security boundaries and performance requirements; migration and compatibility behavior.
 
-- state model
-- data ownership
-- persistence strategy
-- communication mechanism
-- concurrency model
-- consistency guarantees
-- retry and failure semantics
-- caching strategy
-- synchronization behavior
-- security boundaries
-- performance requirements
-- migration strategy
-- compatibility behavior
-
-Detailed structural modeling belongs to system design, not the product-question checklist, unless the structural choice changes a major feature decision. Existing conventions and reversible local choices may be selected from evidence without user approval.
+Detailed structural modeling belongs to system design, not the product-question checklist, unless it changes a major feature decision. Existing conventions and reversible local choices may be selected from evidence without user approval.
 
 ## Dependencies and Libraries
 
-For each potentially new dependency, determine:
+For each potentially new dependency, check whether an existing project dependency or platform/standard-library capability already solves the problem; otherwise evaluate candidate libraries for project compatibility, maintenance status, API quality, runtime/build cost, and lock-in versus custom implementation.
 
-- whether an existing project dependency already solves the problem
-- whether the platform or standard library provides the capability
-- the concrete capability required
-- relevant candidate libraries
-- project compatibility
-- maintenance status
-- API quality
-- runtime and build implications
-- lock-in or migration cost
-- whether custom implementation is actually justified
-
-Prefer evidence-based selection over familiarity or popularity alone.
-
-Default preference:
-
-1. existing project capabilities
-2. existing abstractions and conventions
-3. platform or standard-library capabilities
-4. focused external dependencies
-5. new custom infrastructure
-
-This is a bias, not an absolute rule.
+Default preference (bias, not an absolute rule): existing project capabilities → existing abstractions/conventions → platform/standard library → focused external dependencies → new custom infrastructure.
 
 ## Delivery and Verification
 
-Determine as relevant:
+Determine as relevant: acceptance criteria (normal, boundary, and failure cases); migration, rollout, compatibility, and observability requirements; required categories of tests.
 
-- acceptance criteria
-- normal cases
-- boundary cases
-- failure cases
-- migration requirements
-- rollout constraints
-- observability requirements
-- compatibility requirements
-- required categories of tests
-
-Acceptance criteria should describe observable behavior and be specific enough to verify.
+Acceptance criteria should describe observable behavior and be specific enough to verify; prefer Gherkin (`Given`/`When`/`Then`) scenarios for multi-step user flows and end-to-end acceptance cases.
 
 ## Completion Check
 
-Done when user-visible behavior, major constraints, and acceptance are clear; local implementation details may remain open. Where relevant, also confirm the existing-system constraints, dependency decisions, compatibility or migration needs, material risks, and deferred decisions are recorded.
+Done when user-visible behavior, major constraints, and acceptance are clear; local implementation details may remain open. Where relevant, confirm that existing-system constraints, dependency decisions, compatibility/migration needs, material risks, and deferred decisions are recorded.

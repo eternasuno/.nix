@@ -12,8 +12,6 @@ Apply when selecting or changing daisyUI components, component markup, themes, o
 
 ## Installation and configuration
 
-- For authorized installation or upgrades, select the newest compatible daisyUI release after checking the project's Tailwind, runtime, and dependency constraints. Use `latest` only when it resolves to a compatible release; otherwise select the newest compatible version explicitly.
-- Use the project package manager and avoid duplicate plugin setup. Prefer dependency installation over CDN delivery unless the task requires a browser-only setup.
-- Change only required theme tokens and configuration values. Do not copy complete default configurations or theme token sets when overriding existing values suffices. If borders disappear or controls look malformed, inspect computed styles and the installed component's token dependencies before adding per-control fixes. In daisyUI 5 custom themes, check geometry/effect tokens such as `--border`, `--depth`, and `--noise`, plus required semantic color/content pairs; do not assume declaring colors alone supplies them.
-
-For installation and build integration, start with the [official installation guide](https://daisyui.com/docs/install/); for configuration changes, use the [configuration reference](https://daisyui.com/docs/config/). Verify instructions against the selected version. Keep API syntax, class catalogs, and full examples in upstream documentation rather than duplicating them here.
+- For authorized installation or upgrades, select the newest release compatible with the project's Tailwind and runtime constraints, using the project package manager without duplicate plugin setup. Prefer package installation over CDN delivery unless a browser-only setup is required.
+- Override only required theme tokens and configuration values rather than copying full defaults. If borders disappear or controls look malformed, inspect computed styles and token dependencies before adding per-control fixes; in daisyUI 5 custom themes, check geometry/effect tokens (`--border`, `--depth`, `--noise`) alongside semantic color/content pairs.
+- Consult the version-matched [installation](https://daisyui.com/docs/install/) and [configuration](https://daisyui.com/docs/config/) docs when changing setup.

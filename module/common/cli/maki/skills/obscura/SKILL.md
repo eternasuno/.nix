@@ -15,7 +15,7 @@ description: Before page loading, extraction, screenshots, CDP automation, or br
 
 ## Known rendering limits
 
-CJK glyphs may be missing from visual output; text dumps are unaffected. Report the limitation and await the upstream fix. Read [CJK details](cli-reference.md#cjk-and-other-non-latin-text) when diagnosing affected output or verifying a new release.
+Obscura's native renderer embeds only Latin fonts, so CJK glyphs render as tofu in visual output unless a webfont workaround is injected; text dumps are unaffected. Read [CJK details](cli-reference.md#cjk-and-other-non-latin-text) when rendering pages with CJK text or verifying a new release.
 
 ## Safety
 

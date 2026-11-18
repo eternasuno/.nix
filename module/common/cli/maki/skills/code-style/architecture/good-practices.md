@@ -43,7 +43,7 @@ entry → workflow → domain operations
 - Assemble shared application-scoped capabilities at the composition root when appropriate. Consumers use initialized instances; avoid duplicate initialization and accidental process-global lifetime.
 - Switch behavior by injection: the entry or composition root reads the configuration and provides the matching capability implementation. Workflows take no provider flag or configuration object to choose a mechanism.
 - Pass deployment values such as sizes and intervals as plain parameters or application configuration, not through a dedicated configuration capability.
-- Prefer available language/platform capabilities, then suitable existing dependencies, then justified trusted new dependencies, and custom infrastructure only when necessary. Do not reimplement established parsing, encoding, validation, concurrency, cryptography, protocols, storage, collections, or serialization without a concrete reason. Do not add a dependency just to replace a few clear lines of domain logic.
+- Do not reimplement established parsing, encoding, validation, concurrency, cryptography, protocols, storage, collections, or serialization without a concrete reason, and do not add a dependency just to replace a few clear lines of domain logic.
 
 ## Contracts, data, and failures
 
@@ -57,7 +57,7 @@ entry → workflow → domain operations
 - Translate external HTTP payloads, database rows, SDK objects, CLI arguments, and serialized messages before their details spread through business code. Keep domain representations independent unless the representations are intentionally identical.
 - Make ownership of mutation, persistence, normalization, lifecycle, retries, cleanup, and error translation explicit. Avoid shared mutable state with unclear ownership.
 - Keep a value type's rules (normalization, range, default) in its schema or entity type, not in the workflows that use it.
-- For recurring scheduled work, store the next due instant: compute it once when the schedule is saved, advance it from the current time before each run, and select what is due by comparing instants (`due <= now`). This handles downtime catch-up (once), edits that must not fire at once, and daylight-saving changes in the one place that computes the next instant. Avoid matching wall-clock text on every tick or deriving due work from a last-run record, which need a separate rule for each of those cases.
+- For recurring scheduled work, store and compare the next due instant (`due <= now`), computed on save and advanced from the current time before each run, rather than matching wall-clock text on each tick or deriving due work from a last-run record.
 - For operations that may be retried, replayed, or resumed after a partial failure, make the effect idempotent: running twice or resuming reaches the same state. Use explicit keys, upserts, or state transitions rather than assuming a single attempt.
 - Preserve useful failure information until a boundary intentionally reduces it. Distinguish expected domain/capability failures, defects, programmer errors, cancellation, and infrastructure failures when behavior depends on that distinction.
 - Translate external failure types at the adapter boundary rather than leaking SDK-specific failures into business logic.
@@ -65,4 +65,4 @@ entry → workflow → domain operations
 
 ## Physical structure
 
-Logical roles do not require separate folders, packages, services, or files. A small program may keep several roles in one file. Keep closely related entity schemas, types, and helpers in their existing owning module; a new type or helper alone does not justify a new file, and a function only one workflow uses lives in that workflow's module. Split only for concrete ownership, comprehension, reuse, independent evolution, deployment, technology separation, or testing at a real boundary.
+Logical roles do not require separate folders, packages, services, or files; a small program may keep several roles in one file. Keep closely related entity schemas, types, and helpers in their owning module. Split only for concrete ownership, comprehension, reuse, independent evolution, deployment, technology separation, or testing at a real boundary.

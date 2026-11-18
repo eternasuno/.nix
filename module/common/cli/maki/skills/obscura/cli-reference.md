@@ -46,10 +46,6 @@ For any option not shown here, rely on the installed `--help` rather than assumi
 
 ## CJK and other non-Latin text
 
-Obscura's native renderer embeds only Latin fonts (Liberation Sans/Serif/Mono and DejaVu Sans) and never loads OS fonts. Confirmed on 0.2.2 and still present upstream in 0.2.5: Chinese, Japanese, Korean, and other non-Latin text renders as tofu boxes (□) in `--screenshot`, PDFs, screencasts, and MCP screenshots. Text dumps are unaffected because they are plain UTF-8.
+Obscura's native renderer embeds only Latin fonts and ignores OS fonts/fontconfig, so non-Latin text renders as tofu (`□`) in screenshots, PDFs, and screencasts unless a webfont is injected. Text dumps are unaffected.
 
-OS font installation and fontconfig settings do not affect this renderer.
-
-The recorded webfont issue also skips CJK-only `unicode-range` subsets; only faces with an absent range or a range overlapping ASCII are considered.
-
-Await the upstream fix. After upgrading, record the version and inspect representative CJK output before marking the issue resolved.
+Workaround (verified on 0.2.2): inject an `@font-face` rule via `--eval` using a subset TTF as a `data:` URL and apply `*{font-family:ZH!important}`. The renderer skips faces whose `unicode-range` lacks ASCII, allows at most 16 faces, caps resources at 8 MiB compressed / 32 MiB decoded, and does not fetch `file://` font URLs. For larger fonts, dump HTML, add `<base href>` plus the style, and render the local `file://` page. After upgrading Obscura, inspect representative CJK output before dropping the workaround.

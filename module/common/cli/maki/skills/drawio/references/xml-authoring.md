@@ -114,7 +114,7 @@ When multiple edges connect to the same shape, assign different entry/exit point
 
 ### Color palette (fillColor / strokeColor)
 
-*Used only when no user style preset is active (see `references/style-presets.md` → "Applying a preset").*
+*Default palette when no style preset overrides it (see `references/style-presets.md`).*
 
 | Color name | fillColor | strokeColor | Use for |
 |-----------|-----------|-------------|---------|

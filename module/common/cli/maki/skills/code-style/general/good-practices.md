@@ -35,9 +35,9 @@ Apply to all code. Implement required behavior, not hypothetical flexibility.
 
 ## Mandatory blank-line rules
 
-These rules override repository formatting defaults and other formatting preferences in this skill; higher-priority governing instructions and language syntax still apply. Do not change files that contain no violation, and do not change global formatter configuration, merely to enforce these rules. Report formatter conflicts rather than silently dropping these rules.
+These rules override repository formatting defaults and other formatting preferences in this skill; higher-priority governing instructions and language syntax still apply. Do not touch compliant files or global formatter configuration merely to enforce them; report formatter conflicts rather than dropping these rules.
 
-- Separate top-level declarations with one blank line.
-- Leave one blank line after a complete control-flow block when another statement follows in the same enclosing block. Do not separate a connected `else`, `catch`, or `finally`, or add a blank line before the enclosing closing brace.
-- Leave one blank line before `return` when another statement precedes it in the same block; do not add one when `return` is the first statement.
-- Keep related branches, handlers, and continuations together. Use explicit block bodies where required by repository convention; follow repository conventions for other formatting choices.
+- Separate top-level declarations with one blank line, and leave one blank line after a complete control-flow block when another statement follows in the same enclosing block.
+- Keep connected `else`, `catch`, and `finally` attached, and leave no blank line before the enclosing closing brace.
+- Leave one blank line before a noninitial `return` in the same block; keep related branches, handlers, and continuations together.
+- Use explicit block bodies where repository convention requires them; follow repository conventions for other formatting choices.

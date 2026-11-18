@@ -2,7 +2,7 @@
 
 ## Verified Maki behavior
 
-These facts were checked against the plugin sources embedded in the installed Maki 0.7.0 binary. Recheck the active version before relying on them for a different deployment.
+These facts were checked against the plugin sources embedded in the installed Maki binary. Recheck the active version before relying on them for a different deployment.
 
 - Discovery scans immediate subdirectories containing `SKILL.md` in configured/global/project skill locations. Later entries with the same name replace earlier ones.
 - YAML frontmatter (opening `---` on the first line, closing `---` required) supplies `name` and `description`; the name defaults to the directory name, and description to an empty string. A skill with an empty body is skipped. Keep names aligned with directory names and descriptions concise, with capability and distinct trigger conditions.
@@ -19,7 +19,7 @@ Installed-build source functions:
 - `plugins/skill/init.lua`: `scan_skill_dir`, `discover_skills`, startup tool description, and named tool handler.
 - `plugins/skill/skill_helpers.lua`: `parse_frontmatter` and `build_skill_list`.
 - `plugins/read/init.lua`: path-based read handler.
-- `maki-agent/src/command.rs`: command-directory discovery (not re-verified for 0.7.0).
+- `maki-agent/src/command.rs`: command-directory discovery.
 
 Identify the active binary/version and its build source rather than assuming a separate checkout or the repository lock is the installed revision. Inspect supported fields and loading paths before documenting invocation behavior. Unsupported metadata is not a safety boundary.
 

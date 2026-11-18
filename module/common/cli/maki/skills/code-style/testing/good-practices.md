@@ -6,6 +6,7 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 
 - When changing observable behavior and an honest test is practical, write the failing test before changing the code, confirm it fails for the expected reason, then make the smallest change that passes.
 - Start the next case only after the current one passes. If an honest test is impractical, do not write a misleading one; state the behavior as unverified.
+- Do not weaken, skip, or delete existing assertions, tests, or lint/typecheck rules to make a change pass unless the contract intentionally changed.
 
 ## Coverage
 
@@ -18,6 +19,7 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 - Query-plan and performance checks must run the statements the code actually emits, through the same statement builder the production code uses, with representative bound values; a hand-written approximation can stay green after the real query regresses.
 - Integration tests must exercise the actual integration boundary, not registration or configuration alone. Use the execution context and resource ownership required by that boundary.
 - Give each repository or storage port one contract suite, written against the port and run by every implementation, including in-memory test doubles, so a double cannot drift from the real store.
+- Use property-based tests for round-trip encoding/parsing, invariants, idempotency, and equivalence against a simpler reference implementation so generated inputs cover edge cases that hand-picked examples miss.
 
 ## Setup and isolation
 
@@ -26,13 +28,16 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 - Isolate directories, environment variables, and process-wide state in concurrent tests. Use subprocesses when distinct process state is required, preserving cleanup and failure diagnostics.
 - Use real networks or databases only in explicit integration tests with controlled dependencies and resource cleanup.
 - Distinguish expected failures from defects and cancellation when their observable semantics differ.
+- Never mask flaky tests with sleeps, retries, or skips. Fix the root cause (race, shared state, uncontrolled clock or external dependency); if the root cause cannot be resolved within scope and removal is authorized, delete the test and record the reason and unverified risk.
 
-## Browser verification
+## End-to-end and browser verification
 
+- For user-facing flows, cross-layer integrations, or startup/configuration changes, verify the running system end to end (local service, API harness, simulator, or browser) rather than relying on unit tests alone. Structure E2E scenarios around Gherkin (`Given`/`When`/`Then`) user flows and observable outcomes, capturing step traces or diagnostics on failure.
 - After changing the browser viewport, check `window.innerWidth`, `window.innerHeight`, and the relevant media query before claiming responsive coverage. A tool's success response alone does not establish the rendered viewport.
 - Verify saved settings after reloading or reopening the page. For unsaved changes, verify the confirmation and that canceling preserves both the current view and draft; distinguish observing the native prompt from replacing it with a test stub.
 
-## Refactoring
+## Refactoring and migration
 
 - Pin the current observable behavior with tests before changing structure. Change the structure without changing behavior, then re-run the pinned tests and report that behavior is unchanged.
-- If no honest test can pin the behavior, treat the refactor as unverified and say so rather than claiming equivalence.
+- For rewrites or migrations where behavior must match an existing system (especially when specs have drifted), use differential tests that run the old and new implementations on the same representative or generated inputs, normalizing only irrelevant output differences and explicitly listing approved behavioral changes.
+- If no honest test can pin the behavior, treat the refactor or migration as unverified and say so rather than claiming equivalence.

@@ -15,7 +15,7 @@ Examples:
 
 ## Baseline experiments
 
-Where uncertainty warrants it, compare bounded scenarios in fresh contexts with old/new guidance and optionally a no-guidance control. Hold inputs and criteria stable; inspect actual decisions, omissions, and scope expansion rather than verbosity. Repeat as risk warrants, without a fixed sample count.
+Where uncertainty warrants it, compare bounded scenarios in fresh contexts with old/new guidance and optionally a no-guidance control. Hold inputs and criteria stable; inspect actual decisions, omissions, and scope expansion rather than verbosity. For review or verification rules, check both defect recall on known bad changes and false positives (over-flagging) on clean changes, stopping before rules overfit to the test cases. Repeat as risk warrants, without a fixed sample count.
 
 Record guidance versions, inputs, observations, and limitations. A static scenario walkthrough is not a measured model-behavior test.
 

@@ -14,6 +14,7 @@ Resolve decisions that affect user-visible behavior, major constraints, and acce
 - Choose existing suitable dependencies, established conventions, and reversible local technical details from evidence. Record assumptions when they matter; local choices may remain with the implementer.
 - Detailed module structure and contracts are structural design work, not additional product questions unless they change a major feature decision.
 - Reuse decisions already confirmed in the conversation.
+- Before raising an edge case as a question, trace it through the mechanism already chosen. When that mechanism settles it (for example, a "due at or before now" check already sends what was missed during downtime), state the consequence in the design instead of offering it as a decision.
 
 ## Workflow
 

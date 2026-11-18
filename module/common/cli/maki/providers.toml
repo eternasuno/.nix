@@ -6,8 +6,8 @@ api_key_env = "MAGPIE_API_KEY"
 discover_models = false
 
 [[magpie-responses.models]]
-id = "codex/gpt-6.1-sol"
-context_window = 272000
+id = "codex/gpt-6.2-sol"
+context_window = 500000
 max_output_tokens = 128000
 supports_thinking = true
 requires_thinking = true
@@ -18,16 +18,16 @@ pricing_cache_write = 2.5
 pricing_cache_read = 0.1
 
 [[magpie-responses.models]]
-id = "codex/gpt-6-astra"
+id = "codex/gpt-6.2-astra"
 context_window = 272000
 max_output_tokens = 128000
 supports_thinking = true
 requires_thinking = true
 supports_vision = true
-pricing_input = 10.0
-pricing_output = 50.0
-pricing_cache_write = 12.5
-pricing_cache_read = 1.0
+pricing_input = 8.0
+pricing_output = 40.0
+pricing_cache_write = 10.0
+pricing_cache_read = 0.4
 
 [[magpie-responses.models]]
 id = "codex/gpt-6.1-terra"
@@ -94,6 +94,26 @@ pricing_output = 10.0
 pricing_cache_write = 2.5
 pricing_cache_read = 0.1
 
+[[magpie-anthropic.models]]
+id = "agy-cli/gemini-4-argon"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 2.0
+pricing_output = 10.0
+pricing_cache_read = 0.1
+
+[[magpie-anthropic.models]]
+id = "agy-cli/gemini-4-hydrogen"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 1.5
+pricing_output = 7.5
+pricing_cache_read = 0.075
+
 [magpie-openai]
 display_name = "Magpie (Chat Completions)"
 protocol = "openai"
@@ -116,30 +136,3 @@ off      = { reasoning_effort = "none" }
 low      = { reasoning_effort = "low" }
 high     = { reasoning_effort = "high" }
 max      = { reasoning_effort = "max" }
-
-[magpie-google]
-display_name = "Magpie (Google)"
-protocol = "google"
-base_url = "https://gateway.eternasuno.ddns.net/v1beta"
-api_key_env = "MAGPIE_API_KEY"
-discover_models = false
-
-[[magpie-google.models]]
-id = "agy-cli/gemini-4-argon"
-context_window = 1048576
-max_output_tokens = 65536
-supports_thinking = true
-supports_vision = true
-pricing_input = 2.0
-pricing_output = 10.0
-pricing_cache_read = 0.1
-
-[[magpie-google.models]]
-id = "agy-cli/gemini-4-hydrogen"
-context_window = 1048576
-max_output_tokens = 262144
-supports_thinking = true
-supports_vision = true
-pricing_input = 1.5
-pricing_output = 7.5
-pricing_cache_read = 0.075

@@ -31,7 +31,7 @@ Everything else goes to subagents:
 For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` exactly as listed. Roles are not tool-access types.
 
 - **Research and code exploration**
-  - Model: `magpie-openai/commandcode-plan/deepseek/deepseek-v4.1-flash-fast`
+  - Model: `magpie-anthropic/agy-cli/gemini-4-hydrogen`
   - Thinking: `low` to locate code, conventions, or documentation; `high` for bug root-cause investigation or tracing behavior across several files.
   - subagent_type: `research`
   - Use for one specific aspect such as an execution path, bug root-cause investigation, external dependency/API or documentation lookup, existing convention, or observed behavior; split unrelated aspects into separate tasks.
@@ -45,7 +45,7 @@ For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` ex
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 
 - **Implementation**
-  - Model: `magpie-openai/commandcode-plan/deepseek/deepseek-v4.1-flash-fast`
+  - Model: `magpie-anthropic/agy-cli/gemini-4-hydrogen`
   - Thinking: `high`
   - subagent_type: `general`
   - Use for one small, precisely specified functional module in one or a few files, including feature work, refactoring, test authoring, or configuration/script edits.

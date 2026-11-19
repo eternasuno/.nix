@@ -123,26 +123,3 @@ supports_vision = true
 pricing_input = 3.0
 pricing_output = 15.0
 pricing_cache_read = 0.15
-
-[magpie-openai]
-display_name = "Magpie (Chat Completions)"
-protocol = "openai"
-base_url = "https://gateway.eternasuno.ddns.net/v1"
-api_key_env = "MAGPIE_API_KEY"
-discover_models = false
-
-[[magpie-openai.models]]
-id = "commandcode-plan/deepseek/deepseek-v4.1-flash-fast"
-context_window = 1000000
-max_output_tokens = 32768
-supports_thinking = true
-supports_vision = true
-pricing_input = 0.16
-pricing_output = 0.58
-pricing_cache_read = 0.016
-
-[magpie-openai.models.thinking_fields]
-off      = { reasoning_effort = "none" }
-low      = { reasoning_effort = "low" }
-high     = { reasoning_effort = "high" }
-max      = { reasoning_effort = "max" }

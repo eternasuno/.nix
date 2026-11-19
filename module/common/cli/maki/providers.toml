@@ -114,6 +114,16 @@ pricing_input = 1.5
 pricing_output = 7.5
 pricing_cache_read = 0.075
 
+[[magpie-anthropic.models]]
+id = "agy-cli/gemini-4-neon"
+context_window = 1048576
+max_output_tokens = 65536
+supports_thinking = true
+supports_vision = true
+pricing_input = 3.0
+pricing_output = 15.0
+pricing_cache_read = 0.15
+
 [magpie-openai]
 display_name = "Magpie (Chat Completions)"
 protocol = "openai"

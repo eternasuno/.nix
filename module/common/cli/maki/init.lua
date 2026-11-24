@@ -5,6 +5,7 @@ maki.setup({
   plugins = {
     task = {
       allow_model = true,
+      max_concurrent = 4,
     },
     bash = {
       timeout_secs = 180,

@@ -2,6 +2,8 @@
 
 Apply to web markup, styles, layout, and UI interactions, including framework templates and JSX/TSX.
 
+When the project has Node and the task builds a UI or platform capability that may have a newer native solution, read [Modern Web Guidance](modern-web-guidance.md) before writing a custom implementation.
+
 ## State and interaction
 
 - Preserve the existing UI stack and design system. Prefer semantic HTML/native behavior, then CSS selectors/pseudo-classes, then DOM properties/native browser APIs, then JavaScript/framework application state. Choose the simplest implementation meeting semantics, accessibility, interaction, and project browser targets. Use framework state when it materially simplifies complex listeners or DOM coordination without significant performance cost; this preference order is not a prohibition on signals.
@@ -33,6 +35,8 @@ Apply to web markup, styles, layout, and UI interactions, including framework te
 - Recover focus across responsive panels using actual visibility and current focus, not JavaScript breakpoints duplicating CSS. Preserve valid focus on visible controls and open dialogs; only recover lost or hidden focus. Layout belongs to CSS; focusing elements requires JavaScript.
 - Keep visual order consistent with reading and keyboard order. Essential actions must not depend on hover; preserve visible focus, contrast across relevant themes, and existing light/dark or forced-color behavior. Keep navigation content accessible when navigation collapses on narrow screens.
 - Derive browser targets from the project and check documentation for unfamiliar features. Add a fallback only when a required target lacks required behavior; optional enhancement must leave content and controls usable without it.
+- Without an explicit project policy, treat Baseline Widely available features as safe without fallbacks; newer features need feature detection and graceful degradation or a fallback. When the project targets a restricted runtime (Electron, Tauri), excludes browsers, or the policy is unclear, suggest recording a browser support policy in `AGENTS.md`.
+- In frameworks, keep newly shipped HTML attributes (`popover`, `commandfor`, `interestfor`) and adapt typings (cast or augment JSX attribute types) instead of removing them. Generate per-instance IDs and CSS `anchor-name`s with the framework's unique-ID primitive so repeated components do not collide, and keep `:root` and `@starting-style` rules top-level and unscoped.
 - Respect reduced-motion preferences. Do not hide content behind an animation that may not run. Reserve media dimensions to avoid layout shifts; do not lazy-load the likely primary above-the-fold image.
 
 ## Shared visual contracts

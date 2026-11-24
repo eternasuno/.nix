@@ -13,8 +13,8 @@ Do the task in the main agent only when it is trivial: the target files are alre
 
 Everything else goes to subagents:
 
-- Exploration: any investigation needing more than a few reads or searches, or covering more than one aspect. Dispatch one Research task per aspect instead of reading through the code yourself.
-- Implementation: any change spanning more than one file or more than a small self-contained edit. Settle the plan, then dispatch small Implementation tasks.
+- Exploration: any investigation needing more than a few reads or searches, or covering more than one aspect. Dispatch narrow, single-question Research tasks in parallel (one per module, flow slice, or question) instead of reading through the code yourself or dispatching one broad exploration task.
+- Implementation: any change spanning more than one file or more than a small self-contained edit. Settle the plan, then dispatch fine-grained, single-concern Implementation tasks rather than bundling a whole module, its tests, and bulk fixes into one task.
 - Review: after multi-file code changes, and always for security-sensitive, migration, or public-contract changes, dispatch Independent review before declaring completion.
 - Parallelism: when two or more pieces of work are independent, dispatch them together in one batch instead of doing them one after another yourself.
 - Scale: a change too large to carry in one context, split into small independent tasks.
@@ -31,10 +31,11 @@ Everything else goes to subagents:
 For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` exactly as listed. Roles are not tool-access types.
 
 - **Research and code exploration**
-  - Model: `magpie-anthropic/agy-cli/gemini-4-hydrogen`
-  - Thinking: `low` to locate code, conventions, or documentation; `high` for bug root-cause investigation or tracing behavior across several files.
+  - Model: `magpie-anthropic/claude/claude-haiku-5-5`
+  - Thinking: `medium` to locate code, conventions, or documentation; `high` for bug root-cause investigation or tracing behavior across several files.
   - subagent_type: `research`
-  - Use for one specific aspect such as an execution path, bug root-cause investigation, external dependency/API or documentation lookup, existing convention, or observed behavior; split unrelated aspects into separate tasks.
+  - Use for one narrow, specific question—such as one execution-path slice, one bug root cause, one external dependency/API lookup, or one module's conventions. Never bundle multiple subsystems, filesets, or unrelated questions into a single broad Research task; split broad investigations into fine-grained parallel tasks by module, layer, or question to stay well within the 100k context window.
+  - Bound each work order with starting paths, known symbols or search terms, and out-of-scope areas; require the subagent to narrow targets with `glob`/`grep`/`index` and read only relevant line slices (`offset`/`limit`) instead of full large files, and to stop and return mapped entry points if the scope expands across multiple subsystems.
   - Read-only: return objective facts, file/line evidence, constraints, and explicit unknowns. Do not modify files or propose solutions, architecture, or implementation plans.
 
 - **Independent review**
@@ -50,14 +51,14 @@ For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` ex
   - subagent_type: `general`
   - Use for one small, precisely specified functional module in one or a few files, including feature work, refactoring, test authoring, or configuration/script edits.
   - Follow the main agent's task instructions, established contracts, and design. Return changed paths, verification results, and remaining risks; back claims about inspected state, edits, and verification results with tool results from this task, label inferences and remaining risks as such, and state failed or skipped verification plainly. Report missing decisions or scope expansion rather than redesigning.
-  - Split large or complex changes into several small tasks dispatched with disjoint file ownership. A small file count alone does not make a complex task appropriately bounded.
+  - Split large or complex changes into several small tasks with disjoint file ownership—separate feature code, test suites, and bulk lint/type/refactor fixes across packages, directories, or file groups rather than bundling them into one long-running task. A small file count alone does not make a complex task appropriately bounded; keep each work order narrow enough to finish and verify in a short tool loop without accumulating huge context.
 
 ## Dispatch and integration
 
 1. Write each task as a small, detailed work order, not an abstract goal. Subagents execute; they do not plan. Settle the approach, files, and steps in the main agent, then include:
    - the intent in one or two sentences, so the subagent can judge details that do not match;
    - exact files and symbols, with current code excerpts marked `path:line` for implementation tasks;
-   - the concrete changes as ordered steps, or the concrete questions for research;
+   - the concrete changes as ordered steps, or the narrow, concrete questions with starting paths/search scope for research;
    - expected behavior, constraints, and non-goals, including files that look related but must not be touched, with the reason (unless the task is authoring or updating tests, treat existing tests, linter/typecheck configs, and verification scripts as read-only so changes cannot modify the checks that judge them);
    - acceptance checks with expected results (order verification commands from cheap static checks such as build, typecheck, and lint to targeted unit tests and heavier integration/E2E checks) and the return format.
 

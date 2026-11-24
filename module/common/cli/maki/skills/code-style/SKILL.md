@@ -34,6 +34,7 @@ References are additive. For example, a Solid form can need general, web-platfor
 | --- | --- | --- |
 | General: all code tasks | [Good practices](general/good-practices.md) | [Code smells](general/code-smells.md) |
 | Architecture: currently changing or evaluating a responsibility, contract (including dependency direction), representation, or lifecycle/ownership boundary | [Good practices](architecture/good-practices.md) | [Code smells](architecture/code-smells.md) |
+| Go: Go source, tests, modules, or Go tooling | [Good practices](go/good-practices.md) | [Code smells](go/code-smells.md) |
 | TypeScript: TS/TSX or JavaScript governed by TypeScript tooling | [Good practices](typescript/good-practices.md) | [Code smells](typescript/code-smells.md) |
 | Effect: code or tests using `effect` | [Good practices](effect/good-practices.md) | [Code smells](effect/code-smells.md) |
 | Testing: tests, coverage, fakes, test-first, or behavior-preserving refactors | [Good practices](testing/good-practices.md) | [Code smells](testing/code-smells.md) |

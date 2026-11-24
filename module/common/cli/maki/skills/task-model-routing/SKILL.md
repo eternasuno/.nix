@@ -18,6 +18,7 @@ Everything else goes to subagents:
 - Review: after multi-file code changes, and always for security-sensitive, migration, or public-contract changes, dispatch Independent review before declaring completion.
 - Parallelism: when two or more pieces of work are independent, dispatch them together in one batch instead of doing them one after another yourself.
 - Scale: a change too large to carry in one context, split into small independent tasks.
+- Shared pieces are not a reason to keep the whole change: when several files depend on new shared primitives, copy keys, icons, or tokens, create those first in the main agent, then delegate the remaining files in parallel with disjoint ownership. Decide this split before the first edit, not after the work is half done.
 
 ## Main agent responsibilities
 

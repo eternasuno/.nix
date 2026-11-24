@@ -46,6 +46,9 @@ When the project has Node and the task builds a UI or platform capability that m
 - Do not force all controls to have identical dimensions or erase selected, primary, destructive, or loading states. Separate a shared interaction contract from legitimate semantic variants; do not treat links as buttons merely to share styling.
 - Remove superseded local styles during migration. Verify representative consumers and state combinations rather than assuming component reuse guarantees visual consistency.
 
+- For auto-sized `srcdoc`/same-origin iframes, derive the height from the document body (`body.scrollHeight`/`offsetHeight`), not `documentElement.scrollHeight`: the root element is never smaller than the iframe viewport, so a previously applied height locks in and leaves blank space after content shrinks. Sandboxed iframes without `allow-same-origin` expose no `contentDocument`; verify them by screenshot and the outer element's size.
+- Menus and popovers that must escape overflow containers should use the Popover API/anchor positioning; adding `overflow: hidden` (for rounded corners) to a wrapper is safe for `position: fixed`/top-layer menus but not for absolutely positioned ones, so open the affected menus after such a change.
+
 ## Verification
 
 Check only the dimensions affected by the change:

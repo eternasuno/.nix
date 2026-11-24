@@ -34,6 +34,9 @@ Apply when writing or modifying tests, their boundaries, or behavior-preserving 
 
 - For user-facing flows, cross-layer integrations, or startup/configuration changes, verify the running system end to end (local service, API harness, simulator, or browser) rather than relying on unit tests alone. Structure E2E scenarios around Gherkin (`Given`/`When`/`Then`) user flows and observable outcomes, capturing step traces or diagnostics on failure.
 - After changing the browser viewport, check `window.innerWidth`, `window.innerHeight`, and the relevant media query before claiming responsive coverage. A tool's success response alone does not establish the rendered viewport.
+- A real browser window resize can be clamped by the browser's minimum window width: the page keeps laying out at the clamped width and the window clips the rest. Compare `window.innerWidth` with the window size before treating right-edge clipping as a layout bug, and for widths below the minimum embed the app in a same-origin `<iframe>` of the target width (a cross-site `data:` iframe loses session cookies and shows the login page).
+- Screenshot tools often return the frame from before the last action: act, then capture in a separate call and re-capture before judging. Split long scripted flows because tool calls may have short script time limits.
+- When verifying destructive or stateful flows against the user's dev data, create temporary records, exercise the flow (including the cancel path), delete the records, and restore any toggled preference; say what was changed. The dev server may not hot-reload backend code: confirm the running process is newer than the change before judging backend behavior.
 - Verify saved settings after reloading or reopening the page. For unsaved changes, verify the confirmation and that canceling preserves both the current view and draft; distinguish observing the native prompt from replacing it with a test stub.
 
 ## Refactoring and migration

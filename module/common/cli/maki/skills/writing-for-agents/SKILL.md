@@ -10,7 +10,7 @@ Write actionable instructions with clear triggers and checkable outcomes. Preser
 ## Editing workflow
 
 1. Establish the task, authorized scope, and trigger conditions. Read current instructions and evidence of the behavior being changed.
-2. Separate responsibilities from neighboring skills or documents. Avoid mandatory cross-skill loading chains; a few necessary repeated rules are cheaper than a shared routing layer.
+2. Separate responsibilities from neighboring skills or documents. Avoid mandatory cross-skill loading chains; a few necessary repeated rules are cheaper than a shared routing layer. Keep human-facing docs (README) free of agent-only instructions; put those in AGENTS.md or skills.
 3. Write the smallest useful workflow and checkable completion criteria. Keep core scope, safety rules, execution steps, and completion in the main file.
 4. Put low-frequency branches, long examples, theory, and command tables in internal references. Give each reference an explicit reading condition; multiple conditions may match, but do not default to loading everything.
 5. Remove duplicates, stale constraints, directly queryable environment facts, and prohibitions without a plausible failure mode or useful behavioral effect. Preserve compatibility, security, user work, and resource lifecycle boundaries.

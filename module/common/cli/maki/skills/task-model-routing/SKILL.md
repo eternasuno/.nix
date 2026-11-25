@@ -74,4 +74,12 @@ For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` ex
 7. Never restore dirty files from HEAD to recover a failed edit; report the conflict and preserve current work.
 8. When a task is stopped, interrupted, or stuck, inspect its partial edits and run its verification before re-dispatching; it may already be complete, or a new task must continue from its changes instead of overwriting them.
 
+## Lessons from parallel runs
+
+- If the listed review model is unavailable (quota exhausted), use the strongest available model at the same thinking level and say so.
+- Files that wire shared pieces (for example `main.go`, config, barrel exports) belong to the main agent or to one writer; sequence dependent edits after the owning writer returns instead of sharing the file.
+- Tell concurrent writers that builds and tests may fail transiently in packages they do not own, and require them to run and report only their own packages. Re-run the full checks yourself once all writers have returned.
+- Give every deletion order its evidence (callers traced, spec rule checked) and let the writer skip items whose evidence does not hold; review the returned diff and verify claims against the tree rather than the report.
+- Stop servers or processes a task started by port or PID (`ss -ltnp`); `pkill -f` patterns can miss relative-path binaries or kill the shell itself.
+
 Done when the work is complete within the authorized scope, every delegated task has a checked outcome, integration conflicts are resolved or disclosed, and acceptance and remaining uncertainty are stated.

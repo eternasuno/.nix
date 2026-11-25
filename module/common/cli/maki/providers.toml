@@ -62,7 +62,7 @@ discover_models = false
 
 [[magpie-anthropic.models]]
 id = "claude/claude-haiku-5-5"
-context_window = 100000
+context_window = 1000000
 max_output_tokens = 128000
 supports_thinking = true
 requires_thinking = true

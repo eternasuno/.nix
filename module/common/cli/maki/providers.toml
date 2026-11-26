@@ -95,16 +95,6 @@ pricing_cache_write = 2.5
 pricing_cache_read = 0.1
 
 [[magpie-anthropic.models]]
-id = "agy-cli/gemini-4-argon"
-context_window = 1048576
-max_output_tokens = 65536
-supports_thinking = true
-supports_vision = true
-pricing_input = 4.0
-pricing_output = 20.0
-pricing_cache_read = 0.2
-
-[[magpie-anthropic.models]]
 id = "agy-cli/gemini-4-hydrogen"
 context_window = 1048576
 max_output_tokens = 65536

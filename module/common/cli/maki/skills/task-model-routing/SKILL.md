@@ -47,8 +47,8 @@ For each role, set the `task` tool's `model`, `thinking`, and `subagent_type` ex
   - Return findings with severity, rationale, source or file/line evidence, and suggested corrections. Review only; never modify code or apply fixes.
 
 - **Implementation**
-  - Model: `magpie-anthropic/agy-cli/gemini-4-hydrogen`
-  - Thinking: `high`
+  - Model: `magpie-anthropic/claude/claude-sonnet-5-5`
+  - Thinking: `medium`; raise to `high` for complex tasks
   - subagent_type: `general`
   - Use for one small, precisely specified functional module in one or a few files, including feature work, refactoring, test authoring, or configuration/script edits.
   - Follow the main agent's task instructions, established contracts, and design. Return changed paths, verification results, and remaining risks; back claims about inspected state, edits, and verification results with tool results from this task, label inferences and remaining risks as such, and state failed or skipped verification plainly. Report missing decisions or scope expansion rather than redesigning.
